@@ -8,6 +8,10 @@ import {
   type SupportedAiLocale,
 } from "@/lib/ai-locale-prompt";
 
+// Увеличиваем лимит времени выполнения на серверах Vercel до 60 секунд.
+// Это даст Gemini достаточно времени на глубокий анализ без обрыва связи.
+export const maxDuration = 60;
+
 /**
  * POST /api/analyze — production Gemini analysis with Stripe payment consumption lock.
  * Paid tiers require a verified Checkout Session; each session may consume one analysis.
@@ -132,10 +136,11 @@ const RATE_LIMITED_MESSAGES: Record<string, string> = {
   en: "Server is busy. Please try again in a moment — we do not retry automatically.",
   de: "Server ausgelastet. Bitte später erneut versuchen — keine automatische Wiederholung.",
   zh: "服务器繁忙，请稍后再试；不会自动重试请求。",
-  hi: "सर्वर व्यस्त है। बाद में पुनः प्रयास करें — स्वचालित पुनःप्रयास नहीं।",
+  hi: "सर्वर व्यस्त है। बाद में पुनः प्रयास करें — स्वचालित पुनःप्रयास नहीं。",
   ar: "الخادم مشغول. حاول لاحقًا — لا يتم إعادة الإرسال تلقائيًا.",
   fa: "سرور شلوغ است. بعداً دوباره تلاش کنید — ارسال خودکار تکرار نمی‌شود.",
 };
+
 function rateLimitedMessage(locale: string): string {
   return RATE_LIMITED_MESSAGES[locale] ?? RATE_LIMITED_MESSAGES.en;
 }
