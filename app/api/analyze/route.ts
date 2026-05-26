@@ -325,7 +325,7 @@ export async function POST(req: NextRequest) {
       answers,
       locale: resolvedLocale,
       tier: effectiveTier,
-      model: "gemini-1.5-pro",
+      model: "gemini-1.5-flash",
     });
   } catch (err) {
     if (err instanceof GeminiAnalysisError && err.code === "rate_limited") {
