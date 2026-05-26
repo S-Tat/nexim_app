@@ -1,0 +1,9 @@
+# Query: gemini-1.5-flash-8b
+# ContextLines: 1
+
+1 result - 1 file
+
+lib\gemini-analysis.ts:
+  177    "gemini-1.5-flash",
+  178:   "gemini-1.5-flash",
+  179    "gemini-2.0-flash",
