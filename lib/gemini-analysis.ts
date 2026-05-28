@@ -400,13 +400,13 @@ function buildPromptProfessional(
     : `Primary focus: LIFESTYLE / REMOTE / PASSIVE INCOME — nomad visas, D7-type routes, financial requirements, quality of life.`;
 
   const countryNote = aiSuggestsCountry
-    ? `User did not specify a destination country — choose the top 5 best objective fits.`
+    ? `User did not specify a destination country — choose the top 3 best objective fits.`
     : `User preference country code: ${sanitized.countryCode} — weight heavily but rank by fit.`;
 
   const legal = sanitized.unresolvedLegalViolations;
   const legalNote =
     legal === "yes" || legal === true
-      ? `If "unresolvedLegalViolations" is yes: still return exactly 5 countries with honest visa assessment; flag higher refusal/compliance risk in analysis and per-country cons. Never use an empty top_countries array. Set "legal_relocation_blocked": false.`
+      ? `If "unresolvedLegalViolations" is yes: still return exactly 3 countries with honest visa assessment; flag higher refusal/compliance risk in analysis and per-country cons. Never use an empty top_countries array. Set "legal_relocation_blocked": false.`
       : ``;
 
   const diplomaAuthorityRule = `For document_table: use the correct local authority per destination country, or the generic "Local degree legalization / Apostille" if unsure.`;
@@ -432,10 +432,10 @@ ${JSON.stringify(sanitized, null, 2)}
 Return JSON:
 - "legal_relocation_blocked": false (Pro always delivers matches; UI handles legal warnings separately)
 - "analysis": string — executive summary: timeline, risks, priorities (refer to Pro sections; do not repeat everything).
-- "tax_legal_audit": string — **Detailed tax report** (Markdown): for **each of the 5 countries** you recommend, use a ### CountryName heading, then a **markdown table or bullet list of indicative income-tax brackets / marginal rates** (employed and, if relevant, self-employed or dividend regimes). Add tax-residency triggers, notable reliefs, and **right to work / permit** basics. Tailor to this user's citizenship, residence, and income answers.
+- "tax_legal_audit": string — **Detailed tax report** (Markdown): for **each of the 3 countries** you recommend, use a ### CountryName heading, then a **markdown table or bullet list of indicative income-tax brackets / marginal rates** (employed and, if relevant, self-employed or dividend regimes). Add tax-residency triggers, notable reliefs, and **right to work / permit** basics. Tailor to this user's citizenship, residence, and income answers.
 - "job_market_overview": string — **Professional audit** (Markdown): job-market demand based on the user's **educationLevel** and **profession** (and professionOtherDetail when "other"). For **each** destination, cover shortage lists / skill needs, realistic visa or work routes for that profile, and salary vs living-cost hints. Compare countries.
 - "document_checklist": string — **Personalized document checklist** (Markdown): grouped sections (e.g. Passport & identity, Criminal records, Diplomas & credential evaluation, Bank statements & proof of funds, Employment/freelance contracts, Insurance, Apostilles & sworn translations). Tie each item to concrete fields from the user's answers (passport validity, apostillesReadiness, visaRefusalHistory, energyLevelAdaptation, etc.).
-- "top_countries": array of exactly 5 objects:
+- "top_countries": array of exactly 3 objects:
   - "country_code", "country_name", "match_score" (0-100), "visa_name"
   - "pros": string[] (3-5), "cons": string[] (3-4), "gap_analysis": string[] (3-5)
   - "document_table": string — Markdown table: Document | Required/Recommended | Notes (8-12 rows) for visa/residence for this country and this user's profile
@@ -445,7 +445,9 @@ Return JSON:
 ${langInstruction}
 Return ONLY valid JSON, no markdown fences.
 
-${finalRule}`;
+${finalRule}
+
+CRITICAL INSTRUCTION: Your response must be highly concentrated and concise. Avoid long introductory or concluding paragraphs. Use extremely short, punchy bullet points for checklists and tax analysis. You must strictly fit the entire response within the token limit to avoid JSON truncation. Prioritize data density over text volume.`;
 }
 
 function buildPrompt(
@@ -510,8 +512,12 @@ function countrySchemaForTier(tier: string): Schema {
   return { type: SchemaType.OBJECT, properties, required };
 }
 
+function maxCountriesForTier(tier: string): number {
+  return tier === "basic" ? 5 : 3;
+}
+
 function responseSchemaForTier(tier: string): Schema {
-  const maxCountries = tier === "lite" ? 3 : 5;
+  const maxCountries = maxCountriesForTier(tier);
   const pro = tier === "professional";
   const properties: Record<string, Schema> = {
     legal_relocation_blocked: { type: SchemaType.BOOLEAN },
@@ -757,7 +763,7 @@ export async function runGeminiAnalysis(opts: {
 
     const rawCountries = Array.isArray(parsed.top_countries) ? parsed.top_countries : [];
 
-    const maxCountries = tier === "lite" ? 3 : 5;
+    const maxCountries = maxCountriesForTier(tier);
 
     if (rawCountries.length === 0) {
       logGeminiRawError(new Error("Empty top_countries in Gemini JSON"));
