@@ -226,17 +226,18 @@ export function ResultView() {
         </div>
       ) : null}
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+      <div className="mt-8 w-full grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {countries.map((c, i) => (
-          <CountryMatchCard
-            key={`${c.country_code}-${i}`}
-            country={c}
-            rank={i + 1}
-            expanded={expandedIdx === i}
-            onToggle={() => setExpandedIdx(expandedIdx === i ? null : i)}
-            locale={locale}
-            showRoadmap={!isLite}
-          />
+          <div key={`${c.country_code}-${i}`} className="flex h-full min-w-0">
+            <CountryMatchCard
+              country={c}
+              rank={i + 1}
+              expanded={expandedIdx === i}
+              onToggle={() => setExpandedIdx(expandedIdx === i ? null : i)}
+              locale={locale}
+              showRoadmap={!isLite}
+            />
+          </div>
         ))}
       </div>
 

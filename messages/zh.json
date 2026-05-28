@@ -368,7 +368,7 @@
       "questionnaireIncomplete": "请先完成全部问题再获取结果。",
       "questionnaireSaveFailed": "无法保存答案，请刷新页面后重试。",
       "aiAnalyzingTitle": "AI 正在分析您的成功几率…",
-      "aiAnalyzingHint": "Gemini 正在处理您的答案，通常需要 10–30 秒，请保持页面打开。",
+      "aiAnalyzingHint": "系统正在处理您的结果，通常需要 10–30 秒，请稍候。",
       "selectPlaceholder": "请选择…",
       "basicCitizenshipLabel": "国籍（护照签发国）",
       "basicResidenceLabel": "您目前居住的国家",

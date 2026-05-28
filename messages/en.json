@@ -197,7 +197,7 @@
   "result": {
     "loading": "Preparing your results…",
     "loaderTitle": "The AI is analyzing your chances…",
-    "loaderHint": "Gemini is evaluating your profile against immigration rules and labor markets. This may take 10–30 seconds.",
+    "loaderHint": "Our system is processing your result. This usually takes 10–30 seconds — please wait.",
     "missingSessionOrId": "Complete the questionnaire in this browser tab, then open results here. Session data is missing.",
     "analysisFailed": "Analysis failed. Please try again.",
     "analysisUnavailableTitle": "Report unavailable",
@@ -553,7 +553,7 @@
       "questionnaireIncomplete": "Please complete every question before requesting results.",
       "questionnaireSaveFailed": "Could not save your answers. Refresh the page and try again.",
       "aiAnalyzingTitle": "The AI is analyzing your chances…",
-      "aiAnalyzingHint": "Gemini is processing your answers. This usually takes 10–30 seconds — please keep this page open.",
+      "aiAnalyzingHint": "Our system is processing your result. This usually takes 10–30 seconds — please wait.",
       "selectPlaceholder": "Select…",
       "basicCitizenshipLabel": "Your citizenship (passport country)",
       "basicResidenceLabel": "Country where you live now",

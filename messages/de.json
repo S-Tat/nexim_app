@@ -368,7 +368,7 @@
       "questionnaireIncomplete": "Bitte beantworten Sie alle Fragen, bevor Sie das Ergebnis anfordern.",
       "questionnaireSaveFailed": "Antworten konnten nicht gespeichert werden. Seite neu laden und erneut versuchen.",
       "aiAnalyzingTitle": "Die KI analysiert Ihre Chancen…",
-      "aiAnalyzingHint": "Gemini verarbeitet Ihre Antworten. Das dauert meist 10–30 Sekunden — bitte die Seite offen lassen.",
+      "aiAnalyzingHint": "Unser System verarbeitet Ihr Ergebnis. Das dauert in der Regel 10–30 Sekunden — bitte warten.",
       "selectPlaceholder": "Auswählen…",
       "basicCitizenshipLabel": "Staatsangehörigkeit (Passland)",
       "basicResidenceLabel": "Land, in dem Sie derzeit leben",

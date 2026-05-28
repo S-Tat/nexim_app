@@ -34,17 +34,19 @@ export function CountryMatchCard({
   const medal = rank === 1 ? "🥇" : rank === 2 ? "🥈" : "🥉";
 
   return (
-    <div className={`${glass} overflow-hidden transition-all`}>
-      <div className="p-6">
-        <div className="flex items-center gap-3">
-          <span className="text-2xl">{medal}</span>
+    <div className={`${glass} flex h-full min-w-0 flex-col overflow-hidden transition-all`}>
+      <div className="flex flex-1 flex-col p-6">
+        <div className="flex items-start gap-3">
+          <span className="shrink-0 text-2xl">{medal}</span>
           <div className="min-w-0 flex-1">
-            <h3 className="truncate text-lg font-semibold text-white">
+            <h3 className="break-words text-lg font-semibold leading-snug text-white whitespace-normal">
               {flag} {displayName}
             </h3>
-            <p className="mt-0.5 text-xs text-nexim-muted">{country.visa_name}</p>
+            <p className="mt-0.5 break-words text-xs leading-relaxed text-nexim-muted whitespace-normal">
+              {country.visa_name}
+            </p>
           </div>
-          <div className="text-right">
+          <div className="shrink-0 text-right">
             <p className="font-display text-3xl font-bold tabular-nums text-[#fbbf24]">
               {country.match_score}%
             </p>
@@ -54,24 +56,34 @@ export function CountryMatchCard({
           </div>
         </div>
 
-        <div className="mt-5 grid gap-3 sm:grid-cols-2">
-          <div>
+        <div className="mt-5 grid grid-cols-1 gap-4">
+          <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400">
               {t("prosLabel")}
             </p>
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-2 space-y-1.5">
               {country.pros.map((p, i) => (
-                <li key={i} className="text-xs leading-relaxed text-nexim-text">+ {p}</li>
+                <li
+                  key={i}
+                  className="break-words text-xs leading-relaxed text-nexim-text whitespace-normal"
+                >
+                  + {p}
+                </li>
               ))}
             </ul>
           </div>
-          <div>
+          <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-wider text-red-400">
               {t("consLabel")}
             </p>
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-2 space-y-1.5">
               {country.cons.map((c, i) => (
-                <li key={i} className="text-xs leading-relaxed text-nexim-text">− {c}</li>
+                <li
+                  key={i}
+                  className="break-words text-xs leading-relaxed text-nexim-text whitespace-normal"
+                >
+                  − {c}
+                </li>
               ))}
             </ul>
           </div>
@@ -82,9 +94,14 @@ export function CountryMatchCard({
             <p className="text-xs font-semibold uppercase tracking-wider text-[#fbbf24]">
               {t("gapLabel")}
             </p>
-            <ul className="mt-2 space-y-1">
+            <ul className="mt-2 space-y-1.5">
               {country.gap_analysis.map((g, i) => (
-                <li key={i} className="text-xs text-nexim-text">⚠ {g}</li>
+                <li
+                  key={i}
+                  className="break-words text-xs leading-relaxed text-nexim-text whitespace-normal"
+                >
+                  ⚠ {g}
+                </li>
               ))}
             </ul>
           </div>
@@ -95,7 +112,7 @@ export function CountryMatchCard({
             <button
               type="button"
               onClick={onToggle}
-              className="mt-4 text-xs font-semibold text-[#fbbf24] underline-offset-4 transition hover:underline"
+              className="mt-4 text-left text-xs font-semibold text-[#fbbf24] underline-offset-4 transition hover:underline"
             >
               {expanded ? t("hideRoadmap") : t("showRoadmap")}
             </button>
@@ -112,10 +129,14 @@ export function CountryMatchCard({
                 <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#fbbf24]/15 text-[10px] font-bold text-[#fbbf24]">
                   {s.step}
                 </span>
-                <div className="min-w-0">
-                  <p className="text-sm font-medium text-white">{s.title}</p>
-                  <p className="mt-0.5 text-xs text-nexim-muted">{s.deadline}</p>
-                  <p className="mt-1 text-xs leading-relaxed text-nexim-text">
+                <div className="min-w-0 flex-1">
+                  <p className="break-words text-sm font-medium text-white whitespace-normal">
+                    {s.title}
+                  </p>
+                  <p className="mt-0.5 break-words text-xs text-nexim-muted whitespace-normal">
+                    {s.deadline}
+                  </p>
+                  <p className="mt-1 break-words text-xs leading-relaxed text-nexim-text whitespace-normal">
                     {s.description}
                   </p>
                 </div>
