@@ -574,8 +574,7 @@ export async function runGeminiAnalysis(opts: {
 
   const prompt = buildPrompt(answers, locale, tier);
 
-  const maxOut =
-    tier === "lite" ? 2048 : tier === "basic" ? 3072 : 12288;
+  const maxOut = 8192;
 
   const geminiRequestOptions = {
     baseUrl: GEMINI_AI_STUDIO_BASE_URL,
