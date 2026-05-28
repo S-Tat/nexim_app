@@ -1,6 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
-import { GeminiAnalysisError, runGeminiAnalysis } from "@/lib/gemini-analysis";
+import {
+  GeminiAnalysisError,
+  PRODUCTION_GEMINI_MODEL,
+  runGeminiAnalysis,
+} from "@/lib/gemini-analysis";
 import { isRelocationLegallyBlocked } from "@/lib/relocation-legal-block";
 import {
   isSupportedAiLocale,
@@ -325,7 +329,7 @@ export async function POST(req: NextRequest) {
       answers,
       locale: resolvedLocale,
       tier: effectiveTier,
-      model: "gemini-1.5-flash-latest",
+      model: PRODUCTION_GEMINI_MODEL,
     });
   } catch (err) {
     if (err instanceof GeminiAnalysisError && err.code === "rate_limited") {

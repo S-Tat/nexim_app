@@ -167,16 +167,45 @@ export type GeminiResult = {
  *      omitted — they consistently 404 against current Studio keys and just
  *      slow down the fallback loop.
  */
-/** Production primary model; fallbacks used only if this id is unavailable. */
+/** Production primary model; all tiers use Flash to stay within Vercel timeouts. */
 export const PRODUCTION_GEMINI_MODEL = "gemini-1.5-flash-latest";
 
 /** Maximum output tokens for Gemini generateContent (AI Studio / @google/generative-ai). */
 export const GEMINI_MAX_OUTPUT_TOKENS = 8192;
 
-const fallbackModels = [
-  "gemini-1.5-flash-latest",
+/** Pro models are disabled — Flash only for Lite, Basic, and Professional. */
+const BLOCKED_GEMINI_MODEL_IDS = new Set([
   "gemini-1.5-pro",
-] as const;
+  "gemini-1.5-pro-latest",
+]);
+
+function normalizeGeminiModelId(model?: string): string {
+  if (!model?.trim()) return PRODUCTION_GEMINI_MODEL;
+  const id = model.trim();
+  if (BLOCKED_GEMINI_MODEL_IDS.has(id.toLowerCase())) {
+    return PRODUCTION_GEMINI_MODEL;
+  }
+  return id;
+}
+
+/** True for Flash-family ids; excludes gemini-1.5-pro / pro-latest. */
+function isAllowedFlashModelId(model: string): boolean {
+  const id = model.replace(/^models\//, "").trim().toLowerCase();
+  if (BLOCKED_GEMINI_MODEL_IDS.has(id)) return false;
+  if (id.includes("-pro") && !id.includes("flash")) return false;
+  return id.includes("flash");
+}
+
+/**
+ * Model chain for a tier. Lite and Professional (and all tiers) use Flash only.
+ */
+function modelChainForTier(preferredModel?: string): string[] {
+  const primary = normalizeGeminiModelId(preferredModel ?? PRODUCTION_GEMINI_MODEL);
+  const chain = [primary, PRODUCTION_GEMINI_MODEL].filter(isAllowedFlashModelId);
+  return chain.filter((id, idx, arr) => arr.indexOf(id) === idx);
+}
+
+const fallbackModels = [PRODUCTION_GEMINI_MODEL] as const;
 
 type ListModelsDebugResult = {
   ok: boolean;
@@ -567,10 +596,7 @@ export async function runGeminiAnalysis(opts: {
     !!apiKey,
   );
 
-  const modelChain = [
-    ...(preferredModel ? [preferredModel] : []),
-    ...fallbackModels,
-  ].filter((id, idx, arr) => arr.indexOf(id) === idx);
+  const modelChain = modelChainForTier(preferredModel);
 
   console.log("DEBUG: Gemini model chain:", modelChain.join(" → "));
 
@@ -697,7 +723,9 @@ export async function runGeminiAnalysis(opts: {
         generateContentModelIds: listDebug.generateContentModelIds,
       });
 
-      for (const currentModel of listDebug.generateContentModelIds) {
+      for (const currentModel of listDebug.generateContentModelIds.filter(
+        isAllowedFlashModelId,
+      )) {
         const step = await runAttempt(currentModel);
         if (step === "success") break;
       }
