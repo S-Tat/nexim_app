@@ -170,6 +170,9 @@ export type GeminiResult = {
 /** Production primary model; fallbacks used only if this id is unavailable. */
 export const PRODUCTION_GEMINI_MODEL = "gemini-1.5-flash-latest";
 
+/** Maximum output tokens for Gemini generateContent (AI Studio / @google/generative-ai). */
+export const GEMINI_MAX_OUTPUT_TOKENS = 8192;
+
 const fallbackModels = [
   "gemini-1.5-flash-latest",
   "gemini-1.5-pro",
@@ -580,8 +583,6 @@ export async function runGeminiAnalysis(opts: {
 
   const prompt = buildPrompt(answers, locale, tier);
 
-  const maxOut = 8192;
-
   const geminiRequestOptions = {
     baseUrl: GEMINI_AI_STUDIO_BASE_URL,
     apiVersion: "v1beta" as const,
@@ -590,29 +591,37 @@ export async function runGeminiAnalysis(opts: {
 
   const genAI = new GoogleGenerativeAI(apiKey);
 
+  function buildGenerationConfig(structured: boolean) {
+    const base = {
+      temperature: 0.35,
+      maxOutputTokens: GEMINI_MAX_OUTPUT_TOKENS,
+      responseMimeType: "application/json" as const,
+    };
+    if (structured) {
+      return {
+        ...base,
+        responseSchema: responseSchemaForTier(tier),
+      };
+    }
+    return base;
+  }
+
   async function generateWithModel(
     modelId: string,
     structured: boolean,
   ): Promise<string> {
+    const generationConfig = buildGenerationConfig(structured);
     const model = genAI.getGenerativeModel(
       {
         model: modelId,
-        generationConfig: structured
-          ? {
-              temperature: 0.35,
-              maxOutputTokens: maxOut,
-              responseMimeType: "application/json",
-              responseSchema: responseSchemaForTier(tier),
-            }
-          : {
-              temperature: 0.35,
-              maxOutputTokens: maxOut,
-              responseMimeType: "application/json",
-            },
+        generationConfig,
       },
       geminiRequestOptions,
     );
-    const result = await model.generateContent(prompt);
+    const result = await model.generateContent({
+      contents: [{ role: "user", parts: [{ text: prompt }] }],
+      generationConfig,
+    });
     return result.response.text();
   }
 
