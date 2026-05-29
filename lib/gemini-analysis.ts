@@ -432,13 +432,13 @@ function buildPromptProfessional(
     : `Primary focus: LIFESTYLE / REMOTE / PASSIVE INCOME — nomad visas, D7-type routes, financial requirements, quality of life.`;
 
   const countryNote = aiSuggestsCountry
-    ? `User did not specify a destination country — choose the top 3 best objective fits.`
+    ? `User did not specify a destination country — choose the top 2 best objective fits.`
     : `User preference country code: ${sanitized.countryCode} — weight heavily but rank by fit.`;
 
   const legal = sanitized.unresolvedLegalViolations;
   const legalNote =
     legal === "yes" || legal === true
-      ? `If "unresolvedLegalViolations" is yes: still return exactly 3 countries with honest visa assessment; flag higher refusal/compliance risk in analysis and per-country cons. Never use an empty top_countries array. Set "legal_relocation_blocked": false.`
+      ? `If "unresolvedLegalViolations" is yes: still return exactly 2 countries with honest visa assessment; flag higher refusal/compliance risk in analysis and per-country cons. Never use an empty top_countries array. Set "legal_relocation_blocked": false.`
       : ``;
 
   const diplomaAuthorityRule = `For document_table: use the correct local authority per destination country, or the generic "Local degree legalization / Apostille" if unsure.`;
@@ -447,9 +447,9 @@ function buildPromptProfessional(
 
 You are Nexim — expert relocation consultant (Pro tier).
 
-As a high-level relocation expert, deliver a comprehensive tax breakdown, a professional job-market analysis for the user's specific field and education level, and a detailed document checklist. Put these in the JSON string fields "tax_legal_audit", "job_market_overview", and "document_checklist" (Markdown tables and headings allowed inside those strings). The overall "analysis" field is a shorter executive summary.
+As a high-level relocation expert, deliver a compact tax breakdown, job-market snapshot, and document checklist. Put these in "tax_legal_audit", "job_market_overview", and "document_checklist" (short Markdown bullets only — no long prose). The "analysis" field is a brief executive summary (2-4 sentences max).
 
-Task: Full expert audit across all questionnaire fields. Cross-reference \`educationLevel\`, \`professionMain\`, \`professionOtherDetail\`, \`workExperience\`, languages, funds, legal flags, and refusal history. Each top country needs a concrete step-by-step roadmap in "roadmap".
+Task: Full expert audit across all questionnaire fields. Cross-reference \`educationLevel\`, \`professionMain\`, \`professionOtherDetail\`, \`workExperience\`, languages, funds, legal flags, and refusal history. Each top country needs a short roadmap in "roadmap" (max 4 steps).
 
 ${legalNote}
 
@@ -463,23 +463,33 @@ ${JSON.stringify(sanitized, null, 2)}
 
 Return JSON:
 - "legal_relocation_blocked": false (Pro always delivers matches; UI handles legal warnings separately)
-- "analysis": string — executive summary: timeline, risks, priorities (refer to Pro sections; do not repeat everything).
-- "tax_legal_audit": string — **Detailed tax report** (Markdown): for **each of the 3 countries** you recommend, use a ### CountryName heading, then a **markdown table or bullet list of indicative income-tax brackets / marginal rates** (employed and, if relevant, self-employed or dividend regimes). Add tax-residency triggers, notable reliefs, and **right to work / permit** basics. Tailor to this user's citizenship, residence, and income answers.
-- "job_market_overview": string — **Professional audit** (Markdown): job-market demand based on the user's **educationLevel** and **profession** (and professionOtherDetail when "other"). For **each** destination, cover shortage lists / skill needs, realistic visa or work routes for that profile, and salary vs living-cost hints. Compare countries.
-- "document_checklist": string — **Personalized document checklist** (Markdown): grouped sections (e.g. Passport & identity, Criminal records, Diplomas & credential evaluation, Bank statements & proof of funds, Employment/freelance contracts, Insurance, Apostilles & sworn translations). Tie each item to concrete fields from the user's answers (passport validity, apostillesReadiness, visaRefusalHistory, energyLevelAdaptation, etc.).
-- "top_countries": array of exactly 3 objects:
+- "analysis": string — executive summary only (2-4 short sentences: timeline, risks, priorities).
+- "tax_legal_audit": string — **Compact tax notes** (Markdown): for **each of the 2 countries**, use ### CountryName, then **at most 4 bullet points** on tax brackets, residency triggers, and work-permit basics (1-2 sentences per bullet).
+- "job_market_overview": string — **Compact labor-market audit** (Markdown): **at most 4 bullet points per country** on demand for the user's profession/education, visa routes, and salary vs cost of living.
+- "document_checklist": string — **Checklist** (Markdown): **at most 4 essential items per section** (grouped briefly). Tie items to the user's answers.
+- "top_countries": array of exactly 2 objects:
   - "country_code", "country_name", "match_score" (0-100), "visa_name"
-  - "pros": string[] (3-5), "cons": string[] (3-4), "gap_analysis": string[] (3-5)
-  - "document_table": string — Markdown table: Document | Required/Recommended | Notes (8-12 rows) for visa/residence for this country and this user's profile
-  - "weak_points": string[] — 3-5 actionable profile weak spots for this country
-  - "roadmap": 5-7 steps with step, title, description, deadline
+  - "pros": string[] (2-4 items max), "cons": string[] (2-4 max), "gap_analysis": string[] (2-4 max)
+  - "document_table": string — Markdown table with **at most 4 rows**: Document | Required/Recommended | Notes
+  - "weak_points": string[] — **at most 4** actionable weak spots
+  - "roadmap": **at most 4** steps with step, title, description (1-2 sentences), deadline
 
 ${langInstruction}
 Return ONLY valid JSON, no markdown fences.
 
 ${finalRule}
 
-CRITICAL INSTRUCTION: Your response must be highly concentrated and concise. Avoid long introductory or concluding paragraphs. Use extremely short, punchy bullet points for checklists and tax analysis. You must strictly fit the entire response within the token limit to avoid JSON truncation. Prioritize data density over text volume.`;
+CRITICAL INSTRUCTION: Your response must be highly concentrated and concise. Avoid long introductory or concluding paragraphs. Use extremely short, punchy bullet points for checklists and tax analysis. You must strictly fit the entire response within the token limit to avoid JSON truncation. Prioritize data density over text volume.
+
+CRITICAL JSON SIZE LIMIT: You must prevent JSON truncation.
+
+Limit your analysis to EXACTLY 2 recommended countries (no more).
+
+Limit all 'checklists', 'step-by-step plans', and 'tax implications' arrays to a MAXIMUM of 4 essential items each.
+
+Keep all text descriptions extremely concise (1-2 sentences max).
+
+Prioritize high-density data over wordy explanations. Ensure the JSON is properly closed.`;
 }
 
 function buildPrompt(
@@ -538,14 +548,40 @@ function countrySchemaForTier(tier: string): Schema {
   ];
   if (pro) {
     properties.document_table = { type: SchemaType.STRING };
-    properties.weak_points = { type: SchemaType.ARRAY, items: { type: SchemaType.STRING } };
+    properties.weak_points = {
+      type: SchemaType.ARRAY,
+      items: { type: SchemaType.STRING },
+      maxItems: 4,
+    };
     required.push("document_table", "weak_points");
+    properties.pros = {
+      type: SchemaType.ARRAY,
+      items: { type: SchemaType.STRING },
+      maxItems: 4,
+    };
+    properties.cons = {
+      type: SchemaType.ARRAY,
+      items: { type: SchemaType.STRING },
+      maxItems: 4,
+    };
+    properties.gap_analysis = {
+      type: SchemaType.ARRAY,
+      items: { type: SchemaType.STRING },
+      maxItems: 4,
+    };
+    properties.roadmap = {
+      type: SchemaType.ARRAY,
+      items: roadmapStepSchema,
+      maxItems: 4,
+    };
   }
   return { type: SchemaType.OBJECT, properties, required };
 }
 
 function maxCountriesForTier(tier: string): number {
-  return tier === "basic" ? 5 : 3;
+  if (tier === "basic") return 5;
+  if (tier === "professional") return 2;
+  return 3;
 }
 
 function responseSchemaForTier(tier: string): Schema {
@@ -618,9 +654,10 @@ export async function runGeminiAnalysis(opts: {
   const genAI = new GoogleGenerativeAI(apiKey);
 
   function buildGenerationConfig(structured: boolean) {
+    /** @google/generative-ai uses maxOutputTokens (not maxTokens). Hard cap: 8192. */
     const base = {
       temperature: 0.35,
-      maxOutputTokens: GEMINI_MAX_OUTPUT_TOKENS,
+      maxOutputTokens: 8192,
       responseMimeType: "application/json" as const,
     };
     if (structured) {
