@@ -207,6 +207,7 @@
     "aiRecsTitle": "Recommendations",
     "goldenBadge": "nexim.world",
     "title": "Your matches",
+    "sessionPersistenceWarning": "⚠️ Please save, screenshot, or print this information. Your results are not saved on the server and will be permanently lost if you refresh or close this page.",
     "subtitle": "Executive blueprint for {country}: readiness, costs, protection, and a 12-month path to residence.",
     "scoreLabel": "Chance of success",
     "radarTitle": "Readiness radar",

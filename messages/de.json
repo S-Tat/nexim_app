@@ -196,6 +196,7 @@
   },
   "result": {
     "title": "Ihre Treffer",
+    "sessionPersistenceWarning": "⚠️ Bitte speichern, screenshotten oder drucken Sie diese Informationen. Ihre Ergebnisse werden nicht auf dem Server gespeichert und gehen beim Aktualisieren oder Schließen dieser Seite unwiderruflich verloren.",
     "empty": "Noch kein Ergebnis. Bitte Tarif bezahlen und Fragebogen abschließen.",
     "docTableTitle": "Erforderliche Dokumente",
     "liteRoadmapLocked": "Detaillierte Roadmaps und Visaanforderungen sind in Basic und PRO enthalten.",
