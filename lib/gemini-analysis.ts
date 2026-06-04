@@ -450,9 +450,9 @@ function buildPromptProfessional(
 
 You are Nexim — expert relocation consultant (Pro tier).
 
-As a high-level relocation expert, deliver a compact tax breakdown, job-market snapshot, and document checklist. Put these in "tax_legal_audit", "job_market_overview", and "document_checklist" (short Markdown bullets only — no long prose). The "analysis" field is a brief executive summary (2-4 sentences max).
+As a high-level relocation expert, deliver a thorough tax and legal breakdown, in-depth job-market analysis, and a complete document checklist. Put these in "tax_legal_audit", "job_market_overview", and "document_checklist" (detailed Markdown with full explanations where helpful). The "analysis" field is a comprehensive, highly detailed analytical overview covering timeline, risks, priorities, and strategic recommendations.
 
-Task: Full expert audit across all questionnaire fields. Cross-reference \`educationLevel\`, \`professionMain\`, \`professionOtherDetail\`, \`workExperience\`, languages, funds, legal flags, and refusal history. Each top country needs a short roadmap in "roadmap" (max 4 steps).
+Task: Full expert audit across all questionnaire fields. Cross-reference \`educationLevel\`, \`professionMain\`, \`professionOtherDetail\`, \`workExperience\`, languages, funds, legal flags, and refusal history. Each top country needs a complete, step-by-step roadmap in "roadmap" with actionable detail.
 
 ${legalNote}
 
@@ -466,33 +466,23 @@ ${JSON.stringify(sanitized, null, 2)}
 
 Return JSON:
 - "legal_relocation_blocked": false (Pro always delivers matches; UI handles legal warnings separately)
-- "analysis": string — executive summary only (2-4 short sentences: timeline, risks, priorities).
-- "tax_legal_audit": string — **Compact tax notes** (Markdown): for **each of the 2 countries**, use ### CountryName, then **at most 4 bullet points** on tax brackets, residency triggers, and work-permit basics (1-2 sentences per bullet).
-- "job_market_overview": string — **Compact labor-market audit** (Markdown): **at most 4 bullet points per country** on demand for the user's profession/education, visa routes, and salary vs cost of living.
-- "document_checklist": string — **Checklist** (Markdown): **at most 4 essential items per section** (grouped briefly). Tie items to the user's answers.
+- "analysis": string — comprehensive, highly detailed analytical overview (timeline, risks, priorities, cross-country comparison, and strategic guidance).
+- "tax_legal_audit": string — **Detailed tax and legal audit** (Markdown): for **each of the 2 countries**, use ### CountryName, then thorough bullet points on tax brackets, residency triggers, work-permit rules, social contributions, and compliance pitfalls.
+- "job_market_overview": string — **In-depth labor-market audit** (Markdown): per country, cover demand for the user's profession/education, realistic visa routes, hiring channels, salary bands, and cost of living.
+- "document_checklist": string — **Full document checklist** (Markdown): grouped by category; list every essential and recommended item tied to the user's answers.
 - "top_countries": array of exactly 2 objects:
   - "country_code", "country_name", "match_score" (0-100), "visa_name"
-  - "pros": string[] (2-4 items max), "cons": string[] (2-4 max), "gap_analysis": string[] (2-4 max)
-  - "document_table": string — Markdown table with **at most 4 rows**: Document | Required/Recommended | Notes
-  - "weak_points": string[] — **at most 4** actionable weak spots
-  - "roadmap": **at most 4** steps with step, title, description (1-2 sentences), deadline
+  - "pros": string[] — full list of advantages and opportunities
+  - "cons": string[] — full list of risks and downsides
+  - "gap_analysis": string[] — detailed gaps between the user's profile and destination requirements
+  - "document_table": string — Markdown table: Document | Required/Recommended | Notes (include all relevant rows)
+  - "weak_points": string[] — actionable weak spots with context
+  - "roadmap": array of steps with step, title, description (fully elaborated), deadline
 
 ${langInstruction}
 Return ONLY valid JSON, no markdown fences.
 
-${finalRule}
-
-CRITICAL INSTRUCTION: Your response must be highly concentrated and concise. Avoid long introductory or concluding paragraphs. Use extremely short, punchy bullet points for checklists and tax analysis. You must strictly fit the entire response within the token limit to avoid JSON truncation. Prioritize data density over text volume.
-
-CRITICAL JSON SIZE LIMIT: You must prevent JSON truncation.
-
-Limit your analysis to EXACTLY 2 recommended countries (no more).
-
-Limit all 'checklists', 'step-by-step plans', and 'tax implications' arrays to a MAXIMUM of 4 essential items each.
-
-Keep all text descriptions extremely concise (1-2 sentences max).
-
-Prioritize high-density data over wordy explanations. Ensure the JSON is properly closed.`;
+${finalRule}`;
 }
 
 function buildPrompt(
@@ -554,28 +544,23 @@ function countrySchemaForTier(tier: string): Schema {
     properties.weak_points = {
       type: SchemaType.ARRAY,
       items: { type: SchemaType.STRING },
-      maxItems: 4,
     };
     required.push("document_table", "weak_points");
     properties.pros = {
       type: SchemaType.ARRAY,
       items: { type: SchemaType.STRING },
-      maxItems: 4,
     };
     properties.cons = {
       type: SchemaType.ARRAY,
       items: { type: SchemaType.STRING },
-      maxItems: 4,
     };
     properties.gap_analysis = {
       type: SchemaType.ARRAY,
       items: { type: SchemaType.STRING },
-      maxItems: 4,
     };
     properties.roadmap = {
       type: SchemaType.ARRAY,
       items: roadmapStepSchema,
-      maxItems: 4,
     };
   }
   return { type: SchemaType.OBJECT, properties, required };
