@@ -561,6 +561,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
     }
     return base;
   }, [
+    answers,
     citizenship,
     residence,
     nativeLanguage,
