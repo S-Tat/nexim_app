@@ -450,18 +450,17 @@ function buildPromptProfessional(
 
 You are Nexim — expert relocation consultant (Pro tier).
 
-As a high-level relocation expert, deliver a thorough tax and legal breakdown, in-depth job-market analysis, and a complete document checklist. Put these in "tax_legal_audit", "job_market_overview", and "document_checklist" (detailed Markdown — each bullet must be substantive and actionable). The "analysis" field is a comprehensive analytical overview covering timeline, risks, priorities, and strategic recommendations.
+As a high-level relocation expert, deliver concentrated tax/legal notes, job-market insights, and a document checklist in "tax_legal_audit", "job_market_overview", and "document_checklist". Every sentence must carry facts — no filler, no throat-clearing. The "analysis" field is ONE highly concentrated executive paragraph.
 
-Task: Full expert audit across all questionnaire fields. Cross-reference \`educationLevel\`, \`professionMain\`, \`professionOtherDetail\`, \`workExperience\`, languages, funds, legal flags, and refusal history. Each top country needs a step-by-step roadmap in "roadmap" with actionable detail.
+Task: Full expert audit across all questionnaire fields. Cross-reference \`educationLevel\`, \`professionMain\`, \`professionOtherDetail\`, \`workExperience\`, languages, funds, legal flags, and refusal history. Optimize for DATA DENSITY over volume — punchy, consultant-grade, zero redundancy.
 
-LENGTH GUIDANCE (soft limits — prioritize quality and completeness within these bounds):
-- "analysis": maximum 3-4 comprehensive paragraphs (dense, consultant-grade prose; no filler).
-- "tax_legal_audit", "job_market_overview": maximum 6-8 highly detailed, actionable bullet points **per country** (each bullet may be 2-3 sentences if needed).
-- "document_checklist": maximum 6-8 essential categories or items total, grouped clearly; tie each to the user's profile.
+STRICT LENGTH LIMITS (non-negotiable):
+- "analysis": exactly ONE executive paragraph — dense with timeline, risks, priorities, and strategic guidance.
+- "tax_legal_audit", "job_market_overview", "document_checklist": maximum **3** concise, information-dense bullet points **per country** (use ### CountryName headers).
 - Per country in "top_countries":
-  - "pros", "cons", "gap_analysis", "weak_points": maximum 6-8 items each — highly detailed and actionable (not one-liners).
-  - "roadmap": maximum 6-8 steps with step, title, description (substantive), deadline.
-  - "document_table": Markdown table with maximum 6-8 rows (Document | Required/Recommended | Notes).
+  - "pros", "cons", "gap_analysis", "weak_points": **exactly 3 to 4** items each — punchy, high-signal (one tight sentence each).
+  - "roadmap": **exactly 4** actionable steps (step, title, short description, deadline).
+  - "document_table": Markdown table, **4 rows max**: Document | Required/Recommended | Notes.
 
 ${legalNote}
 
@@ -475,25 +474,25 @@ ${JSON.stringify(sanitized, null, 2)}
 
 Return JSON:
 - "legal_relocation_blocked": false (Pro always delivers matches; UI handles legal warnings separately)
-- "analysis": string — 3-4 comprehensive paragraphs maximum (timeline, risks, priorities, cross-country comparison, strategic guidance).
-- "tax_legal_audit": string — **Detailed tax and legal audit** (Markdown): for **each of the 2 countries**, use ### CountryName, then **6-8** thorough bullet points on tax brackets, residency triggers, work-permit rules, social contributions, and compliance pitfalls.
-- "job_market_overview": string — **In-depth labor-market audit** (Markdown): **6-8** detailed bullet points **per country** on demand for the user's profession/education, realistic visa routes, hiring channels, salary bands, and cost of living.
-- "document_checklist": string — **Document checklist** (Markdown): **6-8** essential grouped items tied to the user's answers.
+- "analysis": string — ONE highly concentrated executive paragraph (timeline, risks, priorities, strategic guidance).
+- "tax_legal_audit": string — Markdown: ### CountryName per country, then **3** concise, information-dense bullets on tax, residency, work-permit, and compliance.
+- "job_market_overview": string — Markdown: **3** concise bullets **per country** on profession demand, visa routes, salary vs cost of living.
+- "document_checklist": string — Markdown: **3** concise bullets **per country** tied to the user's profile.
 - "top_countries": array of exactly 2 objects:
   - "country_code", "country_name", "match_score" (0-100), "visa_name"
-  - "pros": string[] — **6-8** highly detailed advantages and opportunities
-  - "cons": string[] — **6-8** detailed risks and downsides
-  - "gap_analysis": string[] — **6-8** detailed gaps between the user's profile and destination requirements
-  - "document_table": string — Markdown table, **6-8 rows max**: Document | Required/Recommended | Notes
-  - "weak_points": string[] — **6-8** actionable weak spots with context
-  - "roadmap": **6-8** steps with step, title, description (substantive), deadline
+  - "pros": string[] — **3 to 4** punchy advantages
+  - "cons": string[] — **3 to 4** punchy risks
+  - "gap_analysis": string[] — **3 to 4** punchy profile gaps
+  - "document_table": string — Markdown table, **4 rows max**: Document | Required/Recommended | Notes
+  - "weak_points": string[] — **3 to 4** punchy actionable weak spots
+  - "roadmap": **exactly 4** steps with step, title, short description, deadline
 
 ${langInstruction}
 Return ONLY valid JSON, no markdown fences.
 
 ${finalRule}
 
-CRITICAL: You must balance extreme detail with response length. Your output must not exceed 7500 tokens. You MUST properly close the JSON object. Do not truncate the response.`;
+CRITICAL: You MUST strictly limit your response length. Optimize for data density and omit filler words. You must absolutely ensure the JSON object is completely generated and closed properly within the limit.`;
 }
 
 function buildPrompt(
