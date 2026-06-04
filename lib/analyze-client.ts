@@ -3,6 +3,9 @@
  * The API key is NEVER included here — it lives only on the server.
  */
 
+/** Match server Gemini /api/analyze max wait (5 minutes). */
+const ANALYZE_FETCH_TIMEOUT_MS = 300_000;
+
 export type RoadmapStep = {
   step: number;
   title: string;
@@ -59,6 +62,7 @@ export async function requestAnalysis(
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(opts),
+    signal: AbortSignal.timeout(ANALYZE_FETCH_TIMEOUT_MS),
   });
 
   if (!res.ok) {

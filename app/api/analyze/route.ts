@@ -12,9 +12,8 @@ import {
   type SupportedAiLocale,
 } from "@/lib/ai-locale-prompt";
 
-// Увеличиваем лимит времени выполнения на серверах Vercel до 60 секунд.
-// Это даст Gemini достаточно времени на глубокий анализ без обрыва связи.
-export const maxDuration = 60;
+/** Vercel/serverless route limit (seconds) — matches 300s Gemini timeout. */
+export const maxDuration = 300;
 
 /**
  * POST /api/analyze — production Gemini analysis with Stripe payment consumption lock.

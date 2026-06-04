@@ -63,6 +63,9 @@ if (process.env.NEXIM_GEMINI_DNS_IPV4_FIRST !== "false") {
 /** Google AI Studio Generative Language API (Vertex uses a different host). */
 const GEMINI_AI_STUDIO_BASE_URL = "https://generativelanguage.googleapis.com";
 
+/** Max wait for Gemini generateContent and related HTTP calls (5 minutes). */
+export const GEMINI_REQUEST_TIMEOUT_MS = 300_000;
+
 function stripWrappingQuotes(raw: string): string {
   let v = raw.trim();
   if (
@@ -248,7 +251,7 @@ async function listGeminiModelsForDebug(
     const res = await fetchWithBriefRetry(url, {
       method: "GET",
       headers: { Accept: "application/json" },
-      signal: AbortSignal.timeout(45_000),
+      signal: AbortSignal.timeout(GEMINI_REQUEST_TIMEOUT_MS),
     });
     const text = await res.text();
     if (!res.ok) {
@@ -648,7 +651,7 @@ export async function runGeminiAnalysis(opts: {
   const geminiRequestOptions = {
     baseUrl: GEMINI_AI_STUDIO_BASE_URL,
     apiVersion: "v1beta" as const,
-    timeout: tier === "professional" ? 180_000 : 90_000,
+    timeout: GEMINI_REQUEST_TIMEOUT_MS,
   };
 
   const genAI = new GoogleGenerativeAI(apiKey);
