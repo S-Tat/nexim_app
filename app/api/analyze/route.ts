@@ -11,9 +11,10 @@ import {
   localeLabelForPrompt,
   type SupportedAiLocale,
 } from "@/lib/ai-locale-prompt";
+import { GEMINI_REQUEST_TIMEOUT_SEC } from "@/lib/gemini-request-timeout";
 
 /** Vercel/serverless route limit (seconds) — matches 300s Gemini timeout. */
-export const maxDuration = 300;
+export const maxDuration = GEMINI_REQUEST_TIMEOUT_SEC;
 
 /**
  * POST /api/analyze — production Gemini analysis with Stripe payment consumption lock.

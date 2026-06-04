@@ -49,7 +49,10 @@ import {
   criticalLanguageInstruction,
   finalCriticalLanguageRule,
 } from "@/lib/ai-locale-prompt";
+import { GEMINI_REQUEST_TIMEOUT_MS } from "@/lib/gemini-request-timeout";
 import isoCountries from "i18n-iso-countries";
+
+export { GEMINI_REQUEST_TIMEOUT_MS } from "@/lib/gemini-request-timeout";
 
 /** Prefer IPv4 first — avoids some Node 18+ / Windows DNS paths where IPv6 fails and fetch errors. */
 if (process.env.NEXIM_GEMINI_DNS_IPV4_FIRST !== "false") {
@@ -62,9 +65,6 @@ if (process.env.NEXIM_GEMINI_DNS_IPV4_FIRST !== "false") {
 
 /** Google AI Studio Generative Language API (Vertex uses a different host). */
 const GEMINI_AI_STUDIO_BASE_URL = "https://generativelanguage.googleapis.com";
-
-/** Max wait for Gemini generateContent and related HTTP calls (5 minutes). */
-export const GEMINI_REQUEST_TIMEOUT_MS = 300_000;
 
 function stripWrappingQuotes(raw: string): string {
   let v = raw.trim();
