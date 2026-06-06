@@ -1,39 +1,23 @@
-import type { MetadataRoute } from "next";
-import { GUIDE_COUNTRIES, GUIDE_PROFESSIONS } from "@/lib/programmatic-guides";
-import { getHreflangAlternates, getLocalizedUrl, SEO_ROUTE_SEGMENTS } from "@/lib/seo";
-import { locales } from "@/routing";
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-  const coreRoutes = SEO_ROUTE_SEGMENTS.flatMap((segment) =>
-    locales.map((locale) => {
-      const pathname = segment ? `/${segment}` : "/";
+  const languages = ["en", "de", "ru", "fa", "ar", "zh", "hi"];
+  const baseUrl = "https://nexim.world";
 
-      return {
-        url: getLocalizedUrl(locale, pathname),
-        lastModified,
-        alternates: {
-          languages: getHreflangAlternates(pathname),
-        },
-      };
-    }),
-  );
+  const routes = languages.map((lang) => ({
+    url: `${baseUrl}/${lang}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 1.0,
+  }));
 
-  const guideRoutes = locales.flatMap((locale) =>
-    GUIDE_COUNTRIES.flatMap((country) =>
-      GUIDE_PROFESSIONS.map((profession) => {
-        const pathname = `/guide/${country.slug}/${profession.slug}`;
-
-        return {
-          url: getLocalizedUrl(locale, pathname),
-          lastModified,
-          alternates: {
-            languages: getHreflangAlternates(pathname),
-          },
-        };
-      }),
-    ),
-  );
-
-  return [...coreRoutes, ...guideRoutes];
+  return [
+    {
+      url: baseUrl,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 1.0,
+    },
+    ...routes,
+  ];
 }
