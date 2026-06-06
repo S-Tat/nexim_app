@@ -16,6 +16,11 @@
     "listDescription": "Guides and insights on relocation, visas, and choosing the right country for your family.",
     "readMore": "Read article →"
   },
+  "cookieBanner": {
+    "message": "We use cookies to improve your experience. You can accept or decline their use.",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
   "hero": {
     "heroH1Part1": "How to move to ",
     "heroH1Part2": "",

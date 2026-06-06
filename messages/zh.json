@@ -16,6 +16,11 @@
     "listDescription": "关于移居、签证以及为家庭选择合适国家的指南与见解。",
     "readMore": "阅读文章 →"
   },
+  "cookieBanner": {
+    "message": "我们使用Cookie来改善您的体验。您可以接受或拒绝使用。",
+    "accept": "接受",
+    "decline": "拒绝"
+  },
   "hero": {
     "heroH1Part1": "如何移居到",
     "heroH1Part2": "",

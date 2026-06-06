@@ -9,6 +9,7 @@ import {
 } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
+import { CookieBanner } from "@/components/CookieBanner";
 import { SeoJsonLd } from "@/components/SeoJsonLd";
 import { SiteFooter } from "@/components/SiteFooter";
 import {
@@ -126,6 +127,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <Header locale={locale as Locale} />
             <main className="relative z-10 flex flex-1 flex-col">{children}</main>
             <SiteFooter locale={locale as Locale} />
+            <CookieBanner />
           </div>
         </NextIntlClientProvider>
         <Analytics />
