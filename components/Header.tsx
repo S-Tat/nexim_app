@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/routing";
+import { Link } from "@/navigation";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { HeaderLogoLink } from "@/components/HeaderLogoLink";
 
@@ -17,6 +18,12 @@ export async function Header({ locale }: Props) {
           {t("logo")}
         </HeaderLogoLink>
         <div className="flex items-center gap-2 md:gap-4">
+          <Link
+            href="/blog"
+            className="text-sm font-medium text-nexim-muted transition hover:text-white rtl:font-arabic"
+          >
+            {t("blog")}
+          </Link>
           <LanguageSwitcher currentLocale={locale} />
         </div>
       </div>

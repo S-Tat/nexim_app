@@ -8,7 +8,13 @@
     "keywords": "where to move, relocation country match, AI relocation analysis, best country for me, Nexim, immigration, digital nomad visa, Blue Card, move abroad"
   },
   "nav": {
-    "logo": "Nexim"
+    "logo": "Nexim",
+    "blog": "Blog"
+  },
+  "blog": {
+    "listTitle": "Blog",
+    "listDescription": "Guides and insights on relocation, visas, and choosing the right country for your family.",
+    "readMore": "Read article →"
   },
   "hero": {
     "heroH1Part1": "How to move to ",

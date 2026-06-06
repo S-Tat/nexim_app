@@ -8,7 +8,13 @@
     "keywords": "wohin auswandern, Länderanalyse Umzug, KI Relokation, Nexim, Einwanderung, Blue Card, Digital Nomad Visum, Auswandern"
   },
   "nav": {
-    "logo": "Nexim"
+    "logo": "Nexim",
+    "blog": "Blog"
+  },
+  "blog": {
+    "listTitle": "Blog",
+    "listDescription": "Ratgeber und Einblicke zu Umzug, Visa und der Wahl des richtigen Landes für Ihre Familie.",
+    "readMore": "Artikel lesen →"
   },
   "hero": {
     "heroH1Part1": "Wie man nach ",

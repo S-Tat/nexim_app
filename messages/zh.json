@@ -8,7 +8,13 @@
     "keywords": "去哪移民, 移居国家分析, AI 移居, Nexim, 移民, 数字游民签证, 蓝卡, 出国定居"
   },
   "nav": {
-    "logo": "Nexim"
+    "logo": "Nexim",
+    "blog": "博客"
+  },
+  "blog": {
+    "listTitle": "博客",
+    "listDescription": "关于移居、签证以及为家庭选择合适国家的指南与见解。",
+    "readMore": "阅读文章 →"
   },
   "hero": {
     "heroH1Part1": "如何移居到",
