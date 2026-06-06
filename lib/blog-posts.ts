@@ -279,6 +279,938 @@ export const blogPosts: BlogPost[] = [
     ctaLabel: "मुफ्त पारिवारिक विश्लेषण पाएं →",
     updated: "ब्लॉग · 2026",
   },
+
+  /* ── IT → Germany ── */
+  {
+    locale: "en",
+    slug: "it-germany",
+    title: "How IT Specialists Can Relocate to Germany in 2026",
+    description:
+      "EU Blue Card, Chancenkarte, salary thresholds and language tips for IT professionals moving to Germany in 2026.",
+    intro:
+      "Germany remains Europe's largest tech hub with strong demand for software engineers, DevOps specialists and data experts. In 2026 the main routes are the EU Blue Card, the Chancenkarte points system and employer-sponsored skilled worker visas — each with different salary, language and recognition requirements.",
+    countriesHeading: "Key relocation routes for IT professionals",
+    countries: [
+      {
+        name: "EU Blue Card",
+        text: "The fastest path with a signed contract above the annual salary threshold (lower for shortage occupations such as IT). Requires a recognised university degree or equivalent experience and health insurance from day one.",
+      },
+      {
+        name: "Chancenkarte (Opportunity Card)",
+        text: "A points-based residence permit to search for work in Germany for up to one year without a prior job offer. IT experience, German or English level, age and prior ties to Germany all add points.",
+      },
+      {
+        name: "Skilled worker visa with job offer",
+        text: "Standard employment residence for qualified roles when the Blue Card threshold is not met. The employer must prove the role could not be filled locally; IT roles on shortage lists often pass more easily.",
+      },
+      {
+        name: "Language, taxes and recognition",
+        text: "Many tech teams work in English, but B1–B2 German opens more roles and daily life. Check whether your diploma needs ZAB evaluation; plan for income tax and social contributions from the first payslip.",
+      },
+    ],
+    aiHeading: "How AI builds your personal Germany IT roadmap",
+    aiBody:
+      "Nexim cross-checks your stack, years of experience, citizenship, salary expectations, family situation and language level against current Blue Card thresholds, shortage lists and realistic city markets — so you see which visa path fits before you apply.",
+    ctaLabel: "Get My Free Relocation Analysis →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ru",
+    slug: "it-germany",
+    title: "Как IT-специалисту переехать в Германию в 2026 году",
+    description:
+      "Blue Card, Chancenkarte, пороги зарплаты и языковые требования для IT-специалистов, переезжающих в Германию в 2026 году.",
+    intro:
+      "Германия остаётся крупнейшим IT-рынком Европы с высоким спросом на разработчиков, DevOps и data-специалистов. В 2026 году основные маршруты — EU Blue Card, балльная Chancenkarte и рабочая виза по контракту; у каждого свои требования к зарплате, языку и признанию диплома.",
+    countriesHeading: "Основные пути переезда для IT-специалистов",
+    countries: [
+      {
+        name: "EU Blue Card",
+        text: "Самый быстрый путь при контракте с зарплатой выше годового порога (для IT и дефицитных профессий порог ниже). Нужен признанный диплом или эквивалентный опыт и медстраховка с первого дня.",
+      },
+      {
+        name: "Chancenkarte",
+        text: "ВНЖ на баллах для поиска работы до года без оффера. IT-опыт, уровень немецкого или английского, возраст и связи с Германией дают дополнительные баллы.",
+      },
+      {
+        name: "Рабочая виза по офферу",
+        text: "Стандартный трудовой ВНЖ, если порог Blue Card не достигнут. Работодатель подтверждает, что кандидата не нашли на местном рынке; IT из списка дефицита проходит проще.",
+      },
+      {
+        name: "Язык, налоги и признание",
+        text: "В IT часто работают на английском, но B1–B2 немецкого расширяет выбор. Проверьте, нужна ли оценка диплома через ZAB; заложите подоходный налог и соцвзносы с первой зарплаты.",
+      },
+    ],
+    aiHeading: "Как ИИ составляет ваш план переезда в IT в Германию",
+    aiBody:
+      "Nexim сопоставляет ваш стек, стаж, гражданство, зарплатные ожидания, семью и язык с актуальными порогами Blue Card, списками дефицита и рынком городов — чтобы вы видели подходящий визовый маршрут до подачи документов.",
+    ctaLabel: "Попробовать бесплатно",
+    updated: "Блог · 2026",
+  },
+  {
+    locale: "de",
+    slug: "it-germany",
+    title: "Wie IT-Spezialisten 2026 nach Deutschland auswandern können",
+    description:
+      "Blue Card, Chancenkarte, Gehaltsschwellen und Sprachtipps für IT-Fachkräfte, die 2026 nach Deutschland ziehen wollen.",
+    intro:
+      "Deutschland ist weiterhin Europas größter Tech-Standort mit hoher Nachfrage nach Entwicklern, DevOps und Data-Experten. 2026 sind die EU Blue Card, die Chancenkarte und das klassische Fachkräfte-Visum mit Jobangebot die wichtigsten Wege — jeweils mit eigenen Gehalts-, Sprach- und Anerkennungsregeln.",
+    countriesHeading: "Wichtige Wege für IT-Fachkräfte",
+    countries: [
+      {
+        name: "EU Blue Card",
+        text: "Der schnellste Weg mit unterschriebenem Vertrag über der Jahresgehaltsschwelle (für IT und Mangelberufe niedriger). Anerkanntes Studium oder gleichwertige Erfahrung plus Krankenversicherung ab Tag eins erforderlich.",
+      },
+      {
+        name: "Chancenkarte",
+        text: "Punktebasierte Aufenthaltserlaubnis zur Jobsuche bis zu einem Jahr ohne Vorabangebot. IT-Erfahrung, Deutsch- oder Englischniveau, Alter und Deutschlandbezug bringen Punkte.",
+      },
+      {
+        name: "Fachkräfte-Visum mit Jobangebot",
+        text: "Standard-Arbeitsaufenthalt, wenn die Blue-Card-Schwelle nicht erreicht wird. Der Arbeitgeber muss den Bedarf nachweisen; IT-Rollen auf der Engpassliste werden oft leichter genehmigt.",
+      },
+      {
+        name: "Sprache, Steuern, Anerkennung",
+        text: "Viele Teams arbeiten auf Englisch, doch B1–B2 Deutsch erweitert Chancen. Prüfen Sie, ob eine ZAB-Bewertung nötig ist; planen Sie Einkommensteuer und Sozialabgaben ab der ersten Gehaltszahlung.",
+      },
+    ],
+    aiHeading: "Wie KI Ihren persönlichen IT-Umzugsplan erstellt",
+    aiBody:
+      "Nexim vergleicht Stack, Berufserfahrung, Staatsangehörigkeit, Gehaltserwartung, Familie und Sprachniveau mit aktuellen Blue-Card-Schwellen, Engpasslisten und Stadt-Märkten — damit Sie den passenden Visumsweg sehen, bevor Sie antragen.",
+    ctaLabel: "Kostenlose Analyse starten →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ar",
+    slug: "it-germany",
+    title: "كيف يمكن لمتخصصي تقنية المعلومات الانتقال إلى ألمانيا في 2026",
+    description:
+      "البطاقة الزرقاء الأوروبية، بطاقة الفرص، حدود الرواتب ونصائح اللغة لمتخصصي IT الذين ينتقلون إلى ألمانيا في 2026.",
+    intro:
+      "تظل ألمانيا أكبر مركز تقني في أوروبا مع طلب قوي على مهندسي البرمجيات وDevOps وخبراء البيانات. في 2026 المسارات الرئيسية هي البطاقة الزرقاء الأوروبية وبطاقة الفرص (Chancenkarte) وتأشيرة العامل الماهر برعاية صاحب عمل — لكل منها متطلبات راتب ولغة واعتراف مختلفة.",
+    countriesHeading: "مسارات الانتقال الرئيسية لمتخصصي IT",
+    countries: [
+      {
+        name: "البطاقة الزرقاء الأوروبية",
+        text: "أسرع مسار مع عقد يتجاوز حد الراتب السنوي (أقل للمهن الناقصة مثل IT). يلزم شهادة جامعية معترف بها أو خبرة مكافئة وتأمين صحي من اليوم الأول.",
+      },
+      {
+        name: "بطاقة الفرص (Chancenkarte)",
+        text: "تصريح إقامة بالنقاط للبحث عن عمل حتى سنة دون عرض مسبق. خبرة IT ومستوى الألمانية أو الإنجليزية والعمر والروابط بألمانيا تضيف نقاطاً.",
+      },
+      {
+        name: "تأشيرة العامل الماهر بعرض عمل",
+        text: "إقامة عمل قياسية عندما لا يُستوفى حد البطاقة الزرقاء. يجب على صاحب العمل إثبات الحاجة؛ وظائف IT في قوائم النقص غالباً أسهل.",
+      },
+      {
+        name: "اللغة والضرائب والاعتراف",
+        text: "كثير من الفرق تعمل بالإنجليزية، لكن B1–B2 ألمانية توسّع الخيارات. تحقق من تقييم ZAB للشهادة؛ خطط للضريبة والاشتراكات الاجتماعية من أول راتب.",
+      },
+    ],
+    aiHeading: "كيف يبني الذكاء الاصطناعي خطة انتقال IT الشخصية",
+    aiBody:
+      "يقارن Nexim خبرتك التقنية وسنوات العمل وجنسيتك وتوقعات الراتب ووضع العائلة واللغة مع حدود البطاقة الزرقاء وقوائم النقص والأسواق الحضرية — لترى المسار المناسب قبل التقديم.",
+    ctaLabel: "احصل على تحليل مجاني ←",
+    updated: "المدونة · 2026",
+  },
+  {
+    locale: "fa",
+    slug: "it-germany",
+    title: "چگونه متخصصان IT می‌توانند در سال ۲۰۲۶ به آلمان مهاجرت کنند",
+    description:
+      "کارت آبی اتحادیه اروپا، Chancenkarte، آستانه حقوق و نکات زبان برای متخصصان IT که در ۲۰۲۶ به آلمان می‌روند.",
+    intro:
+      "آلمان همچنان بزرگ‌ترین مرکز فناوری اروپاست با تقاضای بالا برای توسعه‌دهندگان، DevOps و متخصصان داده. در ۲۰۲۶ مسیرهای اصلی کارت آبی EU، Chancenkarte و ویزای کار با پیشنهاد شغلی است — هر کدام شرایط حقوق، زبان و تأیید مدرک متفاوتی دارند.",
+    countriesHeading: "مسیرهای اصلی مهاجرت برای متخصصان IT",
+    countries: [
+      {
+        name: "کارت آبی EU",
+        text: "سریع‌ترین مسیر با قرارداد بالاتر از آستانه حقوق سالانه (برای IT و مشاغل کم‌یاب پایین‌تر). مدرک دانشگاهی معتبر یا تجربه معادل و بیمه درمانی از روز اول لازم است.",
+      },
+      {
+        name: "Chancenkarte",
+        text: "اجازه اقامت امتیازی برای جستجوی کار تا یک سال بدون پیشنهاد قبلی. تجربه IT، سطح آلمانی یا انگلیسی، سن و پیوند با آلمان امتیاز می‌دهد.",
+      },
+      {
+        name: "ویزای کار با پیشنهاد شغلی",
+        text: "اقامت کاری استاندارد وقتی آستانه کارت آبی برآورده نشود. کارفرما باید نیاز را ثابت کند؛ نقش‌های IT در لیست کم‌یاب اغلب راحت‌تر تأیید می‌شوند.",
+      },
+      {
+        name: "زبان، مالیات و تأیید مدرک",
+        text: "بسیاری از تیم‌ها انگلیسی کار می‌کنند، اما B1–B2 آلمانی گزینه‌ها را گسترش می‌دهد. بررسی کنید آیا ارزیابی ZAB لازم است؛ مالیات و بیمه اجتماعی را از اولین حقوق در نظر بگیرید.",
+      },
+    ],
+    aiHeading: "چگونه هوش مصنوعی نقشه مهاجرت IT شخصی شما را می‌سازد",
+    aiBody:
+      "Nexim استک، سابقه، تابعیت، انتظار حقوق، وضعیت خانواده و زبان شما را با آستانه‌های فعلی کارت آبی، لیست کم‌یاب و بازار شهرها مقایسه می‌کند — تا قبل از درخواست مسیر ویزای مناسب را ببینید.",
+    ctaLabel: "تحلیل رایگان دریافت کنید ←",
+    updated: "وبلاگ · ۲۰۲۶",
+  },
+  {
+    locale: "zh",
+    slug: "it-germany",
+    title: "IT专业人士如何在2026年移居德国",
+    description:
+      "2026年IT从业者移居德国：欧盟蓝卡、机会卡、薪资门槛与语言要求。",
+    intro:
+      "德国仍是欧洲最大的科技中心，对软件工程师、DevOps和数据专家需求旺盛。2026年主要路径包括欧盟蓝卡、机会卡（Chancenkarte）以及雇主担保的技术工人签证——各自有不同的薪资、语言和学历认证要求。",
+    countriesHeading: "IT专业人士的主要移居途径",
+    countries: [
+      {
+        name: "欧盟蓝卡",
+        text: "有高于年度薪资门槛的劳动合同时最快的路径（IT等紧缺职业门槛较低）。需认可大学学历或同等经验，并从第一天起有健康保险。",
+      },
+      {
+        name: "机会卡（Chancenkarte）",
+        text: "积分制居留许可，可在无预先工作邀请的情况下在德国求职最长一年。IT经验、德语或英语水平、年龄及与德国的关联均可加分。",
+      },
+      {
+        name: "有工作邀请的技术工人签证",
+        text: "未达蓝卡门槛时的标准工作居留。雇主需证明岗位无法本地填补；紧缺列表上的IT岗位通常更容易获批。",
+      },
+      {
+        name: "语言、税务与学历认证",
+        text: "许多团队使用英语工作，但B1–B2德语可扩大选择。确认是否需要ZAB学历评估；从第一份工资起规划所得税和社会贡献。",
+      },
+    ],
+    aiHeading: "AI如何为您定制德国IT移居方案",
+    aiBody:
+      "Nexim将您的技术栈、工作年限、国籍、薪资预期、家庭状况和语言水平与当前蓝卡门槛、紧缺职业列表及各城市市场进行交叉比对——让您在申请前看清适合的签证路径。",
+    ctaLabel: "免费获取移居分析 →",
+    updated: "博客 · 2026",
+  },
+  {
+    locale: "hi",
+    slug: "it-germany",
+    title: "IT विशेषज्ञ 2026 में जर्मनी कैसे जाएं",
+    description:
+      "2026 में IT पेशेवरों के लिए EU Blue Card, Chancenkarte, वेतन सीमा और भाषा सुझाव।",
+    intro:
+      "जर्मनी यूरोप का सबसे बड़ा टेक हब बना हुआ है — सॉफ्टवेयर इंजीनियर, DevOps और डेटा विशेषज्ञों की माँग मजबूत है। 2026 में मुख्य रास्ते EU Blue Card, Chancenkarte और नौकरी ऑफर वाला कुशल कार्यकर्ता वीज़ा हैं — प्रत्येक की अलग वेतन, भाषा और मान्यता शर्तें हैं।",
+    countriesHeading: "IT पेशेवरों के लिए प्रमुख स्थानांतरण मार्ग",
+    countries: [
+      {
+        name: "EU Blue Card",
+        text: "हस्ताक्षरित अनुबंध पर वार्षिक वेतन सीमा से ऊपर सबसे तेज़ रास्ता (IT जैसे कमी पदों पर सीमा कम)। मान्यता प्राप्त डिग्री या समकक्ष अनुभव और पहले दिन से स्वास्थ्य बीमा जरूरी।",
+      },
+      {
+        name: "Chancenkarte (अवसर कार्ड)",
+        text: "बिना पूर्व ऑफर के एक वर्ष तक नौकरी खोजने के लिए अंक आधारित निवास। IT अनुभव, जर्मन या अंग्रेजी स्तर, उम्र और जर्मनी से संबंध अंक देते हैं।",
+      },
+      {
+        name: "नौकरी ऑफर वाला कुशल कार्यकर्ता वीज़ा",
+        text: "Blue Card सीमा पूरी न होने पर मानक कार्य निवास। नियोक्ता को जरूरत साबित करनी होती है; कमी सूची वाली IT भूमिकाएँ अक्सर आसानी से पास होती हैं।",
+      },
+      {
+        name: "भाषा, कर और मान्यता",
+        text: "कई टीमें अंग्रेजी में काम करती हैं, लेकिन B1–B2 जर्मन विकल्प बढ़ाता है। ZAB मूल्यांकन की जरूरत जांचें; पहले वेतन से आयकर और सामाजिक योगदान की योजना बनाएं।",
+      },
+    ],
+    aiHeading: "AI आपकी व्यक्तिगत जर्मनी IT योजना कैसे बनाता है",
+    aiBody:
+      "Nexim आपके स्टैक, अनुभव, नागरिकता, वेतन अपेक्षा, परिवार और भाषा को वर्तमान Blue Card सीमा, कमी सूची और शहर बाजार से मिलाता है — ताकि आवेदन से पहले सही वीज़ा मार्ग दिखे।",
+    ctaLabel: "मुफ्त विश्लेषण पाएं →",
+    updated: "ब्लॉग · 2026",
+  },
+
+  /* ── Engineering → Portugal ── */
+  {
+    locale: "en",
+    slug: "engineering-portugal",
+    title: "Engineers: How to Relocate to Portugal in 2026",
+    description:
+      "D7 visa, tech hiring hubs, Ordem dos Engenheiros recognition and cost of living for engineers moving to Portugal in 2026.",
+    intro:
+      "Portugal combines EU access, a growing tech and infrastructure sector and a mild climate — attractive for civil, mechanical, electrical and software engineers. In 2026 popular routes include the D7 passive-income visa, employer-sponsored work permits and EU mobility for holders of other Schengen permits.",
+    countriesHeading: "Main pathways for engineers",
+    countries: [
+      {
+        name: "D7 visa (passive / remote income)",
+        text: "Suitable for engineers with stable remote contracts or passive income above the minimum threshold. Allows residence without a local employer; path to permanent stay after five years of legal residence.",
+      },
+      {
+        name: "Work visa with Portuguese employer",
+        text: "Required when relocating for a local engineering firm or EPC contractor. The employer initiates SEF/AIMA authorization; shortage sectors such as renewable energy and construction can speed approval.",
+      },
+      {
+        name: "Professional recognition",
+        text: "Regulated engineering titles may need validation through Ordem dos Engenheiros or equivalent documentation of foreign credentials, project portfolio and language skills.",
+      },
+      {
+        name: "Lisbon, Porto and emerging hubs",
+        text: "Lisbon and Porto lead in tech and infrastructure jobs; Braga, Aveiro and the Algarve attract manufacturing and energy projects. Compare salaries with lower housing costs outside the capital.",
+      },
+    ],
+    aiHeading: "How AI matches engineers to the right Portugal route",
+    aiBody:
+      "Nexim weighs your discipline, licensing status, income source, family size and language against D7 thresholds, employer sponsorship odds and regional job markets — delivering a tailored Portugal plan instead of generic expat advice.",
+    ctaLabel: "Get My Free Relocation Analysis →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ru",
+    slug: "engineering-portugal",
+    title: "Инженерам — как переехать в Португалию в 2026 году",
+    description:
+      "Виза D7, инженерные центры, признание квалификации и стоимость жизни для инженеров в Португалии в 2026 году.",
+    intro:
+      "Португалия сочетает доступ к ЕС, растущий tech и инфраструктурный сектор и мягкий климат — привлекательно для инженеров всех направлений. В 2026 году популярны D7 при удалённом доходе, рабочие визы через местного работодателя и мобильность внутри Шенгена.",
+    countriesHeading: "Основные пути для инженеров",
+    countries: [
+      {
+        name: "Виза D7",
+        text: "Подходит при стабильном удалённом доходе или пассивных поступлениях выше порога. Даёт ВНЖ без местного работодателя; через 5 лет легального проживания — путь к ПМЖ.",
+      },
+      {
+        name: "Рабочая виза с португальским работодателем",
+        text: "Нужна при контракте с местной инжиниринговой или EPC-компанией. Работодатель инициирует разрешение AIMA; дефицитные отрасли (ВИЭ, строительство) ускоряют процесс.",
+      },
+      {
+        name: "Признание квалификации",
+        text: "Регулируемые инженерные звания могут требовать подтверждения через Ordem dos Engenheiros, портфолио проектов и языковой уровень.",
+      },
+      {
+        name: "Лиссабон, Порту и регионы",
+        text: "Лиссабон и Порту лидируют по tech и инфраструктуре; Брага, Авейру и Алgarve — производство и энергетика. Сравните зарплаты с более низкой арендой вне столицы.",
+      },
+    ],
+    aiHeading: "Как ИИ подбирает инженерам маршрут в Португалию",
+    aiBody:
+      "Nexim учитывает специализацию, лицензию, источник дохода, семью и язык относительно порогов D7, шансов спонсорства и региональных рынков — вместо общих советов для экспатов.",
+    ctaLabel: "Попробовать бесплатно",
+    updated: "Блог · 2026",
+  },
+  {
+    locale: "de",
+    slug: "engineering-portugal",
+    title: "Ingenieure: Wie Sie 2026 nach Portugal auswandern",
+    description:
+      "D7-Visum, Tech-Zentren, Anerkennung und Lebenshaltungskosten für Ingenieure in Portugal 2026.",
+    intro:
+      "Portugal verbindet EU-Zugang, wachsenden Tech- und Infrastruktursektor und mildes Klima — attraktiv für Ingenieure aller Fachrichtungen. 2026 sind D7 bei Remote-Einkommen, Arbeitsvisa über lokale Arbeitgeber und Schengen-Mobilität die gängigsten Wege.",
+    countriesHeading: "Wichtige Wege für Ingenieure",
+    countries: [
+      {
+        name: "D7-Visum",
+        text: "Geeignet bei stabilem Remote-Einkommen oder passiven Einnahmen über der Schwelle. Aufenthalt ohne lokalen Arbeitgeber; nach fünf Jahren legaler Aufenthalt Weg zum Daueraufenthalt.",
+      },
+      {
+        name: "Arbeitsvisum mit portugiesischem Arbeitgeber",
+        text: "Erforderlich bei Vertrag mit lokalem Ingenieurbüro oder EPC. Arbeitgeber beantragt AIMA-Genehmigung; Engpasssektoren wie Erneuerbare und Bau beschleunigen das Verfahren.",
+      },
+      {
+        name: "Berufliche Anerkennung",
+        text: "Regulierte Ingenieurtitel können Validierung durch Ordem dos Engenheiros, Projektportfolio und Sprachkenntnisse erfordern.",
+      },
+      {
+        name: "Lissabon, Porto und Regionen",
+        text: "Lissabon und Porto führen bei Tech und Infrastruktur; Braga, Aveiro und Algarve bei Industrie und Energie. Gehälter außerhalb der Hauptstadt vs. Mietkosten vergleichen.",
+      },
+    ],
+    aiHeading: "Wie KI Ingenieuren den Portugal-Weg zuordnet",
+    aiBody:
+      "Nexim wägt Fachrichtung, Lizenzstatus, Einkommensquelle, Familie und Sprache gegen D7-Schwellen, Sponsoring-Chancen und regionale Märkte — für einen maßgeschneiderten Portugal-Plan.",
+    ctaLabel: "Kostenlose Analyse starten →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ar",
+    slug: "engineering-portugal",
+    title: "المهندسون: كيف تنتقل إلى البرتغال في 2026",
+    description:
+      "تأشيرة D7، مراكز التوظيف التقني، الاعتراف المهني وتكلفة المعيشة للمهندسين في البرتغال 2026.",
+    intro:
+      "تجمع البرتغال بين الوصول إلى الاتحاد الأوروبي وقطاع تقني متنامٍ ومناخ معتدل — جذابة للمهندسين المدنيين والميكانيكيين والكهربائيين. في 2026 المسارات الشائعة: D7 للدخل عن بُعد، تأشيرة عمل برعاية صاحب عمل، وتنقل شنغن.",
+    countriesHeading: "المسارات الرئيسية للمهندسين",
+    countries: [
+      {
+        name: "تأشيرة D7",
+        text: "مناسبة لدخل عن بُعد أو دخل سلبي فوق الحد الأدنى. إقامة دون صاحب عمل محلي؛ بعد خمس سنوات إقامة قانونية — مسار للإقامة الدائمة.",
+      },
+      {
+        name: "تأشيرة عمل بصاحب عمل برتغالي",
+        text: "مطلوبة عند التعاقد مع شركة هندسية محلية. صاحب العمل يبدأ تصريح AIMA؛ قطاعات النقص مثل الطاقة المتجددة تسرّع الموافقة.",
+      },
+      {
+        name: "الاعتراف المهني",
+        text: "الألقاب المنظمة قد تحتاج تحققاً عبر Ordem dos Engenheiros ومحفظة مشاريع ومستوى لغوي.",
+      },
+      {
+        name: "لشبونة وبورتو والمناطق",
+        text: "لشبونة وبورتو تقودان التقنية والبنية التحتية؛ براغا وأفيرو والغارف للصناعة والطاقة. قارن الرواتب مع إيجار أقل خارج العاصمة.",
+      },
+    ],
+    aiHeading: "كيف يطابق الذكاء الاصطناعي المهندسين مع مسار البرتغال",
+    aiBody:
+      "يقارن Nexim تخصصك ورخصتك ومصدر الدخل وعائلتك ولغتك مع عتبات D7 واحتمالات الكفالة والأسواق الإقليمية — لخطة برتغالية مخصصة.",
+    ctaLabel: "احصل على تحليل مجاني ←",
+    updated: "المدونة · 2026",
+  },
+  {
+    locale: "fa",
+    slug: "engineering-portugal",
+    title: "مهندسان: چگونه در سال ۲۰۲۶ به پرتغال مهاجرت کنند",
+    description:
+      "ویزای D7، مراکز استخدام فنی، تأیید صلاحیت و هزینه زندگی برای مهندسان در پرتغال ۲۰۲۶.",
+    intro:
+      "پرتغال دسترسی به EU، بخش فناوری در حال رشد و آب‌وهوای معتدل را ترکیب می‌کند — جذاب برای مهندسان عمران، مکانیک، برق و نرم‌افزار. در ۲۰۲۶ مسیرهای رایج: D7 با درآمد دورکار، ویزای کار با کارفرمای محلی و تحرک شنگن.",
+    countriesHeading: "مسیرهای اصلی برای مهندسان",
+    countries: [
+      {
+        name: "ویزای D7",
+        text: "مناسب برای درآمد پایدار دورکار یا غیرفعال بالاتر از آستانه. اقامت بدون کارفرمای محلی؛ پس از پنج سال اقامت قانونی — مسیر اقامت دائم.",
+      },
+      {
+        name: "ویزای کار با کارفرمای پرتغالی",
+        text: "برای قرارداد با شرکت مهندسی یا EPC محلی لازم است. کارفرما مجوز AIMA را آغاز می‌کند؛ بخش‌های کم‌یاب مانند انرژی تجدیدپذیر فرآیند را تسریع می‌کنند.",
+      },
+      {
+        name: "تأیید صلاحیت حرفه‌ای",
+        text: "عناوین تنظیم‌شده ممکن است نیاز به تأیید Ordem dos Engenheiros، نمونه کار و سطح زبان داشته باشند.",
+      },
+      {
+        name: "لیسبون، پورتو و مناطق",
+        text: "لیسبون و پورتو در فناوری و زیرساخت پیشتازند؛ برaga و Aveiro و Algarve در صنعت و انرژی. حقوق را با اجاره پایین‌تر خارج پایتخت مقایسه کنید.",
+      },
+    ],
+    aiHeading: "چگونه هوش مصنوعی مسیر پرتغال را به مهندسان پیشنهاد می‌دهد",
+    aiBody:
+      "Nexim رشته، مجوز، منبع درآمد، خانواده و زبان شما را با آستانه D7، احتمال اسپانسری و بازار منطقه‌ای مقایسه می‌کند — برای برنامه‌ای شخصی‌سازی‌شده.",
+    ctaLabel: "تحلیل رایگان دریافت کنید ←",
+    updated: "وبلاگ · ۲۰۲۶",
+  },
+  {
+    locale: "zh",
+    slug: "engineering-portugal",
+    title: "工程师：2026年如何移居葡萄牙",
+    description:
+      "2026年工程师移居葡萄牙：D7签证、就业中心、资质认证与生活成本。",
+    intro:
+      "葡萄牙兼具欧盟准入、蓬勃发展的科技与基建行业及温和气候，对土木、机械、电气和软件工程师具有吸引力。2026年常见路径包括D7被动/远程收入签证、本地雇主担保工作许可及申根区流动。",
+    countriesHeading: "工程师的主要移居途径",
+    countries: [
+      {
+        name: "D7签证（被动/远程收入）",
+        text: "适合有稳定远程合同或高于最低门槛的被动收入者。无需本地雇主即可居留；合法居住五年后可申请长期居留。",
+      },
+      {
+        name: "葡萄牙雇主工作签证",
+        text: "受雇于本地工程或EPC企业时需要。雇主向AIMA申请授权；可再生能源、建筑等紧缺行业审批更快。",
+      },
+      {
+        name: "专业资质认证",
+        text: "受监管工程师职称可能需要通过Ordem dos Engenheiros验证，并提交外国学历、项目作品集及语言能力证明。",
+      },
+      {
+        name: "里斯本、波尔图与新兴城市",
+        text: "里斯本和波尔图引领科技与基建就业；布拉加、阿威罗和阿尔加维吸引制造业与能源项目。比较首都外较低房租下的薪资水平。",
+      },
+    ],
+    aiHeading: "AI如何为工程师匹配葡萄牙移居路径",
+    aiBody:
+      "Nexim综合您的专业、执照状态、收入来源、家庭规模与语言水平，对照D7门槛、雇主担保概率及区域就业市场——提供量身定制的葡萄牙方案，而非泛泛的移居建议。",
+    ctaLabel: "免费获取移居分析 →",
+    updated: "博客 · 2026",
+  },
+  {
+    locale: "hi",
+    slug: "engineering-portugal",
+    title: "इंजीनियर: 2026 में पुर्तगाल कैसे जाएं",
+    description:
+      "2026 में इंजीनियरों के लिए D7 वीज़ा, नौकरी केंद्र, मान्यता और जीवन लागत — पुर्तगाल।",
+    intro:
+      "पुर्तगाल EU पहुँच, बढ़ता टेक और इंफ्रास्ट्रक्चर सेक्टर और सौम्य जलवायu को जोड़ता है — civil, mechanical, electrical और software इंजीनियरों के लिए आकर्षक। 2026 में D7, स्थानीय नियोक्ता वाला कार्य वीज़ा और Schengen mobility प्रमुख रास्ते हैं।",
+    countriesHeading: "इंजीनियरों के लिए मुख्य मार्ग",
+    countries: [
+      {
+        name: "D7 वीज़ा",
+        text: "स्थिर रिमोट आय या न्यूनतम सीमा से ऊपर passive income पर उपयुक्त। स्थानीय नियोक्ता बिना निवास; पाँच वर्ष कानूनी निवास के बाद स्थायी निवास का रास्ता।",
+      },
+      {
+        name: "पुर्तगाली नियोक्ता के साथ कार्य वीज़ा",
+        text: "स्थानीय engineering या EPC फर्म के साथ अनुबंध पर आवश्यक। नियोक्ता AIMA अनुमोदन शुरू करता है; renewable energy जैसे कमी क्षेत्र तेज़ करते हैं।",
+      },
+      {
+        name: "पेशेवर मान्यता",
+        text: "विनियमित engineering titles को Ordem dos Engenheiros, प्रोजेक्ट पोर्टफोलियो और भाषा स्तर की पुष्टi चाहिए हो सकती है।",
+      },
+      {
+        name: "लिस्बन, पोर्टो और क्षेत्र",
+        text: "लिस्बन और पोर्टो tech और infrastructure में अग्रणी; Braga, Aveiro और Algarve manufacturing और energy में। राजधानी के बाहर किराए के साथ वेतन तुलना करें।",
+      },
+    ],
+    aiHeading: "AI इंजीनियरों को सही पुर्तगाल मार्ग कैसे देता है",
+    aiBody:
+      "Nexim आपके discipline, लाइसेंस, आय स्रोत, परिवार और भाषा को D7 सीमा, sponsorship संभावना और regional बाजार से मिलाता है — व्यक्तिगत पुर्तगाल योजना के लिए।",
+    ctaLabel: "मुफ्त विश्लेषण पाएं →",
+    updated: "ब्लॉग · 2026",
+  },
+
+  /* ── Medicine → Canada ── */
+  {
+    locale: "en",
+    slug: "medicine-canada",
+    title: "Doctors and Medical Professionals: How to Relocate to Canada in 2026",
+    description:
+      "Express Entry, provincial streams, credential recognition and licensing steps for physicians relocating to Canada in 2026.",
+    intro:
+      "Canada actively recruits internationally trained physicians and allied health professionals, but relocation is tightly regulated. In 2026 success depends on credential assessment, language scores, provincial licensing and choosing the right immigration stream before you arrive.",
+    countriesHeading: "Key steps for medical professionals",
+    countries: [
+      {
+        name: "Express Entry (FSW / CEC)",
+        text: "Federal points-based permanent residence for skilled workers. Strong language scores, age, education and Canadian experience determine CRS ranking; medical occupations can benefit from category-based draws when announced.",
+      },
+      {
+        name: "Provincial Nominee Programs (PNP)",
+        text: "Provinces such as Ontario, BC and Alberta run health-worker streams that add 600 CRS points or grant direct PR pathways for in-demand specialties when you commit to practice in the region.",
+      },
+      {
+        name: "Credential recognition & licensing",
+        text: "Physicians typically need verification through PhysiciansApply.ca, MCCEE/NAC exams where required, and provincial college registration (e.g. CPSO). Nurses and allied roles follow separate regulatory bodies.",
+      },
+      {
+        name: "Practice readiness & settlement",
+        text: "Many newcomers start with supervised practice, locum roles or clinical observer ships while completing exams. Budget for multi-year licensing timelines and cold-climate relocation costs.",
+      },
+    ],
+    aiHeading: "How AI maps your medical profile to Canada",
+    aiBody:
+      "Nexim evaluates specialty, years of practice, exam status, language, family and preferred province against current PNP health lists and realistic licensing timelines — so you know whether Express Entry, a provincial stream or a staged pathway fits best.",
+    ctaLabel: "Get My Free Relocation Analysis →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ru",
+    slug: "medicine-canada",
+    title: "Врачам и медикам — как переехать в Канаду в 2026 году",
+    description:
+      "Express Entry, провинциальные программы, признание дипломов и лицензирование для медиков в Канаде в 2026 году.",
+    intro:
+      "Канада привлекает иностранных врачей и медработников, но переезд строго регулируется. В 2026 году успех зависит от оценки диплома, языковых баллов, провинциальной лицензии и выбора иммиграционного потока до приезда.",
+    countriesHeading: "Ключевые шаги для медицинских специалистов",
+    countries: [
+      {
+        name: "Express Entry",
+        text: "Федеральное ПМЖ по баллам для квалифицированных специалистов. Язык, возраст, образование и канадский опыт определяют CRS; медпрофессии могут попадать в category-based draws.",
+      },
+      {
+        name: "Provincial Nominee Programs (PNP)",
+        text: "Провинции (Ontario, BC, Alberta) запускают потоки для медработников — +600 CRS или прямой путь к ПМЖ при обязательстве практиковать в регионе.",
+      },
+      {
+        name: "Признание диплома и лицензия",
+        text: "Врачам обычно нужны PhysiciansApply.ca, экзамены MCCEE/NAC и регистрация в колlegе провинции (например CPSO). Медсёстры и смежные специальности — свои регуляторы.",
+      },
+      {
+        name: "Подготовка к практике",
+        text: "Многие начинают с supervised practice, locum или observer ship, сдавая экзамены. Заложите многолетний timeline лицензии и расходы на переезд.",
+      },
+    ],
+    aiHeading: "Как ИИ сопоставляет медпрофиль с Канадой",
+    aiBody:
+      "Nexim оценивает специальность, стаж, экзамены, язык, семью и провинцию относительно PNP health lists и сроков лицензии — чтобы выбрать Express Entry, провинциальный поток или поэтапный маршрут.",
+    ctaLabel: "Попробовать бесплатно",
+    updated: "Блог · 2026",
+  },
+  {
+    locale: "de",
+    slug: "medicine-canada",
+    title: "Ärzte und Mediziner: Wie Sie 2026 nach Kanada auswandern",
+    description:
+      "Express Entry, Provinzprogramme, Anerkennung und Zulassung für Mediziner in Kanada 2026.",
+    intro:
+      "Kanada wirbt um international ausgebildete Ärzte und Gesundheitsfachkräfte, doch der Umzug ist streng reguliert. 2026 hängen Erfolg von Anerkennung, Sprachscores, Provinzlizenz und dem richtigen Einwanderungsweg vor der Ankunft ab.",
+    countriesHeading: "Wichtige Schritte für Mediziner",
+    countries: [
+      {
+        name: "Express Entry",
+        text: "Bundesweite Punkte-PR für Fachkräfte. Sprache, Alter, Bildung und kanadische Erfahrung bestimmen CRS; Medizinberufe können von Kategorie-Lotterien profitieren.",
+      },
+      {
+        name: "Provincial Nominee Programs (PNP)",
+        text: "Provinzen wie Ontario, BC und Alberta haben Gesundheits-Streams mit +600 CRS oder direktem PR-Weg bei Praxisverpflichtung in der Region.",
+      },
+      {
+        name: "Anerkennung & Lizenz",
+        text: "Ärzte brauchen meist PhysiciansApply.ca, MCCEE/NAC-Prüfungen und Provinz-College-Registrierung (z. B. CPSO). Pflege und andere Berufe haben eigene Regulierer.",
+      },
+      {
+        name: "Praxisvorbereitung",
+        text: "Viele starten mit supervised practice, Locum oder Observer ship während der Prüfungen. Mehrjährige Lizenztimeline und Umzugskosten einplanen.",
+      },
+    ],
+    aiHeading: "Wie KI Ihr Medizinprofil auf Kanada mappt",
+    aiBody:
+      "Nexim bewertet Fachrichtung, Praxisjahre, Prüfungsstatus, Sprache, Familie und Provinz gegen PNP-Gesundheitslisten und realistische Lizenzfristen — für Express Entry, Provinzstream oder gestaffelten Weg.",
+    ctaLabel: "Kostenlose Analyse starten →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ar",
+    slug: "medicine-canada",
+    title: "الأطباء والمتخصصون الطبيون: كيف تنتقل إلى كندا في 2026",
+    description:
+      "Express Entry، برامج المقاطعات، الاعتراف بالشهادات والترخيص للمهنيين الطبيين في كندا 2026.",
+    intro:
+      "كندا تستقطب الأطباء والكوادر الصحية الدولية، لكن الانتقال منظّم بصرامة. في 2026 يعتمد النجاح على تقييم الشهادة ودرجات اللغة وترخيص المقاطعة واختيار مسار الهجرة قبل الوصول.",
+    countriesHeading: "خطوات رئيسية للمتخصصين الطبيين",
+    countries: [
+      {
+        name: "Express Entry",
+        text: "إقامة دائمة فيدرالية بالنقاط للعمال الماهرين. اللغة والعمر والتعليم والخبرة الكندية تحدد CRS؛ المهن الطبية قد تستفيد من سحوبات فئوية.",
+      },
+      {
+        name: "برامج ترشيح المقاطعات (PNP)",
+        text: "مقاطعات مثل Ontario وBC وAlberta تقدم مسارات صحية تضيف 600 نقطة CRS أو PR مباشر عند الالتزام بالممارسة في المنطقة.",
+      },
+      {
+        name: "الاعتراف والترخيص",
+        text: "الأطباء يحتاجون عادة PhysiciansApply.ca وامتحانات MCCEE/NAC وتسجيل college إقليمي (مثل CPSO). التمريض ومهن أخرى لها جهات تنظيمية منفصلة.",
+      },
+      {
+        name: "الاستعداد للممارسة",
+        text: "كثيرون يبدأون بممارسة خاضعة للإشراف أو locum أو observer ship أثناء الامتحانات. خطط لجدول ترخيص متعدد السنوات وتكاليف الانتقال.",
+      },
+    ],
+    aiHeading: "كيف يربط الذكاء الاصطناعي ملفك الطبي بكندا",
+    aiBody:
+      "يقيّم Nexim تخصصك وسنوات الممارسة وحالة الامتحانات واللغة والعائلة والمقاطعة مقابل قوائم PNP الصحية وجداول الترخيص — لاختيار Express Entry أو مسار إقليمي أو مرحلي.",
+    ctaLabel: "احصل على تحليل مجاني ←",
+    updated: "المدونة · 2026",
+  },
+  {
+    locale: "fa",
+    slug: "medicine-canada",
+    title: "پزشکان و متخصصان پزشکی: چگونه در سال ۲۰۲۶ به کانادا مهاجرت کنند",
+    description:
+      "Express Entry، برنامه‌های استانی، تأیید مدارک و مجوز برای متخصصان پزشکی در کانادا ۲۰۲۶.",
+    intro:
+      "کanada پزشکان و کادر بهداشت بین‌المللی را جذب می‌کند، اما مهاجرت شدیداً تنظیم‌شده است. در ۲۰۲۶ موفقیت به ارزیابی مدرک، نمرات زبان، مجوز استانی و انتخاب مسیر مهاجرت قبل از ورود بستگی دارد.",
+    countriesHeading: "گام‌های کلیدی برای متخصصان پزشکی",
+    countries: [
+      {
+        name: "Express Entry",
+        text: "اقامت دائم فدرال امتیازی برای نیروی ماهر. زبان، سن، تحصیلات و تجربه کانادایی CRS را تعیین می‌کند؛ مشاغل پزشکی ممکن است از قرعه‌کشی‌های category-based بهره ببرند.",
+      },
+      {
+        name: "برنامه‌های نامزدی استانی (PNP)",
+        text: "استان‌هایی مانند Ontario، BC و Alberta مسیرهای بهداشت با +600 CRS یا PR مستقیم با تعهد به فعالیت در منطقه دارند.",
+      },
+      {
+        name: "تأیید مدرک و مجوز",
+        text: "پزشکان معمولاً به PhysiciansApply.ca، آزمون‌های MCCEE/NAC و ثبت college استانی (مثل CPSO) نیاز دارند. پرستاری و مشاغل وابسته نهادهای جدا دارند.",
+      },
+      {
+        name: "آمادگی برای فعالیت",
+        text: "بسیاری با supervised practice، locum یا observer ship شروع می‌کنند. برای timeline چندساله مجوز و هزینه مهاجرت برنامه‌ریزی کنید.",
+      },
+    ],
+    aiHeading: "چگونه هوش مصنوعی پروفایل پزشکی شما را با کانادا تطبیق می‌دهد",
+    aiBody:
+      "Nexim تخصص، سابقه، وضعیت آزمون، زبان، خانواده و استان را با فهرست‌های PNP بهداشت و زمان‌بندی مجوز مقایسه می‌کند — برای Express Entry، مسیر استانی یا مرحله‌ای.",
+    ctaLabel: "تحلیل رایگان دریافت کنید ←",
+    updated: "وبلاگ · ۲۰۲۶",
+  },
+  {
+    locale: "zh",
+    slug: "medicine-canada",
+    title: "医生和医疗专业人士：2026年如何移居加拿大",
+    description:
+      "2026年医疗从业者移居加拿大：Express Entry、省提名、资质认证与执业许可步骤。",
+    intro:
+      "加拿大积极招募国际培训医师和医疗专业人员，但移居受到严格监管。2026年成功取决于学历评估、语言成绩、省级执业许可以及在抵达前选择正确的移民通道。",
+    countriesHeading: "医疗专业人士的关键步骤",
+    countries: [
+      {
+        name: "Express Entry（联邦技术移民）",
+        text: "针对 skilled worker 的联邦积分制永久居留。语言、年龄、学历及加拿大经验决定CRS排名；医疗职业在类别抽签中可能受益。",
+      },
+      {
+        name: "省提名计划（PNP）",
+        text: "安大略、BC、阿尔伯塔等省设有医疗工作者通道，可增加600 CRS分或承诺在省内执业后直接获得永久居留。",
+      },
+      {
+        name: "学历认证与执业许可",
+        text: "医师通常需通过PhysiciansApply.ca验证、MCCEE/NAC等考试及省级医师学院注册（如CPSO）。护士及辅助医疗岗位有独立监管机构。",
+      },
+      {
+        name: "执业准备与定居",
+        text: "许多新移民在考试期间从受监督执业、临时岗位或观察实习开始。需为多 year 许可时间线及寒冷地区定居成本做预算。",
+      },
+    ],
+    aiHeading: "AI如何将您的医疗背景匹配到加拿大",
+    aiBody:
+      "Nexim根据专业、执业年限、考试状态、语言、家庭及目标省份，对照当前PNP医疗清单和 realistic 许可时间线——帮您判断Express Entry、省提名或分阶段路径哪种最合适。",
+    ctaLabel: "免费获取移居分析 →",
+    updated: "博客 · 2026",
+  },
+  {
+    locale: "hi",
+    slug: "medicine-canada",
+    title: "डॉक्टर और मेडिकल प्रोफेशनल: 2026 में कनाडा कैसे जाएं",
+    description:
+      "2026 में चिकित्सा पेशेवरों के लिए Express Entry, PNP, credential recognition और licensing — कनाडा।",
+    intro:
+      "कनाडा अंतर्राष्ट्रीय रूप से prashikhit chikitsak aur swasthya professionals ko attract karti hai, lekin sthanantaran sakht regulated hai. 2026 mein safalta credential assessment, bhasha scores, provincial license aur sahi immigration stream par nirbhar karti hai.",
+    countriesHeading: "चिकित्सा पेशेवरों के लिए प्रमुख कदम",
+    countries: [
+      {
+        name: "Express Entry",
+        text: "Skilled workers ke liye federal points-based permanent residence. Bhasha, umar, shiksha aur Canadian anubhav CRS tay karte hain; chikitsa peyeshon ko category-based draws se labh ho sakta hai.",
+      },
+      {
+        name: "Provincial Nominee Programs (PNP)",
+        text: "Ontario, BC, Alberta jaise prant health-worker streams chalate hain — +600 CRS ya seedha PR jab aap kshetra mein abhyas karne ka vachan dein.",
+      },
+      {
+        name: "Credential recognition aur licensing",
+        text: "Physicians ko aam taur par PhysiciansApply.ca, MCCEE/NAC exams aur provincial college registration (jaise CPSO) chahiye. Nurses aur allied roles ke alag regulators hain.",
+      },
+      {
+        name: "Practice readiness",
+        text: "Kayi log exams ke dauran supervised practice, locum ya observer ship se shuru karte hain. Multi-year licensing timeline aur sthanantaran kharch ki yojana banayein.",
+      },
+    ],
+    aiHeading: "AI aapke medical profile ko Canada se kaise milata hai",
+    aiBody:
+      "Nexim specialty, abhyas varsh, exam sthiti, bhasha, parivar aur pasandeeda prant ko PNP health lists aur licensing samayrekha se milata hai — Express Entry, provincial stream ya staged pathway chunne ke liye.",
+    ctaLabel: "मुफ्त विश्लेषण पाएं →",
+    updated: "ब्लॉग · 2026",
+  },
+
+  /* ── Finance → UAE ── */
+  {
+    locale: "en",
+    slug: "finance-uae",
+    title: "Finance Professionals: How to Relocate to the UAE in 2026",
+    description:
+      "Employment visa, Golden Visa, DIFC licensing and tax-free salary planning for finance professionals in the UAE in 2026.",
+    intro:
+      "Dubai and Abu Dhabi remain global hubs for banking, asset management, fintech and corporate finance. In 2026 relocation usually means an employer-sponsored residence visa, with Golden Visa options for senior talent and strict rules on qualifications in regulated zones such as DIFC and ADGM.",
+    countriesHeading: "Key routes for finance professionals",
+    countries: [
+      {
+        name: "Employment residence visa",
+        text: "The standard path: a UAE employer sponsors your work permit and residence. Contracts are typically fixed-term; health insurance and Emirates ID are mandatory. Salary must meet ministry thresholds for your role grade.",
+      },
+      {
+        name: "Golden Visa (10-year)",
+        text: "Available for high earners, specialized talent and certain investors without employer tie after approval. Requires documented income, qualifications or approved professional category.",
+      },
+      {
+        name: "DIFC / ADGM regulated roles",
+        text: "Roles in Dubai International Financial Centre or Abu Dhabi Global Market may need additional fitness checks, reference letters and compliance with local regulator registers for advisers and fund professionals.",
+      },
+      {
+        name: "Tax, lifestyle and contracts",
+        text: "Personal income tax is generally nil, but understand end-of-service gratuity, rent deposits and school fees. Review non-compete clauses and repatriation benefits before signing.",
+      },
+    ],
+    aiHeading: "How AI tailors your UAE finance relocation plan",
+    aiBody:
+      "Nexim compares your role level, certifications (CFA, ACCA, CPA), salary, family size and target emirate against visa thresholds, Golden Visa eligibility and realistic employer demand — not generic Gulf expat myths.",
+    ctaLabel: "Get My Free Relocation Analysis →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ru",
+    slug: "finance-uae",
+    title: "Финансистам — как переехать в ОАЭ в 2026 году",
+    description:
+      "Рабочая виза, Golden Visa, лицензирование DIFC и налоговое планирование для финансистов в ОАЭ в 2026 году.",
+    intro:
+      "Дубай и Абу-Даби остаются мировыми центрами банкинга, asset management, fintech и корпоративных финансов. В 2026 году переезд обычно через спонсорство работодателя, с Golden Visa для топ-специалистов и строгими правилами в зонах DIFC и ADGM.",
+    countriesHeading: "Основные пути для финансистов",
+    countries: [
+      {
+        name: "Рабочая резидентская виза",
+        text: "Стандартный путь: работодатель в ОАЭ спонсирует разрешение на работу и ВНЖ. Контракты срочные; нужны медстраховка и Emirates ID. Зарплата должна соответствовать порогам министерства.",
+      },
+      {
+        name: "Golden Visa (10 лет)",
+        text: "Для высоких доходов, специалистов редких профессий и инвесторов без привязки к работодателю после одобрения. Нужны подтверждённые доход, квалификация или одобренная категория.",
+      },
+      {
+        name: "Роли в DIFC / ADGM",
+        text: "Позиции в DIFC или ADGM могут требовать дополнительных compliance-проверок, рекомендаций и регистрации у локального регулятора для advisers и fund professionals.",
+      },
+      {
+        name: "Налоги, быт и контракт",
+        text: "Подоходный налог для физлиц обычно отсутствует, но учитывайте end-of-service gratuity, депозиты за аренду и школы. Проверьте non-compete и repatriation benefits.",
+      },
+    ],
+    aiHeading: "Как ИИ составляет план переезда финансиста в ОАЭ",
+    aiBody:
+      "Nexim сопоставляет уровень роли, сертификаты (CFA, ACCA, CPA), зарплату, семью и эмират с порогами виз, Golden Visa и спросом работодателей — без мифов про «просто переехать в Дубай».",
+    ctaLabel: "Попробовать бесплатно",
+    updated: "Блог · 2026",
+  },
+  {
+    locale: "de",
+    slug: "finance-uae",
+    title: "Finanzexperten: Wie Sie 2026 in die VAE auswandern",
+    description:
+      "Arbeitsvisum, Golden Visa, DIFC-Lizenzierung und steuerfreies Gehalt für Finanzprofis in den VAE 2026.",
+    intro:
+      "Dubai und Abu Dhabi sind globale Zentren für Banking, Asset Management, Fintech und Corporate Finance. 2026 erfolgt der Umzug meist über Arbeitgebersponsoring, mit Golden Visa für Spitzenkräfte und strengen Regeln in DIFC und ADGM.",
+    countriesHeading: "Wichtige Wege für Finanzprofis",
+    countries: [
+      {
+        name: "Arbeitsaufenthaltsvisum",
+        text: "Standardweg: ein VAE-Arbeitgeber sponsert Arbeitserlaubnis und Aufenthalt. Verträge oft befristet; Krankenversicherung und Emirates ID Pflicht. Gehalt muss Mindestschwellen erfüllen.",
+      },
+      {
+        name: "Golden Visa (10 Jahre)",
+        text: "Für Topverdiener, Spezialtalente und bestimmte Investoren ohne Arbeitgeberbindung nach Genehmigung. Nachgewiesenes Einkommen, Qualifikation oder anerkannte Kategorie nötig.",
+      },
+      {
+        name: "DIFC / ADGM regulierte Rollen",
+        text: "Positionen in DIFC oder ADGM können zusätzliche Compliance-Prüfungen, Referenzen und Regulator-Register für Berater und Fondprofis erfordern.",
+      },
+      {
+        name: "Steuern, Lebensstil, Vertrag",
+        text: "Einkommensteuer entfällt meist, aber End-of-Service-Gratuity, Mietkautionen und Schulgebühren einplanen. Non-compete und Repatriierungsleistungen prüfen.",
+      },
+    ],
+    aiHeading: "Wie KI Ihren VAE-Finanz-Umzugsplan erstellt",
+    aiBody:
+      "Nexim vergleicht Rollenniveau, Zertifikate (CFA, ACCA, CPA), Gehalt, Familie und Emirat mit Visumschwellen, Golden-Visa-Eignung und realistischer Nachfrage — statt generischer Golf-Mythen.",
+    ctaLabel: "Kostenlose Analyse starten →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ar",
+    slug: "finance-uae",
+    title: "متخصصو المالية: كيف تنتقل إلى الإمارات في 2026",
+    description:
+      "تأشيرة عمل، الإقامة الذهبية، ترخيص DIFC والتخطيط الضريبي لمتخصصي المالية في الإمارات 2026.",
+    intro:
+      "دبي وأبوظبي مركزان عالميان للمصارف وإدارة الأصول والفintech والمالية المؤسسية. في 2026 الانتقال عادة برعاية صاحب عمل، مع الإقامة الذهبية للمواهب senior وقواعد صارمة في DIFC وADGM.",
+    countriesHeading: "المسارات الرئيسية لمتخصصي المالية",
+    countries: [
+      {
+        name: "تأشيرة إقامة عمل",
+        text: "المسار القياسي: صاحب عمل إماراتي يكفل تصريح العمل والإقامة. عقود محددة المدة؛ التأمين الصحي وهوية الإمارات إلزاميان. الراتب يجب أن يلبي حدود الوزارة.",
+      },
+      {
+        name: "الإقامة الذهبية (10 سنوات)",
+        text: "للدخل المرتفع والمواهب المتخصصة وبعض المستثمرين دون ربط بصاحب عمل بعد الموافقة. يلزم إثبات دخل ومؤهلات أو فئة معتمدة.",
+      },
+      {
+        name: "أدوار DIFC / ADGM",
+        text: "الوظائف في DIFC أو ADGM قد تحتاج فحوصات compliance إضافية ومراجع وتسجيل لدى المنظم للمستشارين ومحترفي الصناديق.",
+      },
+      {
+        name: "الضرائب ونمط الحياة والعقد",
+        text: "ضريبة الدخل الشخصي غالباً معدومة، لكن خطط لمكافأة نهاية الخدمة وودائع الإيجار ورسوم المدارس. راجع non-compete ومزايا التrepatriation.",
+      },
+    ],
+    aiHeading: "كيف يخصص الذكاء الاصطناعي خطة انتقالك المالية إلى الإمارات",
+    aiBody:
+      "يقارن Nexim مستوى دورك وشهاداتك (CFA, ACCA, CPA) وراتبك وعائلتك والإمارة مع عتبات التأشيرة وأهلية الإقامة الذهبية والطلب الواقعي — لا خرافات expat عامة.",
+    ctaLabel: "احصل على تحليل مجاني ←",
+    updated: "المدونة · 2026",
+  },
+  {
+    locale: "fa",
+    slug: "finance-uae",
+    title: "متخصصان مالی: چگونه در سال ۲۰۲۶ به امارات مهاجرت کنند",
+    description:
+      "ویزای کار، Golden Visa، مجوز DIFC و برنامه‌ریزی مالی برای متخصصان مالی در امارات ۲۰۲۶.",
+    intro:
+      "دبی و ابوظبی مراکز جهانی بانکداری، مدیریت دارایی، fintech و مالی شرکتی هستند. در ۲۰۲۶ مهاجرت معمولاً با اسپانسری کارفرماست، با Golden Visa برای استعدادهای senior و قوانین سخت در DIFC و ADGM.",
+    countriesHeading: "مسیرهای اصلی برای متخصصان مالی",
+    countries: [
+      {
+        name: "ویزای اقامت کاری",
+        text: "مسیر استاندارد: کارفرمای اماراتی مجوز کار و اقامت را اسپانسری می‌کند. قراردادها اغلب موقت؛ بیمه درمانی و Emirates ID الزامی. حقوق باید آستانه وزارت را برآورده کند.",
+      },
+      {
+        name: "Golden Visa (۱۰ سال)",
+        text: "برای درآمد بالا، استعداد تخصصی و برخی سرمایه‌گذاران بدون وابستگی به کارفرما پس از تأیید. درآمد، صلاحیت یا دسته تأییدشده مستند لازم است.",
+      },
+      {
+        name: "نقش‌های DIFC / ADGM",
+        text: "موقعیت در DIFC یا ADGM ممکن است بررسی compliance، معرفی‌نامه و ثبت نزد نهاد تنظیم‌گر برای advisers و fund professionals بخواهد.",
+      },
+      {
+        name: "مالیات، سبک زندگی و قرارداد",
+        text: "مالیات بر درآمد شخصی معمولاً صفر است، اما end-of-service gratuity، ودیعه اجاره و شهریه مدارس را در نظر بگیرید. non-compete و مزایای repatriation را بررسی کنید.",
+      },
+    ],
+    aiHeading: "چگونه هوش مصنوعی برنامه مهاجرت مالی شما به امارات را می‌سازد",
+    aiBody:
+      "Nexim سطح نقش، گواهینامه‌ها (CFA, ACCA, CPA)، حقوق، خانواده و امارت را با آستانه ویزا، Golden Visa و تقاضای واقعی کارفرما مقایسه می‌کند — نه افسانه‌های کلی expat.",
+    ctaLabel: "تحلیل رایگان دریافت کنید ←",
+    updated: "وبلاگ · ۲۰۲۶",
+  },
+  {
+    locale: "zh",
+    slug: "finance-uae",
+    title: "金融专业人士：2026年如何移居阿联酋",
+    description:
+      "2026年金融从业者移居阿联酋：工作签证、黄金签证、DIFC许可及免税薪资规划。",
+    intro:
+      "迪拜和阿布扎比仍是全球银行、资产管理、金融科技和企业金融枢纽。2026年移居通常需雇主担保居留签证，高级人才可申请黄金签证，DIFC和ADGM等监管区对资质有严格要求。",
+    countriesHeading: "金融专业人士的主要途径",
+    countries: [
+      {
+        name: "工作居留签证",
+        text: "标准路径：阿联酋雇主担保工作许可与居留。合同通常为固定期限；健康保险和阿联酋身份证为强制要求。薪资须满足部委对该职级的最低门槛。",
+      },
+      {
+        name: "黄金签证（10年）",
+        text: "适用于高收入者、专业人才及特定投资者，获批后可不绑定雇主。需证明收入、资质或经批准的专业类别。",
+      },
+      {
+        name: "DIFC / ADGM 监管岗位",
+        text: "迪拜国际金融中心或阿布扎比全球市场职位可能需额外合规审查、推荐信及在当地监管机构登记（顾问和基金专业人士）。",
+      },
+      {
+        name: "税务、生活与合同",
+        text: "个人所得税通常为零，但需考虑离职补偿金、租金押金和学费。签约前审阅竞业禁止和遣返福利条款。",
+      },
+    ],
+    aiHeading: "AI如何定制您的阿联酋金融移居方案",
+    aiBody:
+      "Nexim根据职级、证书（CFA、ACCA、CPA）、薪资、家庭规模及目标酋长国，对照签证门槛、黄金签证资格及 realistic 雇主需求——而非泛泛的海湾移居传言。",
+    ctaLabel: "免费获取移居分析 →",
+    updated: "博客 · 2026",
+  },
+  {
+    locale: "hi",
+    slug: "finance-uae",
+    title: "फाइनेंस प्रोफेशनल: 2026 में UAE कैसे जाएं",
+    description:
+      "2026 में finance professionals ke liye employment visa, Golden Visa, DIFC licensing aur tax-free salary planning — UAE.",
+    intro:
+      "Dubai aur Abu Dhabi banking, asset management, fintech aur corporate finance ke global hubs hain. 2026 mein sthanantaran aam taur par employer-sponsored residence visa se hota hai, Golden Visa senior talent ke liye aur DIFC/ADGM mein sakht qualification rules ke saath.",
+    countriesHeading: "फाइनेंस पेशेवरों के लिए प्रमुख मार्ग",
+    countries: [
+      {
+        name: "Employment residence visa",
+        text: "Standard path: UAE employer work permit aur residence sponsor karta hai. Contracts aksar fixed-term; health insurance aur Emirates ID anivarya. Vetan ministry thresholds poora kare.",
+      },
+      {
+        name: "Golden Visa (10-year)",
+        text: "High earners, specialized talent aur kuch investors ke liye employer tie ke bina approval ke baad. Documented income, qualifications ya approved category chahiye.",
+      },
+      {
+        name: "DIFC / ADGM regulated roles",
+        text: "DIFC ya ADGM roles mein extra compliance checks, reference letters aur local regulator registration advisers aur fund professionals ke liye ho sakti hai.",
+      },
+      {
+        name: "Tax, lifestyle aur contracts",
+        text: "Personal income tax aam taur par nil, lekin end-of-service gratuity, rent deposits aur school fees samjhein. Non-compete aur repatriation benefits review karein.",
+      },
+    ],
+    aiHeading: "AI aapki UAE finance sthanantaran yojana kaise banata hai",
+    aiBody:
+      "Nexim role level, certifications (CFA, ACCA, CPA), vetan, parivar aur emirate ko visa thresholds, Golden Visa eligibility aur realistic employer demand se milata hai.",
+    ctaLabel: "मुफ्त विश्लेषण पाएं →",
+    updated: "ब्लॉग · 2026",
+  },
 ];
 
 export function getBlogPostsForLocale(locale: string): BlogPost[] {
