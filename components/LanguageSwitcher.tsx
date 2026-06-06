@@ -18,6 +18,14 @@ type Props = {
   currentLocale: Locale;
 };
 
+/** Blog slugs differ per locale — switch language to the blog index, not the same slug. */
+function pathnameAfterLocaleSwitch(pathname: string): string {
+  if (pathname.includes("/blog/")) {
+    return "/blog";
+  }
+  return pathname;
+}
+
 /** Inline language links — no dropdown. */
 export function LanguageSwitcher({ currentLocale }: Props) {
   const router = useRouter();
@@ -45,7 +53,7 @@ export function LanguageSwitcher({ currentLocale }: Props) {
             onClick={() => {
               if (active) return;
               startTransition(() => {
-                router.replace(pathname, { locale: loc });
+                router.replace(pathnameAfterLocaleSwitch(pathname), { locale: loc });
               });
             }}
             className={`min-h-[36px] min-w-[36px] rounded-md px-1.5 py-1.5 text-[11px] font-semibold tracking-wide transition md:min-h-[40px] md:min-w-[40px] md:px-2 md:py-2 md:text-sm ${
