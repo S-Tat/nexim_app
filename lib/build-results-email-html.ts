@@ -1,0 +1,125 @@
+import type { AnalyzeResponse, CountryMatch } from "@/lib/analyze-client";
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function stripMarkdown(value: string): string {
+  return value
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/^\*\s+/gm, "• ")
+    .replace(/^#+\s+/gm, "")
+    .trim();
+}
+
+function tierLabel(tier: string): string {
+  if (tier === "lite") return "Lite";
+  if (tier === "professional") return "Pro";
+  if (tier === "basic") return "Basic";
+  return tier;
+}
+
+function renderCountry(country: CountryMatch, rank: number, includeRoadmap: boolean): string {
+  const pros = country.pros?.length
+    ? `<ul>${country.pros.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+    : "";
+  const cons = country.cons?.length
+    ? `<ul>${country.cons.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+    : "";
+  const gaps = country.gap_analysis?.length
+    ? `<ul>${country.gap_analysis.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
+    : "";
+  const roadmap =
+    includeRoadmap && country.roadmap?.length
+      ? `<ol>${country.roadmap
+          .map(
+            (step) =>
+              `<li><strong>${escapeHtml(step.title)}</strong> — ${escapeHtml(step.description)} (${escapeHtml(step.deadline)})</li>`,
+          )
+          .join("")}</ol>`
+      : "";
+
+  return `
+    <section style="margin:24px 0;padding:20px;border:1px solid #e5e7eb;border-radius:12px;">
+      <h2 style="margin:0 0 8px;color:#111827;">#${rank} ${escapeHtml(country.country_name)} (${country.match_score}%)</h2>
+      <p style="margin:0 0 12px;color:#374151;"><strong>Visa:</strong> ${escapeHtml(country.visa_name)}</p>
+      ${pros ? `<h3 style="margin:16px 0 8px;color:#111827;">Pros</h3>${pros}` : ""}
+      ${cons ? `<h3 style="margin:16px 0 8px;color:#111827;">Cons</h3>${cons}` : ""}
+      ${gaps ? `<h3 style="margin:16px 0 8px;color:#111827;">Gap analysis</h3>${gaps}` : ""}
+      ${roadmap ? `<h3 style="margin:16px 0 8px;color:#111827;">Roadmap</h3>${roadmap}` : ""}
+    </section>
+  `;
+}
+
+export function buildResultsEmailHtml(
+  results: AnalyzeResponse,
+  tier: string,
+): string {
+  const includeRoadmap = tier !== "lite";
+  const isPro = tier === "professional";
+  const countries = results.top_countries ?? [];
+
+  const analysisBlock = results.analysis
+    ? `<section style="margin:24px 0;">
+        <h2 style="color:#111827;">AI summary</h2>
+        <p style="white-space:pre-line;color:#374151;line-height:1.6;">${escapeHtml(results.analysis)}</p>
+      </section>`
+    : "";
+
+  const proBlocks = isPro
+    ? [
+        results.tax_legal_audit?.trim()
+          ? `<section style="margin:24px 0;"><h2 style="color:#111827;">Tax &amp; legal audit</h2><pre style="white-space:pre-wrap;font-family:inherit;color:#374151;line-height:1.6;">${escapeHtml(stripMarkdown(results.tax_legal_audit))}</pre></section>`
+          : "",
+        results.job_market_overview?.trim()
+          ? `<section style="margin:24px 0;"><h2 style="color:#111827;">Job market overview</h2><pre style="white-space:pre-wrap;font-family:inherit;color:#374151;line-height:1.6;">${escapeHtml(stripMarkdown(results.job_market_overview))}</pre></section>`
+          : "",
+        results.document_checklist?.trim()
+          ? `<section style="margin:24px 0;"><h2 style="color:#111827;">Document checklist</h2><pre style="white-space:pre-wrap;font-family:inherit;color:#374151;line-height:1.6;">${escapeHtml(stripMarkdown(results.document_checklist))}</pre></section>`
+          : "",
+        countries[0]?.document_table?.trim()
+          ? `<section style="margin:24px 0;"><h2 style="color:#111827;">Document table — ${escapeHtml(countries[0].country_name)}</h2><pre style="white-space:pre-wrap;font-family:inherit;color:#374151;line-height:1.6;">${escapeHtml(stripMarkdown(countries[0].document_table))}</pre></section>`
+          : "",
+      ].join("")
+    : "";
+
+  const countriesHtml = countries
+    .map((country, index) => renderCountry(country, index + 1, includeRoadmap))
+    .join("");
+
+  return `<!DOCTYPE html>
+<html lang="en">
+  <body style="margin:0;padding:24px;background:#f9fafb;font-family:Arial,sans-serif;color:#111827;">
+    <div style="max-width:720px;margin:0 auto;background:#ffffff;border-radius:16px;padding:32px;border:1px solid #e5e7eb;">
+      <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#d97706;">Nexim</p>
+      <h1 style="margin:0 0 8px;font-size:28px;">Your relocation analysis</h1>
+      <p style="margin:0 0 24px;color:#6b7280;">Plan: ${escapeHtml(tierLabel(tier))}</p>
+      ${analysisBlock}
+      ${countriesHtml}
+      ${proBlocks}
+      <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;" />
+      <p style="margin:0;color:#6b7280;font-size:13px;line-height:1.6;">
+        Generated by <a href="https://nexim.world" style="color:#d97706;">nexim.world</a>
+      </p>
+    </div>
+  </body>
+</html>`;
+}
+
+const SUBJECTS: Record<string, string> = {
+  en: "Your Nexim relocation analysis",
+  ru: "Ваш анализ релокации Nexim",
+  de: "Ihre Nexim Relocation-Analyse",
+  ar: "تحليل الانتقال الخاص بك من Nexim",
+  fa: "تحلیل مهاجرت Nexim شما",
+  zh: "您的 Nexim 移居分析",
+  hi: "आपका Nexim रिलोकेशन विश्लेषण",
+};
+
+export function getResultsEmailSubject(locale: string): string {
+  return SUBJECTS[locale] ?? SUBJECTS.en;
+}

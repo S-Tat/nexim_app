@@ -15,6 +15,7 @@ import {
   NEXIM_SELECTED_TIER_KEY,
 } from "@/lib/nexim-payment-gate";
 import { CountryMatchCard } from "@/components/CountryMatchCard";
+import { ResultsEmailForm } from "@/components/ResultsEmailForm";
 import { MarkdownDocumentTable, MarkdownSection } from "@/components/MarkdownDocumentTable";
 
 const RESULT_KEY = NEXIM_STRATEGY_RESULT_KEY;
@@ -37,19 +38,14 @@ function startNewAnalysis(): void {
   }
 }
 
-function ResultsPersistenceBanner() {
-  const t = useTranslations("result");
-  return (
-    <div
-      className="sticky top-0 z-50 -mx-6 mb-8 border-b border-amber-500/70 bg-gradient-to-r from-amber-950/95 via-amber-900/90 to-amber-950/95 px-6 py-4 shadow-[0_8px_32px_-8px_rgba(245,158,11,0.55)] backdrop-blur-md md:-mx-10"
-      role="alert"
-      aria-live="polite"
-    >
-      <p className="text-center text-sm font-semibold leading-relaxed text-amber-50 md:text-left">
-        {t("sessionPersistenceWarning")}
-      </p>
-    </div>
-  );
+function ResultsEmailBanner({
+  data,
+  tier,
+}: {
+  data: AnalyzeResponse;
+  tier: string;
+}) {
+  return <ResultsEmailForm data={data} tier={tier} />;
 }
 
 function readStoredResult(): { data: AnalyzeResponse | null; tier: string } {
@@ -139,7 +135,7 @@ export function ResultView() {
   if (legallyBlocked) {
     return (
       <div className="mx-auto max-w-screen-xl px-6 py-12 md:px-10">
-        <ResultsPersistenceBanner />
+        <ResultsEmailBanner data={data} tier={tier} />
         <h1 className="font-display text-2xl font-semibold text-white md:text-3xl">{t("title")}</h1>
 
         <div
@@ -181,7 +177,7 @@ export function ResultView() {
 
   return (
     <div className="mx-auto max-w-screen-xl px-6 py-12 md:px-10">
-      <ResultsPersistenceBanner />
+      <ResultsEmailBanner data={data} tier={tier} />
       <h1 className="font-display text-2xl font-semibold text-white md:text-3xl">{t("title")}</h1>
 
       {showLegalIssuesWarning ? (
