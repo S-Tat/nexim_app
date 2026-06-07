@@ -55,23 +55,80 @@ function renderCountry(country: CountryMatch, rank: number, includeRoadmap: bool
   `;
 }
 
+type LiteUpsellCopy = {
+  title: string;
+  body: string;
+  cta: string;
+  share: string;
+};
+
+const LITE_UPSELL_COPY: Record<string, LiteUpsellCopy> = {
+  en: {
+    title: "Want to see a more detailed analysis of your relocation success?",
+    body: "Basic analysis includes 8 parameters, visa guide and detailed recommendations just for you",
+    cta: "Get full analysis for $10 →",
+    share: "Liked the service? Share with friends!",
+  },
+  ru: {
+    title: "Хотите увидеть более детальный анализ вашего успеха на релокацию?",
+    body: "Базовый анализ включает 8 параметров, визовый гид и детальные рекомендации именно для вас",
+    cta: "Получить полный анализ за $10 →",
+    share: "Понравился сервис? Поделитесь с друзьями!",
+  },
+  de: {
+    title: "Möchten Sie eine detailliertere Analyse Ihres Umzugserfolgs sehen?",
+    body: "Basisanalyse umfasst 8 Parameter, Visa-Leitfaden und detaillierte Empfehlungen für Sie",
+    cta: "Vollständige Analyse für $10 →",
+    share: "Hat Ihnen der Service gefallen? Teilen Sie ihn!",
+  },
+  ar: {
+    title: "هل تريد تحليلاً أكثر تفصيلاً لنجاح انتقالك؟",
+    body: "التحليل الأساسي يتضمن 8 معاملات ودليل التأشيرة",
+    cta: "احصل على التحليل الكامل مقابل $10 →",
+    share: "أعجبك الخدمة؟ شاركها مع الأصدقاء!",
+  },
+  fa: {
+    title: "می‌خواهید تحلیل دقیق‌تری از موفقیت مهاجرت خود ببینید؟",
+    body: "تحلیل پایه شامل ۸ پارامتر و راهنمای ویزا است",
+    cta: "دریافت تحلیل کامل به قیمت $10 →",
+    share: "از سرویس راضی بودید؟ با دوستان به اشتراک بگذارید!",
+  },
+  zh: {
+    title: "想看看您移居成功的更详细分析吗？",
+    body: "基础分析包括8个参数、签证指南和详细建议",
+    cta: "获取完整分析 $10 →",
+    share: "喜欢这个服务吗？与朋友分享！",
+  },
+  hi: {
+    title: "क्या आप अपनी रिलोकेशन सफलता का अधिक विस्तृत विश्लेषण देखना चाहते हैं?",
+    body: "बेसिक विश्लेषण में 8 पैरामीटर और वीज़ा गाइड शामिल है",
+    cta: "पूर्ण विश्लेषण $10 में प्राप्त करें →",
+    share: "सेवा पसंद आई? दोस्तों के साथ शेयर करें!",
+  },
+};
+
+function getLiteUpsellCopy(locale: string): LiteUpsellCopy {
+  return LITE_UPSELL_COPY[locale] ?? LITE_UPSELL_COPY.en;
+}
+
 function buildLiteUpsellBlock(locale: string): string {
+  const copy = getLiteUpsellCopy(locale);
   const homeUrl = `https://nexim.world/${locale}`;
   return `
       <div style="text-align: center; margin: 30px 0; padding: 20px; background: #1a1a1a; border-radius: 12px;">
         <p style="color: #ffffff; font-size: 16px; margin-bottom: 8px;">
-          <strong>Хотите увидеть более детальный анализ вашего успеха на релокацию?</strong>
+          <strong>${escapeHtml(copy.title)}</strong>
         </p>
         <p style="color: #888888; font-size: 14px; margin-bottom: 20px;">
-          Базовый анализ включает 8 параметров, визовый гид и детальные рекомендации именно для вас
+          ${escapeHtml(copy.body)}
         </p>
         <a href="${homeUrl}" style="background: #FFB800; color: #000000; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 16px;">
-          Получить полный анализ за $10 →
+          ${escapeHtml(copy.cta)}
         </a>
       </div>
       <div style="text-align: center; margin: 20px 0;">
         <p style="color: #888888; font-size: 13px;">
-          Понравился сервис? Поделитесь с друзьями!
+          ${escapeHtml(copy.share)}
         </p>
         <a href="https://nexim.world" style="color: #FFB800; font-size: 14px;">
           nexim.world →
