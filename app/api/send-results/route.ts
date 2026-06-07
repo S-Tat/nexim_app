@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
 
   const from = process.env.RESEND_FROM_EMAIL?.trim() || "Nexim <onboarding@resend.dev>";
   const resend = new Resend(apiKey);
-  const html = buildResultsEmailHtml(body.results, tier);
+  const html = buildResultsEmailHtml(body.results, tier, locale);
   const subject = getResultsEmailSubject(locale);
 
   const tags = [
