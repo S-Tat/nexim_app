@@ -35,6 +35,11 @@
     "cta": "Get my free analysis →",
     "close": "Close"
   },
+  "unsubscribe": {
+    "title": "Unsubscribed",
+    "message": "You have successfully unsubscribed from Nexim emails.",
+    "home": "Back to home"
+  },
   "hero": {
     "heroH1Part1": "How to move to ",
     "heroH1Part2": "",

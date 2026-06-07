@@ -35,6 +35,11 @@
     "cta": "获取我的免费分析 →",
     "close": "关闭"
   },
+  "unsubscribe": {
+    "title": "已取消订阅",
+    "message": "您已成功取消订阅 Nexim 邮件",
+    "home": "返回首页"
+  },
   "hero": {
     "heroH1Part1": "如何移居到",
     "heroH1Part2": "",

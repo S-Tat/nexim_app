@@ -35,6 +35,11 @@
     "cta": "Kostenlose Analyse starten →",
     "close": "Schließen"
   },
+  "unsubscribe": {
+    "title": "Abgemeldet",
+    "message": "Sie haben sich erfolgreich vom Nexim-Newsletter abgemeldet.",
+    "home": "Zur Startseite"
+  },
   "hero": {
     "heroH1Part1": "Wie man nach ",
     "heroH1Part2": " auswandert",
