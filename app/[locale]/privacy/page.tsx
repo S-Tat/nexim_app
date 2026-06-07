@@ -22,6 +22,9 @@ export default async function PrivacyPage({ params }: Props) {
       <LegalBlock heading={t("privacyH2_collect")}>
         <p>{t("privacyP_collect")}</p>
       </LegalBlock>
+      <LegalBlock heading={t("privacyH2_email")}>
+        <p>{t("privacyP_email")}</p>
+      </LegalBlock>
       <LegalBlock heading={t("privacyH2_processing")}>
         <p>{t("privacyP_processing")}</p>
       </LegalBlock>

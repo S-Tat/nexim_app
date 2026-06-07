@@ -153,6 +153,8 @@
     "privacyP_intro": "This Privacy Policy explains how Nexim (nexim.world) processes personal data when you use our website and services. We are committed to protecting your privacy and to compliance with the EU General Data Protection Regulation (GDPR / DSGVO), including lawful processing, data minimisation, and your statutory rights.",
     "privacyH2_collect": "Data we collect",
     "privacyP_collect": "We collect questionnaire responses (including profile, preferences, and relocation-related answers), account data such as your email address when you register or pay, technical data typically collected on websites (for example IP address and browser type), and payment-related metadata from our payment processors. We do not store full payment card numbers on our own servers.",
+    "privacyH2_email": "Email Collection",
+    "privacyP_email": "We collect your email address when you request to receive your analysis results. Your email is used only to send your results and, with your consent, relocation-related materials. We do not share your email with third parties. You may unsubscribe at any time.",
     "privacyH2_processing": "How we use your data (Supabase and Gemini)",
     "privacyP_processing": "Questionnaire data is processed using the Google Gemini API and stored in Supabase. We use it to generate personalized AI analyses and reports. Text and structured answers are sent to Google's Gemini API for analysis; processing is performed server-side so API keys are not exposed in your browser. We do not sell your personal data.",
     "privacyH2_legalBasis": "Legal bases (GDPR)",

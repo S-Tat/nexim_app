@@ -153,6 +153,8 @@
     "privacyP_intro": "Diese Datenschutzerklärung beschreibt, wie Nexim (nexim.world) personenbezogene Daten verarbeitet, wenn Sie Website und Dienste nutzen. Wir verpflichten uns zur Einhaltung der DSGVO (EU-GDPR): Rechtmäßigkeit der Verarbeitung, Datenminimierung und Ihre Betroffenenrechte.",
     "privacyH2_collect": "Welche Daten wir erheben",
     "privacyP_collect": "Wir erheben Fragebogenantworten (Profil, Präferenzen und relokationsbezogene Angaben), Kontodaten wie Ihre E-Mail-Adresse bei Registrierung oder Zahlung, technische Daten, die üblich sind (z. B. IP-Adresse und Browsertyp), sowie Zahlungsmetadaten von Zahlungsdienstleistern. Vollständige Kartennummern speichern wir nicht auf eigenen Servern.",
+    "privacyH2_email": "E-Mail-Erfassung",
+    "privacyP_email": "Wir erfassen Ihre E-Mail-Adresse, wenn Sie Ihre Analyseergebnisse anfordern. Ihre E-Mail wird nur zum Versand Ihrer Ergebnisse und mit Ihrer Einwilligung für Relocation-Materialien verwendet. Wir geben Ihre E-Mail nicht weiter. Sie können sich jederzeit abmelden.",
     "privacyH2_processing": "Verwendung der Daten (Supabase und Gemini)",
     "privacyP_processing": "Fragebogenangaben werden mit der Google-Gemini-API verarbeitet und in Supabase gespeichert. Wir nutzen sie für personalisierte KI-Analysen und Berichte. Text und strukturierte Antworten werden an die Google-Gemini-API übermittelt; die Verarbeitung erfolgt serverseitig, API-Schlüssel werden nicht im Browser ausgeliefert. Wir verkaufen keine personenbezogenen Daten.",
     "privacyH2_legalBasis": "Rechtsgrundlagen (DSGVO)",

@@ -153,6 +153,8 @@
     "privacyP_intro": "本隐私政策说明 Nexim（nexim.world）在您使用网站和服务时如何处理个人数据。我们承诺遵守欧盟《通用数据保护条例》（GDPR / DSGVO）：合法处理、数据最小化及您作为数据主体的权利。",
     "privacyH2_collect": "我们收集的数据",
     "privacyP_collect": "我们收集问卷答复（包括档案、偏好及与移居相关的信息）、您在注册或付款时的账户数据（如电子邮箱）、网站通常收集的技术数据（如 IP 地址与浏览器类型），以及支付服务商提供的支付元数据。我们不在自有服务器上存储完整银行卡号。",
+    "privacyH2_email": "电子邮件收集",
+    "privacyP_email": "当您请求接收分析结果时，我们会收集您的电子邮件地址。您的电子邮件仅用于发送您的结果，并在您同意的情况下发送移居相关材料。我们不会与第三方共享您的电子邮件。您可以随时取消订阅。",
     "privacyH2_processing": "我们如何使用数据（Supabase 与 Gemini）",
     "privacyP_processing": "问卷数据通过 Google Gemini API 处理并存储在 Supabase 中。我们据此生成个性化的 AI 分析与报告。文本与结构化答案会发送至 Google Gemini API；处理在服务器端完成，API 密钥不会暴露在浏览器中。我们不出售您的个人数据。",
     "privacyH2_legalBasis": "法律依据（GDPR）",
