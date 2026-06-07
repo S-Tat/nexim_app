@@ -6,7 +6,7 @@ type Props = {
 function isHeadingBlock(text: string): boolean {
   const trimmed = text.trim();
   if (!trimmed.endsWith(":")) return false;
-  return /^[\p{Lu}]/u.test(trimmed);
+  return /^[A-ZА-ЯЁÄÖÜا-ي]/i.test(trimmed);
 }
 
 export function GuideFormattedContent({ content, rtl }: Props) {
