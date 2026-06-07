@@ -19,6 +19,12 @@ export async function Header({ locale }: Props) {
         </HeaderLogoLink>
         <div className="flex items-center gap-2 md:gap-4">
           <Link
+            href="/guides"
+            className="text-sm font-medium text-nexim-muted transition hover:text-white rtl:font-arabic"
+          >
+            {t("guides")}
+          </Link>
+          <Link
             href="/blog"
             className="text-sm font-medium text-nexim-muted transition hover:text-white rtl:font-arabic"
           >

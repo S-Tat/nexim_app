@@ -1,5 +1,5 @@
 import { LegalArticle } from "@/components/LegalArticle";
-import { MarkdownSection } from "@/components/MarkdownDocumentTable";
+import { GuideFormattedContent } from "@/components/GuideFormattedContent";
 import { Link } from "@/navigation";
 import type { GuideRow } from "@/lib/guides-repository";
 import { isRtlLocale, type Locale } from "@/routing";
@@ -19,7 +19,7 @@ export function GuideArticleBody({ guide, locale, tryFreeLabel }: Props) {
 
   return (
     <LegalArticle title={guide.title} updated={updated}>
-      <MarkdownSection source={guide.content} />
+      <GuideFormattedContent content={guide.content} rtl={rtl} />
 
       <div className="border-t border-white/[0.08] pt-10">
         <Link

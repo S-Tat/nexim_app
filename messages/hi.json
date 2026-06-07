@@ -9,7 +9,8 @@
   },
   "nav": {
     "logo": "Nexim",
-    "blog": "ब्लॉग"
+    "blog": "ब्लॉग",
+    "guides": "गाइड"
   },
   "blog": {
     "listTitle": "ब्लॉग",
@@ -18,6 +19,7 @@
   },
   "guides": {
     "badge": "रिलोकेशन गाइड",
+    "indexDescription": "देश और पेशे के अनुसार रिलोकेशन गाइड।",
     "comingSoon": "यह गाइड तैयार की जा रही है। बाद में देखें — या अभी अपना मुफ़्त Nexim विश्लेषण शुरू करें।",
     "tryFree": "मुफ़्त में आज़माएँ",
     "metaTitle": "{country} में {profession} रिलोकेशन"

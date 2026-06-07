@@ -9,7 +9,8 @@
   },
   "nav": {
     "logo": "Nexim",
-    "blog": "Blog"
+    "blog": "Blog",
+    "guides": "Guides"
   },
   "blog": {
     "listTitle": "Blog",
@@ -18,6 +19,7 @@
   },
   "guides": {
     "badge": "Relocation guide",
+    "indexDescription": "Browse relocation guides by country and profession.",
     "comingSoon": "This guide is being prepared. Check back soon — or start your free Nexim analysis now.",
     "tryFree": "Try for free",
     "metaTitle": "{profession} relocation to {country}"

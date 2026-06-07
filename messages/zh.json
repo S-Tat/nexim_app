@@ -9,7 +9,8 @@
   },
   "nav": {
     "logo": "Nexim",
-    "blog": "博客"
+    "blog": "博客",
+    "guides": "指南"
   },
   "blog": {
     "listTitle": "博客",
@@ -18,6 +19,7 @@
   },
   "guides": {
     "badge": "移居指南",
+    "indexDescription": "按国家和职业浏览移居指南。",
     "comingSoon": "本指南正在准备中。请稍后再来 — 或立即开始免费的 Nexim 分析。",
     "tryFree": "免费试用",
     "metaTitle": "{profession} 移居 {country}"

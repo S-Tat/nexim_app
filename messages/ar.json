@@ -9,7 +9,8 @@
   },
   "nav": {
     "logo": "Nexim",
-    "blog": "مدونة"
+    "blog": "مدونة",
+    "guides": "أدلة"
   },
   "blog": {
     "listTitle": "المدونة",
@@ -18,6 +19,7 @@
   },
   "guides": {
     "badge": "دليل الانتقال",
+    "indexDescription": "أدلة الانتقال حسب الدولة والمهنة.",
     "comingSoon": "يتم إعداد هذا الدليل. عد لاحقاً — أو ابدأ تحليل Nexim المجاني الآن.",
     "tryFree": "جرّب مجاناً",
     "metaTitle": "انتقال {profession} إلى {country}"
