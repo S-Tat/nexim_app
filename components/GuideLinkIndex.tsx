@@ -1,10 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/navigation";
+import { getCountryName } from "@/lib/countries";
 import {
-  GUIDE_COUNTRIES,
-  GUIDE_PROFESSIONS,
-  getGuideCountryName,
-} from "@/lib/programmatic-guides";
+  SEO_GUIDE_COUNTRIES,
+  SEO_GUIDE_PROFESSIONS,
+} from "@/lib/seo-guides-catalog";
 import type { Locale } from "@/routing";
 
 type Props = {
@@ -24,7 +24,7 @@ const FEATURED_COUNTRY_SLUGS = new Set([
   "germany",
   "portugal",
   "canada",
-  "united-arab-emirates",
+  "uae",
 ]);
 const FEATURED_PROFESSION_SLUGS = new Set([
   "it-software",
@@ -155,12 +155,12 @@ export async function GuideLinkIndex({ locale, variant }: Props) {
   const copy = COPY_BY_LOCALE[locale][variant];
   const countries =
     variant === "featured"
-      ? GUIDE_COUNTRIES.filter((country) => FEATURED_COUNTRY_SLUGS.has(country.slug))
-      : GUIDE_COUNTRIES;
+      ? SEO_GUIDE_COUNTRIES.filter((country) => FEATURED_COUNTRY_SLUGS.has(country.slug))
+      : SEO_GUIDE_COUNTRIES;
   const professions =
     variant === "featured"
-      ? GUIDE_PROFESSIONS.filter((profession) => FEATURED_PROFESSION_SLUGS.has(profession.slug))
-      : GUIDE_PROFESSIONS;
+      ? SEO_GUIDE_PROFESSIONS.filter((profession) => FEATURED_PROFESSION_SLUGS.has(profession.slug))
+      : SEO_GUIDE_PROFESSIONS;
 
   return (
     <section className="border-t border-white/[0.06] bg-black/20 px-6 py-16 md:px-10 md:py-24">
@@ -182,7 +182,8 @@ export async function GuideLinkIndex({ locale, variant }: Props) {
           }
         >
           {countries.map((country) => {
-            const countryName = getGuideCountryName(country.code, locale);
+            const countryName =
+              getCountryName(country.code, locale) ?? country.name;
 
             return (
               <div
@@ -203,7 +204,7 @@ export async function GuideLinkIndex({ locale, variant }: Props) {
                     return (
                       <li key={`${country.slug}-${profession.slug}`}>
                         <Link
-                          href={`/guide/${country.slug}/${profession.slug}`}
+                          href={`/guides/${country.slug}/${profession.slug}`}
                           className="inline-flex rounded-full border border-white/10 bg-black/20 px-3 py-2 text-xs leading-relaxed text-amber-100 transition hover:border-[#fbbf24]/50 hover:text-[#fbbf24]"
                         >
                           {variant === "featured"

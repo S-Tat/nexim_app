@@ -16,6 +16,12 @@
     "listDescription": "Guides and insights on relocation, visas, and choosing the right country for your family.",
     "readMore": "Read article →"
   },
+  "guides": {
+    "badge": "Relocation guide",
+    "comingSoon": "This guide is being prepared. Check back soon — or start your free Nexim analysis now.",
+    "tryFree": "Try for free",
+    "metaTitle": "{profession} relocation to {country}"
+  },
   "cookieBanner": {
     "message": "We use cookies to improve your experience. You can accept or decline their use.",
     "accept": "Accept",

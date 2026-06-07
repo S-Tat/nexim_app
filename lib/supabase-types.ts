@@ -91,6 +91,38 @@ export interface Database {
           status?: string;
         };
       };
+      guides: {
+        Row: {
+          id: string;
+          country: string;
+          profession: string;
+          lang: string;
+          title: string;
+          content: string;
+          slug: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          country: string;
+          profession: string;
+          lang: string;
+          title: string;
+          content: string;
+          slug: string;
+          created_at?: string;
+        };
+        Update: {
+          id?: string;
+          country?: string;
+          profession?: string;
+          lang?: string;
+          title?: string;
+          content?: string;
+          slug?: string;
+          created_at?: string;
+        };
+      };
     };
     Views: Record<string, never>;
     Functions: Record<string, never>;

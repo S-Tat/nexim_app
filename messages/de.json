@@ -16,6 +16,12 @@
     "listDescription": "Ratgeber und Einblicke zu Umzug, Visa und der Wahl des richtigen Landes für Ihre Familie.",
     "readMore": "Artikel lesen →"
   },
+  "guides": {
+    "badge": "Relocation-Guide",
+    "comingSoon": "Dieser Guide wird gerade erstellt. Schauen Sie bald wieder vorbei — oder starten Sie jetzt Ihre kostenlose Nexim-Analyse.",
+    "tryFree": "Kostenlos testen",
+    "metaTitle": "Relocation {profession} nach {country}"
+  },
   "cookieBanner": {
     "message": "Wir verwenden Cookies, um Ihre Erfahrung zu verbessern. Sie können deren Verwendung akzeptieren oder ablehnen.",
     "accept": "Akzeptieren",
