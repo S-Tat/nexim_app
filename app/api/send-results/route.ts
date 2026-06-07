@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid or empty results payload." }, { status: 400 });
   }
 
-  const from = process.env.RESEND_FROM_EMAIL?.trim() || "Nexim <onboarding@resend.dev>";
+  const from = process.env.RESEND_FROM_EMAIL?.trim() || "Nexim <noreply@nexim.world>";
   const resend = new Resend(apiKey);
   const html = buildResultsEmailHtml(body.results, tier, locale);
   const subject = getResultsEmailSubject(locale);
