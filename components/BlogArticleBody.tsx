@@ -1,4 +1,5 @@
 import { LegalArticle, LegalBlock } from "@/components/LegalArticle";
+import { ArticleConversionLayout } from "@/components/ConversionBanner";
 import { Link } from "@/navigation";
 import type { BlogPost } from "@/lib/blog-posts";
 import { isRtlLocale } from "@/routing";
@@ -14,7 +15,8 @@ export function BlogArticleBody({ post }: Props) {
   const rtl = isRtlLocale(post.locale);
 
   return (
-    <LegalArticle title={post.title} updated={post.updated}>
+    <ArticleConversionLayout>
+      <LegalArticle title={post.title} updated={post.updated}>
       <div className="space-y-3 text-nexim-muted">
         <p>{post.intro}</p>
       </div>
@@ -54,5 +56,6 @@ export function BlogArticleBody({ post }: Props) {
         </Link>
       </div>
     </LegalArticle>
+    </ArticleConversionLayout>
   );
 }

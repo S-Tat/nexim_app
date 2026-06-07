@@ -1,4 +1,5 @@
 import { LegalArticle } from "@/components/LegalArticle";
+import { ArticleConversionLayout } from "@/components/ConversionBanner";
 import { GuideFormattedContent } from "@/components/GuideFormattedContent";
 import { Link } from "@/navigation";
 import type { GuideRow } from "@/lib/guides-repository";
@@ -18,7 +19,8 @@ export function GuideArticleBody({ guide, locale, tryFreeLabel }: Props) {
   });
 
   return (
-    <LegalArticle title={guide.title} updated={updated}>
+    <ArticleConversionLayout>
+      <LegalArticle title={guide.title} updated={updated}>
       <GuideFormattedContent content={guide.content} rtl={rtl} />
 
       <div className="border-t border-white/[0.08] pt-10">
@@ -30,5 +32,6 @@ export function GuideArticleBody({ guide, locale, tryFreeLabel }: Props) {
         </Link>
       </div>
     </LegalArticle>
+    </ArticleConversionLayout>
   );
 }

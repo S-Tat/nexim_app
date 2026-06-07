@@ -29,6 +29,12 @@
     "accept": "Accept",
     "decline": "Decline"
   },
+  "conversionBanner": {
+    "title": "This is a general guide. Your situation is unique.",
+    "body": "Our AI considers your passport, income, family and profession — and finds the perfect country for you.",
+    "cta": "Get my free analysis →",
+    "close": "Close"
+  },
   "hero": {
     "heroH1Part1": "How to move to ",
     "heroH1Part2": "",

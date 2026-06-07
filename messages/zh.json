@@ -29,6 +29,12 @@
     "accept": "接受",
     "decline": "拒绝"
   },
+  "conversionBanner": {
+    "title": "这是一份通用指南。您的情况是独特的。",
+    "body": "我们的AI会考虑您的护照、收入、家庭和职业——为您找到最理想的国家。",
+    "cta": "获取我的免费分析 →",
+    "close": "关闭"
+  },
   "hero": {
     "heroH1Part1": "如何移居到",
     "heroH1Part2": "",

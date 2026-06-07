@@ -29,6 +29,12 @@
     "accept": "Akzeptieren",
     "decline": "Ablehnen"
   },
+  "conversionBanner": {
+    "title": "Das ist ein allgemeiner Leitfaden. Ihre Situation ist einzigartig.",
+    "body": "Unsere KI berücksichtigt Ihren Pass, Einkommen, Familie und Beruf — und findet das perfekte Land für Sie.",
+    "cta": "Kostenlose Analyse starten →",
+    "close": "Schließen"
+  },
   "hero": {
     "heroH1Part1": "Wie man nach ",
     "heroH1Part2": " auswandert",
