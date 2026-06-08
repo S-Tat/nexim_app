@@ -105,7 +105,21 @@
     "backHome": "होम पर वापस",
     "invalidTier": "अमान्य या गायब प्लान। होम पर लौटें और पैक चुनें।",
     "payStarting": "Stripe पर भेजा जा रहा है…",
-    "unlockingAfterPay": "भुगतान की पुष्टि हो रही है…"
+    "unlockingAfterPay": "भुगतान की पुष्टि हो रही है…",
+    "proCheckoutTitle": "Pro में क्या शामिल है",
+    "proFeature1Title": "3 देश",
+    "proFeature1Desc": "प्रत्येक का पूर्ण विश्लेषण",
+    "proFeature2Title": "कर ऑडिट",
+    "proFeature2Desc": "दरें, वीज़ा, जोखिम",
+    "proFeature3Title": "रोज़गार बाज़ार",
+    "proFeature3Desc": "वेतन, प्लेटफ़ॉर्म, माँग",
+    "proFeature4Title": "दस्तावेज़ चेकलिस्ट",
+    "proFeature4Desc": "आपकी प्रोफ़ाइल के लिए",
+    "proFeature5Title": "5-चरण रोडमैप",
+    "proFeature5Desc": "मासिक समयसीमा के साथ",
+    "proFeature6Title": "दस्तावेज़ तालिका",
+    "proFeature6Desc": "प्राधिकरण, समयरेखा, स्थिति",
+    "proCheckoutBadge": "Stripe के ज़रिए भुगतान · तुरंत परिणाम · एकमुश्त भुगतान"
   },
   "why": {
     "title": "Why Nexim?",

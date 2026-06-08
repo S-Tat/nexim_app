@@ -105,7 +105,21 @@
     "backHome": "На главную",
     "invalidTier": "Неверный или отсутствующий тариф. Вернитесь на главную и выберите пакет.",
     "payStarting": "Переход к Stripe…",
-    "unlockingAfterPay": "Подтверждаем оплату…"
+    "unlockingAfterPay": "Подтверждаем оплату…",
+    "proCheckoutTitle": "Что входит в тариф Pro",
+    "proFeature1Title": "3 страны",
+    "proFeature1Desc": "С полным анализом каждой",
+    "proFeature2Title": "Налоговый аудит",
+    "proFeature2Desc": "Ставки, визы, риски",
+    "proFeature3Title": "Рынок труда",
+    "proFeature3Desc": "Зарплаты, платформы, спрос",
+    "proFeature4Title": "Чеклист документов",
+    "proFeature4Desc": "Персональный под профиль",
+    "proFeature5Title": "Роадмап 5 шагов",
+    "proFeature5Desc": "С дедлайнами в месяцах",
+    "proFeature6Title": "Таблица документов",
+    "proFeature6Desc": "Орган, срок, статус",
+    "proCheckoutBadge": "Оплата через Stripe · Результат сразу · Одноразовый платёж"
   },
   "why": {
     "title": "Почему Nexim?",
@@ -283,6 +297,8 @@
       "Документы: паспорт, виза, письма о работе/учёбе, страховка и подтверждение жилья только в ручной клади."
     ],
     "roadmapTitle": "Дорожная карта на 12 месяцев до ВНЖ",
+    "weakPointsLabel": "Слабые места и решения",
+"docTableLabel": "Требования к документам",
     "roadmapSub": "От пакета документов до долгосрочного статуса",
     "roadmap": [
       {

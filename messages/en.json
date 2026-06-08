@@ -105,7 +105,21 @@
     "backHome": "Back to home",
     "invalidTier": "Invalid or missing plan. Return home and pick a tier.",
     "payStarting": "Redirecting to Stripe…",
-    "unlockingAfterPay": "Confirming payment…"
+    "unlockingAfterPay": "Confirming payment…",
+    "proCheckoutTitle": "What's included in Pro",
+    "proFeature1Title": "3 countries",
+    "proFeature1Desc": "Full analysis for each",
+    "proFeature2Title": "Tax audit",
+    "proFeature2Desc": "Rates, visas, risks",
+    "proFeature3Title": "Job market",
+    "proFeature3Desc": "Salaries, platforms, demand",
+    "proFeature4Title": "Document checklist",
+    "proFeature4Desc": "Personalized for your profile",
+    "proFeature5Title": "5-step roadmap",
+    "proFeature5Desc": "With monthly deadlines",
+    "proFeature6Title": "Document table",
+    "proFeature6Desc": "Authority, timeline, status",
+    "proCheckoutBadge": "Payment via Stripe · Instant result · One-time payment"
   },
   "why": {
     "title": "Why Nexim?",
