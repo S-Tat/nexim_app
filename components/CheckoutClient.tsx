@@ -81,6 +81,14 @@ export function CheckoutClient() {
     );
   }
 
+  const proFeatures = [
+    { icon: "🌍", title: "3 страны", desc: "С полным анализом каждой" },
+    { icon: "📊", title: "Налоговый аудит", desc: "Ставки, визы, риски" },
+    { icon: "💼", title: "Рынок труда", desc: "Зарплаты, платформы, спрос" },
+    { icon: "📋", title: "Чеклист документов", desc: "Персональный под профиль" },
+    { icon: "🗺️", title: "Роадмап 5 шагов", desc: "С дедлайнами в месяцах" },
+    { icon: "📄", title: "Таблица документов", desc: "Орган, срок, статус" },
+  ];
   const summaryLine =
     tier === "basic" ? t("summaryBasic") : t("summaryProfessional");
   const priceLine = tier === "basic" ? t("price_basic") : t("price_professional");
@@ -103,6 +111,31 @@ export function CheckoutClient() {
           {summaryLine}
         </p>
         <p className="mt-4 text-lg font-semibold text-[#fbbf24]">{priceLine}</p>
+
+        {tier === "professional" ? (
+          <div className="mt-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 text-left">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[#fbbf24]">
+              Что входит в тариф Pro
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              {proFeatures.map((f) => (
+                <div
+                  key={f.title}
+                  className="flex items-start gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] p-3"
+                >
+                  <span className="text-lg">{f.icon}</span>
+                  <div>
+                    <p className="text-xs font-semibold text-white">{f.title}</p>
+                    <p className="text-[11px] text-nexim-muted">{f.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-[11px] text-nexim-muted">
+              🔒 Оплата через Stripe · Результат сразу · Одноразовый платёж
+            </p>
+          </div>
+        ) : null}
         <p className="mt-2 text-xs text-nexim-muted">{t("afterPayHint")}</p>
         <button
           type="button"
