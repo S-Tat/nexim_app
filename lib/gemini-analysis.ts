@@ -171,7 +171,8 @@ export type GeminiResult = {
  *      slow down the fallback loop.
  */
 /** Production primary model; all tiers use Flash to stay within Vercel timeouts. */
-export const PRODUCTION_GEMINI_MODEL = "gemini-1.5-flash-latest";
+export const PRODUCTION_GEMINI_MODEL =
+  process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
 
 /** Maximum output tokens for Gemini generateContent (AI Studio / @google/generative-ai). */
 export const GEMINI_MAX_OUTPUT_TOKENS = 8192;
@@ -431,68 +432,99 @@ function buildPromptProfessional(
     sanitized.countryCode === "AI_SUGGEST" || !sanitized.countryCode;
 
   const strategyBlock = isCareer
-    ? `Primary focus: WORK AND CAREER — shortage lists, skilled work visas, employability, salary vs cost of living.`
-    : `Primary focus: LIFESTYLE / REMOTE / PASSIVE INCOME — nomad visas, D7-type routes, financial requirements, quality of life.`;
+    ? `Primary focus: WORK AND CAREER — shortage lists, skilled work visas, employability, salary benchmarks vs cost of living, promotion paths.`
+    : `Primary focus: LIFESTYLE / REMOTE / PASSIVE INCOME — nomad visas, D7-type routes, tax optimization for remote workers, financial requirements, quality of life index.`;
 
   const countryNote = aiSuggestsCountry
-    ? `User did not specify a destination country — choose the top 2 best objective fits.`
-    : `User preference country code: ${sanitized.countryCode} — weight heavily but rank by fit.`;
+    ? `User did not specify a destination country — choose the top 3 best objective fits based on full profile.`
+    : `User preference country code: ${sanitized.countryCode} — include as one of the 3 countries, rank all 3 by fit score.`;
 
   const legal = sanitized.unresolvedLegalViolations;
   const legalNote =
     legal === "yes" || legal === true
-      ? `If "unresolvedLegalViolations" is yes: still return exactly 2 countries with honest visa assessment; flag higher refusal/compliance risk in analysis and per-country cons. Never use an empty top_countries array. Set "legal_relocation_blocked": false.`
+      ? `If "unresolvedLegalViolations" is yes: still return exactly 3 countries with honest visa assessment; flag higher refusal/compliance risk in analysis and per-country cons. Never use an empty top_countries array. Set "legal_relocation_blocked": false.`
       : ``;
 
-  const diplomaAuthorityRule = `For document_table: use the correct local authority per destination country, or the generic "Local degree legalization / Apostille" if unsure.`;
+  const diplomaAuthorityRule = `For document_table: always name the SPECIFIC authority per destination country (e.g. "NACES evaluation" for USA, "anabin database check" for Germany, "UK NARIC/ENIC" for UK). Only use generic "Apostille" if truly no country-specific body exists.`;
+
+  const profession = sanitized.professionMain ?? sanitized.professionOtherDetail ?? "not specified";
+  const education = sanitized.educationLevel ?? "not specified";
+  const experience = sanitized.workExperience ?? "not specified";
+  const english = sanitized.englishLevel ?? "not specified";
+  const funds = sanitized.basicRelocationFunds ?? sanitized.proRelocationFunds ?? "not specified";
+  const citizenship = sanitized.citizenshipCode ?? "not specified";
+  const family = sanitized.familyMoving ?? "not specified";
+  const remote = sanitized.remoteIncomeAbroad ?? "not specified";
 
   return `${criticalLang}
 
-You are Nexim — expert relocation consultant (Pro tier).
+You are Nexim — a senior relocation consultant with 15+ years experience placing professionals internationally (Pro tier).
 
-As a high-level relocation expert, deliver concentrated tax/legal notes, job-market insights, and a document checklist in "tax_legal_audit", "job_market_overview", and "document_checklist". Every sentence must carry facts — no filler, no throat-clearing. The "analysis" field is ONE highly concentrated executive paragraph.
+PROFILE SUMMARY:
+- Citizenship: ${citizenship}
+- Profession: ${profession}
+- Education: ${education}
+- Experience: ${experience}
+- English: ${english}
+- Funds: ${funds}
+- Family moving: ${family}
+- Remote income abroad: ${remote}
 
-Task: Full expert audit across all questionnaire fields. Cross-reference \`educationLevel\`, \`professionMain\`, \`professionOtherDetail\`, \`workExperience\`, languages, funds, legal flags, and refusal history. Optimize for DATA DENSITY over volume — punchy, consultant-grade, zero redundancy.
+Full profile:
+${JSON.stringify(sanitized, null, 2)}
 
-STRICT LENGTH LIMITS (non-negotiable):
-- "analysis": exactly ONE executive paragraph — dense with timeline, risks, priorities, and strategic guidance.
-- "tax_legal_audit", "job_market_overview", "document_checklist": maximum **3** concise, information-dense bullet points **per country** (use ### CountryName headers).
-- Per country in "top_countries":
-  - "pros", "cons", "gap_analysis", "weak_points": **exactly 3 to 4** items each — punchy, high-signal (one tight sentence each).
-  - "roadmap": **exactly 4** actionable steps (step, title, short description, deadline).
-  - "document_table": Markdown table, **4 rows max**: Document | Required/Recommended | Notes.
-
-${legalNote}
-
-${diplomaAuthorityRule}
+TASK: Deliver a full expert relocation audit. Cross-reference ALL fields: education, profession, experience, languages, funds, legal flags, visa refusal history, apostille readiness, energy level, remote income. Every sentence must be FACTUAL — cite specific visa names, salary ranges, processing times, fee amounts where known.
 
 ${countryNote}
 ${strategyBlock}
+${legalNote}
+${diplomaAuthorityRule}
 
-User profile:
-${JSON.stringify(sanitized, null, 2)}
+OUTPUT STRUCTURE (return exactly 3 countries):
 
-Return JSON:
-- "legal_relocation_blocked": false (Pro always delivers matches; UI handles legal warnings separately)
-- "analysis": string — ONE highly concentrated executive paragraph (timeline, risks, priorities, strategic guidance).
-- "tax_legal_audit": string — Markdown: ### CountryName per country, then **3** concise, information-dense bullets on tax, residency, work-permit, and compliance.
-- "job_market_overview": string — Markdown: **3** concise bullets **per country** on profession demand, visa routes, salary vs cost of living.
-- "document_checklist": string — Markdown: **3** concise bullets **per country** tied to the user's profile.
-- "top_countries": array of exactly 2 objects:
-  - "country_code", "country_name", "match_score" (0-100), "visa_name"
-  - "pros": string[] — **3 to 4** punchy advantages
-  - "cons": string[] — **3 to 4** punchy risks
-  - "gap_analysis": string[] — **3 to 4** punchy profile gaps
-  - "document_table": string — Markdown table, **4 rows max**: Document | Required/Recommended | Notes
-  - "weak_points": string[] — **3 to 4** punchy actionable weak spots
-  - "roadmap": **exactly 4** steps with step, title, short description, deadline
+"analysis": ONE executive paragraph — must include: recommended priority order of 3 countries, critical bottleneck for this profile, realistic timeline to first entry, key financial requirement. Max 5 sentences, zero filler.
+
+"tax_legal_audit": Markdown with ### CountryName header for each of 3 countries.
+Per country: exactly 4 bullets covering:
+- Tax residency trigger (days threshold + rate)
+- Work permit / visa type + processing time
+- Key compliance risk for this citizenship
+- Social security / pension portability note
+
+"job_market_overview": Markdown with ### CountryName header for each of 3 countries.
+Per country: exactly 4 bullets covering:
+- Demand level for this specific profession (high/medium/low + why)
+- Typical gross salary range in local currency + USD equivalent
+- Top 2 hiring platforms or shortage list name
+- Realistic time-to-first-interview for this profile
+
+"document_checklist": Markdown with ### CountryName header for each of 3 countries.
+Per country: exactly 4 bullets covering:
+- Primary visa/permit application document + issuing authority
+- Credential recognition requirement + specific body name
+- Financial proof requirement (amount + format)
+- One profile-specific document risk or gap
+
+Per country in "top_countries" (exactly 3):
+- "pros": exactly 4 punchy advantages (cite specific visa name, salary, timeline)
+- "cons": exactly 4 punchy risks (cite specific barrier, cost, restriction)
+- "gap_analysis": exactly 4 profile gaps with concrete fix for each
+- "weak_points": exactly 4 actionable weak spots with one-line mitigation
+- "roadmap": exactly 5 steps (step, title, description with specifics, deadline in months)
+- "document_table": Markdown table with 5 rows: Document | Required/Recommended | Authority | Timeline
+
+STRICT RULES:
+- Use real visa program names (e.g. "EU Blue Card", "Germany Skilled Immigration Act", "Canada Express Entry")
+- Use real salary figures (e.g. "€45,000–€65,000 gross/year")
+- Use real processing times (e.g. "4–6 months")
+- No generic phrases like "good opportunities" or "favorable conditions"
+- If a fact is uncertain, say "typically" or "circa" — never omit it
 
 ${langInstruction}
 Return ONLY valid JSON, no markdown fences.
-
 ${finalRule}
 
-CRITICAL: You MUST strictly limit your response length. Optimize for data density and omit filler words. You must absolutely ensure the JSON object is completely generated and closed properly within the limit.`;
+CRITICAL: Ensure JSON is fully closed and valid. Prioritize data density over length — every word must carry information.`;
 }
 
 function buildPrompt(
@@ -578,7 +610,7 @@ function countrySchemaForTier(tier: string): Schema {
 
 function maxCountriesForTier(tier: string): number {
   if (tier === "basic") return 5;
-  if (tier === "professional") return 2;
+  if (tier === "professional") return 3;
   return 3;
 }
 
@@ -591,8 +623,9 @@ function responseSchemaForTier(tier: string): Schema {
     top_countries: {
       type: SchemaType.ARRAY,
       items: countrySchemaForTier(tier),
-      minItems: maxCountries,
-      maxItems: maxCountries,
+      ...(tier !== "professional"
+        ? { minItems: maxCountries, maxItems: maxCountries }
+        : { minItems: 3, maxItems: 3 }),
     },
   };
   const required = [
@@ -836,6 +869,12 @@ export async function runGeminiAnalysis(opts: {
     const rawCountries = Array.isArray(parsed.top_countries) ? parsed.top_countries : [];
 
     const maxCountries = maxCountriesForTier(tier);
+
+    if (tier === "professional" && rawCountries.length < 3) {
+      console.warn(
+        `[GEMINI] Pro tier returned only ${rawCountries.length} countries, expected 3`,
+      );
+    }
 
     if (rawCountries.length === 0) {
       logGeminiRawError(new Error("Empty top_countries in Gemini JSON"));
