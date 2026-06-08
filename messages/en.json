@@ -464,6 +464,8 @@
     "showRoadmap": "Show step-by-step plan",
     "hideRoadmap": "Hide plan",
     "roadmapTitle": "Your roadmap",
+"weakPointsLabel": "Weak points & fixes",
+"docTableLabel": "Document requirements",
     "aiSummaryTitle": "AI Expert Summary",
     "questionnaireSkipTitle": "Your profile is already saved",
     "questionnaireSkipBody": "Continue to the AI questionnaire — your previous answers may be reused when applicable.",

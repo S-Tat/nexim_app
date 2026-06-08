@@ -82,12 +82,12 @@ export function CheckoutClient() {
   }
 
   const proFeatures = [
-    { icon: "🌍", title: "3 страны", desc: "С полным анализом каждой" },
-    { icon: "📊", title: "Налоговый аудит", desc: "Ставки, визы, риски" },
-    { icon: "💼", title: "Рынок труда", desc: "Зарплаты, платформы, спрос" },
-    { icon: "📋", title: "Чеклист документов", desc: "Персональный под профиль" },
-    { icon: "🗺️", title: "Роадмап 5 шагов", desc: "С дедлайнами в месяцах" },
-    { icon: "📄", title: "Таблица документов", desc: "Орган, срок, статус" },
+    { icon: "🌍", title: t("proFeature1Title"), desc: t("proFeature1Desc") },
+    { icon: "📊", title: t("proFeature2Title"), desc: t("proFeature2Desc") },
+    { icon: "💼", title: t("proFeature3Title"), desc: t("proFeature3Desc") },
+    { icon: "📋", title: t("proFeature4Title"), desc: t("proFeature4Desc") },
+    { icon: "🗺️", title: t("proFeature5Title"), desc: t("proFeature5Desc") },
+    { icon: "📄", title: t("proFeature6Title"), desc: t("proFeature6Desc") },
   ];
   const summaryLine =
     tier === "basic" ? t("summaryBasic") : t("summaryProfessional");
@@ -115,7 +115,7 @@ export function CheckoutClient() {
         {tier === "professional" ? (
           <div className="mt-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 text-left">
             <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[#fbbf24]">
-              Что входит в тариф Pro
+            {t("proCheckoutTitle")}
             </p>
             <div className="grid grid-cols-2 gap-2">
               {proFeatures.map((f) => (
@@ -132,7 +132,7 @@ export function CheckoutClient() {
               ))}
             </div>
             <p className="mt-3 text-[11px] text-nexim-muted">
-              🔒 Оплата через Stripe · Результат сразу · Одноразовый платёж
+            {t("proCheckoutBadge")}
             </p>
           </div>
         ) : null}

@@ -279,6 +279,8 @@
     "showRoadmap": "Schritt-für-Schritt-Plan anzeigen",
     "hideRoadmap": "Plan ausblenden",
     "roadmapTitle": "Ihr Fahrplan",
+    "weakPointsLabel": "Schwachstellen & Lösungen",
+"docTableLabel": "Dokumentenanforderungen",
     "aiSummaryTitle": "KI-Expertenzusammenfassung",
     "questionnaireSkipTitle": "Your profile is already saved",
     "questionnaireSkipBody": "Weiter zum KI-Fragebogen — vorherige Antworten können nach Bedarf wiederverwendet werden.",
