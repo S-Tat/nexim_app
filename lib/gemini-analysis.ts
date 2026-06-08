@@ -688,7 +688,7 @@ export async function runGeminiAnalysis(opts: {
     /** @google/generative-ai uses maxOutputTokens (not maxTokens). Hard cap: 8192. */
     const base = {
       temperature: 0.35,
-      maxOutputTokens: 8192,
+      maxOutputTokens: 16000,
       responseMimeType: "application/json" as const,
     };
     if (structured) {
