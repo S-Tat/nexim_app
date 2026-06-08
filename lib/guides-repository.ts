@@ -54,3 +54,28 @@ export async function insertGuide(row: Database["public"]["Tables"]["guides"]["I
     throw new Error(`Failed to insert guide: ${error.message}`);
   }
 }
+
+export type GuideSitemapEntry = {
+  lang: string;
+  country: string;
+  profession: string;
+  created_at: string;
+};
+
+export async function fetchAllGuideSitemapEntries(): Promise<GuideSitemapEntry[]> {
+  try {
+    const supabase = createServerClient();
+    const { data, error } = await supabase
+      .from("guides")
+      .select("lang, country, profession, created_at");
+
+    if (error) {
+      console.error("[guides] sitemap fetch error:", error.message);
+      return [];
+    }
+
+    return data ?? [];
+  } catch {
+    return [];
+  }
+}
