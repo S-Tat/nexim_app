@@ -279,6 +279,8 @@
     "showRoadmap": "योजना दिखाएँ",
     "hideRoadmap": "योजना छुपाएँ",
     "roadmapTitle": "आपका रोडमैप",
+    "weakPointsLabel": "कमज़ोर बिंदु और समाधान",
+"docTableLabel": "दस्तावेज़ आवश्यकताएँ",
     "aiSummaryTitle": "AI विशेषज्ञ सारांश",
     "questionnaireSkipTitle": "Your profile is already saved",
     "questionnaireSkipBody": "AI प्रश्नावली जारी रखें — पिछले उत्तर आवश्यकतानुसार पुनः उपयोग किए जा सकते हैं।",
