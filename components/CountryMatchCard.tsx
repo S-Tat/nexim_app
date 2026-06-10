@@ -11,6 +11,7 @@ export function CountryMatchCard({
   onToggle,
   locale,
   showRoadmap = true,
+  showProDetails = false,
 }: {
   country: CountryMatch;
   rank: number;
@@ -19,6 +20,8 @@ export function CountryMatchCard({
   locale: string;
   /** Lite tier: hide step-by-step roadmap affordance */
   showRoadmap?: boolean;
+  /** Pro tier: show weak_points and document_table */
+  showProDetails?: boolean;
 }) {
   const t = useTranslations("dashboard");
   const displayName =
@@ -107,6 +110,21 @@ export function CountryMatchCard({
           </div>
         )}
 
+{showProDetails && country.weak_points && country.weak_points.length > 0 && (
+          <div className="mt-4 rounded-xl border border-purple-500/20 bg-purple-500/[0.05] p-4">
+            <p className="text-xs font-semibold uppercase tracking-wider text-purple-400">
+              {t("weakPointsLabel")}
+            </p>
+            <ul className="mt-2 space-y-1.5">
+              {country.weak_points.map((w, i) => (
+                <li key={i} className="break-words text-xs leading-relaxed text-nexim-text whitespace-normal">
+                  → {w}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         {showRoadmap ? (
           <>
             <button
@@ -144,7 +162,34 @@ export function CountryMatchCard({
             ))}
           </ol>
         </div>
-      )}
-    </div>
-  );
+ )}
+
+ {showProDetails && country.document_table && (
+   <div className="border-t border-white/[0.06] bg-white/[0.02] px-6 py-5">
+     <h4 className="text-sm font-semibold text-white mb-3">{t("docTableLabel")}</h4>
+     <div className="overflow-x-auto">
+       <table className="w-full text-xs text-nexim-text">
+         <tbody>
+           {country.document_table
+             .split("\n")
+             .filter((row) => row.trim() && !row.match(/^\|[-| ]+\|$/))
+             .map((row, i) => (
+               <tr key={i} className={i === 0 ? "text-nexim-muted font-semibold" : "border-t border-white/[0.04]"}>
+                 {row
+                   .split("|")
+                   .filter((_, ci) => ci > 0 && ci < row.split("|").length - 1)
+                   .map((cell, ci) => (
+                     <td key={ci} className="py-2 pr-4 align-top break-words">
+                       {cell.trim()}
+                     </td>
+                   ))}
+               </tr>
+             ))}
+         </tbody>
+       </table>
+     </div>
+   </div>
+ )}
+</div>
+);
 }

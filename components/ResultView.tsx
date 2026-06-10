@@ -249,6 +249,7 @@ export function ResultView() {
               onToggle={() => setExpandedIdx(expandedIdx === i ? null : i)}
               locale={locale}
               showRoadmap={!isLite}
+              showProDetails={isPro}
             />
           </div>
         ))}
