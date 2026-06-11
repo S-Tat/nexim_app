@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { ClarityAnalytics } from "@/components/ClarityAnalytics";
 import { headers } from "next/headers";
 import { NextIntlClientProvider } from "next-intl";
 import {
@@ -131,6 +132,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           </div>
         </NextIntlClientProvider>
         <Analytics />
+        <ClarityAnalytics />
       </body>
     </html>
   );
