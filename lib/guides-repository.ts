@@ -65,16 +65,31 @@ export type GuideSitemapEntry = {
 export async function fetchAllGuideSitemapEntries(): Promise<GuideSitemapEntry[]> {
   try {
     const supabase = createServerClient();
-    const { data, error } = await supabase
-      .from("guides")
-      .select("lang, country, profession, created_at");
+    const pageSize = 1000;
+    const all: GuideSitemapEntry[] = [];
+    let from = 0;
 
-    if (error) {
-      console.error("[guides] sitemap fetch error:", error.message);
-      return [];
+    for (;;) {
+      const { data, error } = await supabase
+        .from("guides")
+        .select("lang, country, profession, created_at")
+        .order("created_at", { ascending: true })
+        .range(from, from + pageSize - 1);
+
+      if (error) {
+        console.error("[guides] sitemap fetch error:", error.message);
+        break;
+      }
+
+      if (!data || data.length === 0) break;
+
+      all.push(...data);
+
+      if (data.length < pageSize) break;
+      from += pageSize;
     }
 
-    return data ?? [];
+    return all;
   } catch {
     return [];
   }
