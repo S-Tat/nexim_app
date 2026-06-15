@@ -41,7 +41,7 @@ export const GUIDE_COUNTRIES = [
   },
   {
     code: "US",
-    slug: "united-states",
+    slug: "usa",
     fallbackName: "United States",
     requirementKeys: [
       "passport_valid",
@@ -52,7 +52,7 @@ export const GUIDE_COUNTRIES = [
   },
   {
     code: "AE",
-    slug: "united-arab-emirates",
+    slug: "uae",
     fallbackName: "United Arab Emirates",
     requirementKeys: [
       "passport_valid",
@@ -107,7 +107,7 @@ export const GUIDE_COUNTRIES = [
   },
   {
     code: "GB",
-    slug: "united-kingdom",
+    slug: "uk",
     fallbackName: "United Kingdom",
     requirementKeys: [
       "passport_valid",
@@ -144,13 +144,13 @@ export const GUIDE_PROFESSIONS = [
   { slug: "it-software", translationKey: "profession_it_software" },
   { slug: "data-science", translationKey: "profession_data_science" },
   { slug: "medicine", translationKey: "profession_medicine" },
-  { slug: "nursing-care", translationKey: "profession_nursing_care" },
+  { slug: "nursing", translationKey: "profession_nursing_care" },
   { slug: "education", translationKey: "profession_education" },
   { slug: "engineering", translationKey: "profession_engineering" },
   { slug: "design", translationKey: "profession_design" },
-  { slug: "marketing-pr", translationKey: "profession_marketing_pr" },
-  { slug: "sales-business", translationKey: "profession_sales_business" },
-  { slug: "product-pm", translationKey: "profession_product_pm" },
+  { slug: "marketing", translationKey: "profession_marketing_pr" },
+  { slug: "sales", translationKey: "profession_sales_business" },
+  { slug: "product-management", translationKey: "profession_product_pm" },
   { slug: "finance", translationKey: "profession_finance" },
   { slug: "entrepreneurship", translationKey: "profession_entrepreneurship" },
   { slug: "hr", translationKey: "profession_hr" },

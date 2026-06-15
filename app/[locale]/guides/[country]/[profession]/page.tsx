@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Link } from "@/navigation";
-import {
+import { 
   GUIDE_COUNTRIES,
   GUIDE_PROFESSIONS,
   getGuideChance,
@@ -25,17 +25,6 @@ type Params = {
 type Props = {
   params: Params;
 };
-
-// Page country slugs differ from the values stored in Supabase for a few countries.
-const COUNTRY_DB_SLUG: Record<string, string> = {
-  "united-states": "usa",
-  "united-arab-emirates": "uae",
-  "united-kingdom": "uk",
-};
-
-function dbCountrySlug(slug: string): string {
-  return COUNTRY_DB_SLUG[slug] ?? slug;
-}
 
 function ProgressRing({ value }: { value: number }) {
   const radius = 76;
@@ -108,8 +97,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const guide = await fetchGuideByParams(
     locale,
-    dbCountrySlug(country.slug),
-    profession.slug,
+    params.country,
+    params.profession,
   );
 
   const pageTitle = guide?.title ?? copy.h1(countryName, professionName);
@@ -149,8 +138,8 @@ export default async function GuidePage({ params }: Props) {
 
   const guide = await fetchGuideByParams(
     locale,
-    dbCountrySlug(country.slug),
-    profession.slug,
+    params.country,
+    params.profession,
   );
 
   return (

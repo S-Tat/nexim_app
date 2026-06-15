@@ -44,7 +44,7 @@ export async function SiteFooter({ locale }: Props) {
     },
     {
       countryCode: "AE",
-      countrySlug: "united-arab-emirates",
+      countrySlug: "uae",
       professionSlug: "finance",
       professionLabel: tQuestionnaire("profession_finance"),
     },
