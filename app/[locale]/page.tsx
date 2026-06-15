@@ -68,6 +68,12 @@ export default async function HomePage({ params }: Props) {
         >
           {tHero("tiersIntroLead")}
         </h2>
+        <div className="mx-auto mb-10 max-w-3xl rounded-2xl border border-[#fbbf24]/25 bg-[#fbbf24]/[0.06] px-6 py-5 text-center backdrop-blur-xl md:mb-14">
+          <p className="text-pretty text-sm leading-relaxed text-amber-50/85 md:text-base">
+            <span className="font-semibold text-white">{tHero("tierAnchorLead")}</span>{" "}
+            {tHero("tierAnchorRest")}
+          </p>
+        </div>
         <div className="mx-auto grid max-w-screen-2xl gap-6 md:grid-cols-3 md:gap-8">
           <NeximFreshNavLink
             href={{ pathname: "/questionnaire", query: { tier: "lite" } }}
