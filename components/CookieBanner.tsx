@@ -27,6 +27,7 @@ export function CookieBanner() {
     } catch {
       /* private browsing / blocked storage */
     }
+    window.dispatchEvent(new CustomEvent("cookie-consent-change")); //
     setVisible(false);
   }
 
