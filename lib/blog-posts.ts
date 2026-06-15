@@ -1211,6 +1211,117 @@ export const blogPosts: BlogPost[] = [
     ctaLabel: "मुफ्त विश्लेषण पाएं →",
     updated: "ब्लॉग · 2026",
   },
+  {
+    locale: "en",
+    slug: "best-countries-arab-professionals-2026",
+    title: "Beyond the Gulf: 5 Top Countries for Arab Professionals to Relocate in 2026",
+    description:
+      "Germany, Canada, the UK, Turkey and Malaysia — the 5 best countries for Gulf and Arab professionals to relocate, work or secure a second residence in 2026, and how AI helps you choose.",
+    intro:
+      "More Gulf and Arab professionals than ever are looking abroad in 2026 — for a stronger career, a second passport, a better future for their children, or simply a Plan B. Countries around the world are competing for skilled talent, and many now offer faster, friendlier routes than you'd expect. The hard part is choosing the right one for your profession, family and goals.",
+    countriesHeading: "5 Top Destinations for Gulf & Arab Professionals",
+    countries: [
+      {
+        name: "Germany",
+        text: "Europe's economic powerhouse is short on skilled workers and actively recruiting. The EU Blue Card and the new Opportunity Card let qualified professionals — especially in medicine, engineering and IT — move even without a job offer first. Free healthcare, strong salaries, a growing Arab community and a clear path to permanent residence.",
+      },
+      {
+        name: "Canada",
+        text: "Few countries make skilled immigration as clear as Canada. Its Express Entry system scores you on skills, experience and language, with a transparent road to permanent residence and citizenship. Healthcare, tech and trades are in high demand, and large, well-established Arab communities make settling in far smoother.",
+      },
+      {
+        name: "United Kingdom",
+        text: "Deep historic ties to the Gulf make the UK a top choice for Arab families and professionals. The Skilled Worker visa opens doors in healthcare, finance and tech, English removes the language barrier, and London offers a ready-made Arab community, mosques, schools and halal everything.",
+      },
+      {
+        name: "Turkey",
+        text: "Culturally close, easy to reach and welcoming, Turkey is one of the most popular destinations for Gulf and Arab families. Residence permits are accessible, real-estate investment can open a route to citizenship, and a large Arab community means you'll feel at home from week one — without giving up a modern, connected lifestyle.",
+      },
+      {
+        name: "Malaysia",
+        text: "For those who want a Muslim-majority country with a low cost of living and a relaxed pace, Malaysia is hard to beat. Its long-stay residence programs welcome professionals and families, English is widely spoken, and Kuala Lumpur offers world-class healthcare and international schools at a fraction of Western prices.",
+      },
+    ],
+    aiHeading: "How AI Helps You Choose the Right Country",
+    aiBody:
+      "Every professional's situation is different — your field, your budget, your family, whether you want a job, a second residence or a new passport. Nexim's AI analyzer weighs your exact profile against current visa routes, demand and costs across dozens of countries, and gives you a personalized shortlist built for you — not generic advice that fits no one.",
+    ctaLabel: "Get My Free Country Match →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "ar",
+    slug: "best-countries-arab-professionals-2026",
+    title: "ما وراء الخليج: أفضل 5 دول للهجرة للمحترفين العرب في 2026",
+    description:
+      "ألمانيا وكندا وبريطانيا وتركيا وماليزيا — أفضل 5 دول للمحترفين الخليجيين والعرب للانتقال أو العمل أو الحصول على إقامة ثانية في 2026، وكيف يساعدك الذكاء الاصطناعي في الاختيار.",
+    intro:
+      "يتطلع عدد متزايد من المحترفين الخليجيين والعرب إلى الخارج في 2026 — بحثاً عن مسار مهني أقوى، أو جواز سفر ثانٍ، أو مستقبل أفضل لأبنائهم، أو ببساطة خطة بديلة. دول العالم تتنافس اليوم على الكفاءات الماهرة، وكثير منها يقدّم مسارات أسرع وأسهل مما تتوقع. التحدي الحقيقي هو اختيار الدولة المناسبة لمهنتك وعائلتك وأهدافك.",
+    countriesHeading: "أفضل 5 وجهات للمحترفين الخليجيين والعرب",
+    countries: [
+      {
+        name: "ألمانيا",
+        text: "أكبر اقتصاد في أوروبا يعاني نقصاً في الكفاءات ويستقطبها بنشاط. تتيح البطاقة الزرقاء الأوروبية وبطاقة الفرص الجديدة للمحترفين المؤهلين — خاصة في الطب والهندسة وتقنية المعلومات — الانتقال حتى دون عرض عمل مسبق. رعاية صحية مجانية، رواتب قوية، جالية عربية متنامية، ومسار واضح للإقامة الدائمة.",
+      },
+      {
+        name: "كندا",
+        text: "قلّ أن تجد دولة تجعل الهجرة الماهرة بهذا الوضوح. يقيّمك نظام Express Entry على المهارات والخبرة واللغة، بمسار شفّاف نحو الإقامة الدائمة والجنسية. الطلب مرتفع على الرعاية الصحية والتقنية والمهن الحرفية، والجاليات العربية الراسخة تجعل الاستقرار أسهل بكثير.",
+      },
+      {
+        name: "المملكة المتحدة",
+        text: "الروابط التاريخية العميقة مع الخليج تجعل بريطانيا خياراً مفضّلاً للعائلات والمحترفين العرب. تأشيرة العامل الماهر تفتح أبواب الصحة والمال والتقنية، والإنجليزية تزيل حاجز اللغة، وتوفّر لندن جالية عربية جاهزة ومساجد ومدارس وكل ما هو حلال.",
+      },
+      {
+        name: "تركيا",
+        text: "قريبة ثقافياً، سهلة الوصول ومرحّبة، تركيا من أكثر الوجهات شعبية بين العائلات الخليجية والعربية. تصاريح الإقامة ميسّرة، والاستثمار العقاري قد يفتح طريقاً للجنسية، والجالية العربية الكبيرة تشعرك بالانتماء من الأسبوع الأول — دون التخلي عن نمط حياة عصري ومتصل.",
+      },
+      {
+        name: "ماليزيا",
+        text: "لمن يريد بلداً ذا أغلبية مسلمة بتكلفة معيشة منخفضة وإيقاع هادئ، يصعب التفوّق على ماليزيا. برامج الإقامة طويلة الأمد ترحّب بالمحترفين والعائلات، والإنجليزية منتشرة، وتقدّم كوالالمبور رعاية صحية ومدارس دولية على مستوى عالمي بجزء بسيط من الأسعار الغربية.",
+      },
+    ],
+    aiHeading: "كيف يساعدك الذكاء الاصطناعي في اختيار الدولة المناسبة",
+    aiBody:
+      "وضع كل محترف مختلف — مجالك، ميزانيتك، عائلتك، وما إذا كنت تريد وظيفة أو إقامة ثانية أو جواز سفر جديداً. يقارن محلل Nexim ملفك الدقيق مع مسارات التأشيرات الحالية والطلب والتكاليف عبر عشرات الدول، ويمنحك قائمة مختصرة مخصصة لك أنت — لا نصائح عامة لا تناسب أحداً.",
+    ctaLabel: "احصل على تطابق الدول المجاني ←",
+    updated: "المدونة · 2026",
+  },
+  {
+    locale: "fa",
+    slug: "best-countries-arab-professionals-2026",
+    title: "فراتر از خلیج: ۵ کشور برتر برای مهاجرت متخصصان عرب در ۲۰۲۶",
+    description:
+      "آلمان، کانادا، بریتانیا، ترکیه و مالزی — ۵ کشور برتر برای متخصصان حوزه خلیج و عرب جهت مهاجرت، کار یا دریافت اقامت دوم در ۲۰۲۶، و اینکه هوش مصنوعی چگونه در انتخاب کمک می‌کند.",
+    intro:
+      "در سال ۲۰۲۶ شمار بیشتری از متخصصان حوزه خلیج و عرب به مهاجرت می‌اندیشند — برای مسیر شغلی قوی‌تر، پاسپورت دوم، آینده‌ای بهتر برای فرزندان، یا صرفاً یک برنامه جایگزین. کشورهای جهان برای جذب نیروهای ماهر رقابت می‌کنند و بسیاری مسیرهایی سریع‌تر و آسان‌تر از تصور شما ارائه می‌دهند. چالش اصلی، انتخاب کشور مناسب برای شغل، خانواده و اهداف شماست.",
+    countriesHeading: "۵ مقصد برتر برای متخصصان حوزه خلیج و عرب",
+    countries: [
+      {
+        name: "آلمان",
+        text: "بزرگ‌ترین اقتصاد اروپا با کمبود نیروی ماهر روبه‌روست و فعالانه جذب می‌کند. کارت آبی اتحادیه اروپا و کارت فرصت جدید به متخصصان واجد شرایط — به‌ویژه در پزشکی، مهندسی و فناوری اطلاعات — اجازه می‌دهد حتی بدون پیشنهاد شغلی قبلی مهاجرت کنند. مراقبت بهداشتی رایگان، حقوق بالا، جامعه عرب رو به رشد و مسیری روشن برای اقامت دائم.",
+      },
+      {
+        name: "کانادا",
+        text: "کمتر کشوری مهاجرت ماهر را به این روشنی ممکن می‌کند. سامانه Express Entry شما را بر اساس مهارت، تجربه و زبان امتیاز می‌دهد، با مسیری شفاف به اقامت دائم و شهروندی. تقاضا برای حوزه سلامت، فناوری و مشاغل فنی بالاست و جوامع عرب جاافتاده، استقرار را بسیار آسان‌تر می‌کنند.",
+      },
+      {
+        name: "بریتانیا",
+        text: "پیوندهای تاریخی عمیق با خلیج، بریتانیا را به انتخابی برتر برای خانواده‌ها و متخصصان عرب تبدیل کرده است. ویزای کارگر ماهر درهای سلامت، مالی و فناوری را می‌گشاید، انگلیسی مانع زبانی را برمی‌دارد و لندن جامعه‌ای عرب آماده، مساجد، مدارس و همه‌چیز حلال را فراهم می‌کند.",
+      },
+      {
+        name: "ترکیه",
+        text: "ترکیه که از نظر فرهنگی نزدیک، دسترس‌پذیر و پذیراست، از محبوب‌ترین مقاصد برای خانواده‌های خلیجی و عرب است. مجوزهای اقامت در دسترس‌اند، سرمایه‌گذاری در املاک می‌تواند راهی به شهروندی بگشاید و جامعه بزرگ عرب باعث می‌شود از همان هفته اول احساس تعلق کنید — بدون چشم‌پوشی از سبک زندگی مدرن.",
+      },
+      {
+        name: "مالزی",
+        text: "برای کسانی که کشوری با اکثریت مسلمان، هزینه زندگی پایین و ریتمی آرام می‌خواهند، مالزی بی‌رقیب است. برنامه‌های اقامت بلندمدت از متخصصان و خانواده‌ها استقبال می‌کنند، انگلیسی رواج دارد و کوالالامپور مراقبت بهداشتی و مدارس بین‌المللی در سطح جهانی را با کسری از قیمت‌های غربی ارائه می‌دهد.",
+      },
+    ],
+    aiHeading: "هوش مصنوعی چگونه در انتخاب کشور مناسب کمک می‌کند",
+    aiBody:
+      "وضعیت هر متخصص متفاوت است — رشته، بودجه، خانواده، و اینکه شغل می‌خواهید یا اقامت دوم یا پاسپورت جدید. تحلیل‌گر هوش مصنوعی Nexim پروفایل دقیق شما را با مسیرهای ویزای فعلی، تقاضا و هزینه‌ها در ده‌ها کشور مقایسه می‌کند و فهرستی کوتاه و شخصی‌سازی‌شده مخصوص شما ارائه می‌دهد — نه توصیه‌های کلی که به درد هیچ‌کس نمی‌خورد.",
+    ctaLabel: "تطبیق رایگان کشورها را دریافت کنید ←",
+    updated: "وبلاگ · ۲۰۲۶",
+  },
 ];
 
 export function getBlogPostsForLocale(locale: string): BlogPost[] {
