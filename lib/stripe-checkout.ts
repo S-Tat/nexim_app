@@ -20,8 +20,8 @@ import type { PaidPlanTier } from "@/lib/assessment-storage";
  */
 
 export const STRIPE_AMOUNT_CENTS: Record<PaidPlanTier, number> = {
-  basic: 1000,
-  professional: 2000,
+  basic: 400,
+  professional: 700,
 };
 
 export const STRIPE_PRODUCT_NAME: Record<PaidPlanTier, string> = {
