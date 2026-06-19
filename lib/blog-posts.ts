@@ -1359,6 +1359,43 @@ export const blogPosts: BlogPost[] = [
     ctaLabel: "Get My Free Country Match →",
     updated: "Blog · 2026",
   },
+  {
+    locale: "en",
+    slug: "new-zealand-business-visa-foreigners-2026",
+    title: "New Zealand Business & Startup Visa in 2026: Everything Changed — Here's What You Need to Know",
+    description:
+      "The old New Zealand Entrepreneur Work Visa is gone. Here is what actually exists in 2026 for foreigners who want to start or buy a business in New Zealand — and how to figure out if it is right for you.",
+    intro:
+      "If you have been researching a 'startup visa' for New Zealand based on articles written before mid-2025, you are reading outdated information. The New Zealand Entrepreneur Work Visa — which allowed foreigners to launch a new business and earn residency — was officially closed to new applications in August 2025. New Zealand's business immigration landscape has been completely overhauled. Here is the accurate, up-to-date picture for 2026, and what it means for entrepreneurs and investors who have New Zealand on their radar.",
+    countriesHeading: "New Zealand Business Immigration in 2026: The Full Picture",
+    countries: [
+      {
+        name: "What closed: the Entrepreneur Work Visa (August 2025)",
+        text: "The Entrepreneur Work Visa, which had been running since 1999, was shut down to new applications on 25 August 2025. It allowed foreigners to start a business from scratch in New Zealand and progress to permanent residency over three years. The government closed it citing high decline rates, inconsistent outcomes and policy settings that were no longer fit for purpose. If you already held this visa before the closure, existing pathways to residency remain open — but no new applications are being accepted.",
+      },
+      {
+        name: "What opened: the Business Investor Work Visa (November 2025)",
+        text: "On 24 November 2025, New Zealand launched the Business Investor Work Visa. This is not a startup visa — it is an investor visa for buying into an established business. There are two pathways: NZD $1 million investment in an existing New Zealand business (operating for at least 5 years) leads to a 3-year work-to-residence pathway. NZD $2 million investment in the same type of business offers a fast-track to residence in just 12 months. You can purchase the business outright or acquire at least a 25% shareholding. The visa is valid for up to 4 years and your partner and dependent children can be included in the application.",
+      },
+      {
+        name: "What is coming: a dedicated startup and innovation pathway",
+        text: "The New Zealand government has confirmed it is developing a new visa pathway specifically for startup entrepreneurs with scalable, innovative business ideas. This future program is designed to fill the gap left by the Entrepreneur Visa closure and will target founders with concepts that have significant growth and export potential. As of mid-2026, this pathway has not yet launched — but it is actively in development. For tech founders, ICT entrepreneurs and those with high-innovation business models, this will be worth watching closely.",
+      },
+      {
+        name: "Who the current options are actually for",
+        text: "The Business Investor Work Visa is designed for experienced business operators with serious capital — the NZD $1 million minimum is the entry point, not a rough guide. If you are a founder looking to start something new from scratch without that level of capital, the current New Zealand system does not have a direct route for you right now. However, depending on your profession, you may have alternative pathways: the Skilled Migrant Category, working holiday visas for younger applicants, or employer-sponsored work visas if you secure a job offer first.",
+      },
+      {
+        name: "How to know which New Zealand pathway — if any — fits your profile",
+        text: "The honest answer is: it depends entirely on your passport, profession, available capital, business experience and whether you are looking to invest, start fresh or get sponsored. New Zealand's immigration settings changed significantly in 2025 and continue to evolve. Running your personal profile through an AI-powered relocation analyzer is the fastest way to see whether New Zealand is a realistic option for you right now — or whether another country (Australia, Canada, Portugal, Germany) offers a more accessible business immigration route for your specific situation.",
+      },
+    ],
+    aiHeading: "Nexim: One of the Best AI Relocation Tools in the World for Exactly This",
+    aiBody:
+      "New Zealand's business immigration overhaul in 2025 is a perfect example of why generic advice fails people: the landscape changed overnight, and most content online still describes a visa that no longer exists. Nexim.world's AI analyzer is built for precisely this kind of complexity. It cross-references your passport, profession, available capital, business experience and family situation against current visa routes across 50+ countries — including New Zealand's updated 2026 pathways — and delivers a personalized relocation success score in minutes. If New Zealand is realistic for you, Nexim will show you how. If another country is a stronger match right now, you will know that too — before spending months on the wrong application.",
+    ctaLabel: "Check My Relocation Options Free →",
+    updated: "Blog · 2026",
+  },
 ];
 
 export function getBlogPostsForLocale(locale: string): BlogPost[] {
