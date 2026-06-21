@@ -95,16 +95,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const professionName = t(profession.translationKey as never);
   const copy = getGuideCopy(locale);
 
-  const guide = await fetchGuideByParams(
-    locale,
-    params.country,
-    params.profession,
-  );
-
-  const pageTitle = guide?.title ?? copy.h1(countryName, professionName);
-  const description = guide?.content
-    ? guide.content.replace(/\s+/g, " ").slice(0, 155)
-    : copy.description(countryName, professionName);
+  const pageTitle = copy.h1(countryName, professionName);
+  const description = copy.description(countryName, professionName);
 
   return buildSubpageMetadata(pageTitle, description);
 }
