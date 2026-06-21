@@ -1618,6 +1618,117 @@ export const blogPosts: BlogPost[] = [
     ctaLabel: "Розрахувати мої шанси безкоштовно →",
     updated: "Блог · 2026",
   },
+  {
+    locale: "en",
+    slug: "australia-pr-points-teachers-2026",
+    title: "Australia PR Points for Teachers in 2026: How Many You Need and How to Get Them",
+    description:
+      "Teachers are a priority occupation for Australian permanent residency in 2026. Here is exactly how the points test works for teachers, how many points you really need, and how to maximize your score.",
+    intro:
+      "Good news for teachers eyeing Australia: in 2026, teaching is one of the few occupations the Subclass 189 visa is being used for almost exclusively, alongside healthcare and social work. Australia faces a genuine teacher shortage, which makes it one of the strongest professions for skilled migration right now. But there is a catch most people miss — the official 65-point minimum is just the entry ticket, not a winning score. Here is the real 2026 picture for teachers.",
+    countriesHeading: "Australia PR for Teachers: The 2026 Points Breakdown",
+    countries: [
+      {
+        name: "The three visa pathways for teachers",
+        text: "Teachers can target three General Skilled Migration visas. The Subclass 189 (Skilled Independent) is permanent, needs no sponsor, and runs purely on points — and in 2026 it is used mostly for teaching, healthcare and social work, which is great news for educators. The Subclass 190 (State Nominated) is also permanent and gives you 5 extra points in exchange for committing to a specific state for two years. The Subclass 491 (Regional) is provisional but adds a huge 15 points and leads to permanent residence after three years in a regional area. Teaching occupations appear on the MLTSSL, which unlocks all three.",
+      },
+      {
+        name: "How many points you really need",
+        text: "Officially you need 65 points to enter the pool. But here is the reality of 2026: competition has pushed actual invitation scores far higher, and for most applicants 65 points is described as the entry ticket to a stadium where everyone else is scoring 90. For teachers, demand helps — but you should still aim to build a profile in the 85-95 point range to be genuinely competitive for the 189. If you are sitting around 65-75, a state nomination (190) or regional pathway (491) is your realistic route, because those add 5 and 15 points respectively.",
+      },
+      {
+        name: "Where your points come from",
+        text: "Points are awarded across several categories: age (the maximum 30 points goes to those aged 25-32, dropping off after 33), English ability (Superior English — IELTS 8 or PTE 79+ in each band — gives 20 points and is described as non-negotiable in 2026), education (a bachelor's degree gives 15, higher qualifications more), and skilled work experience (up to 20 combined points for overseas and Australian experience). Extras include a skilled partner, Australian study, a professional year, and NAATI community-language accreditation. For teachers, English carries extra weight — the language threshold for educators is higher than for many other occupations.",
+      },
+      {
+        name: "The teacher-specific steps you must complete",
+        text: "Teaching is a regulated profession, so there are two assessments most applicants overlook. First, your skills must be assessed by AITSL (the Australian Institute for Teaching and School Leadership) — this confirms your qualifications and experience match Australian standards. Second, you will need provisional teacher registration in your target state (VIT in Victoria, NESA in New South Wales, QCT in Queensland, and so on). In 2026, states like Western Australia and Queensland have become aggressive recruiters, running teacher-focused nomination rounds — so targeting the right state matters as much as your raw score.",
+      },
+      {
+        name: "Is Australia actually your best option as a teacher?",
+        text: "Australia is genuinely one of the strongest destinations for teachers in 2026, but it is not the only one. Canada, the UK and Gulf states also actively recruit educators, each with very different requirements, salaries and timelines. The smartest move before investing months in AITSL assessment and English tests is to compare your specific profile — your qualifications, experience, age and English level — against the real requirements of each country, so you commit to the pathway where you are genuinely most competitive.",
+      },
+    ],
+    aiHeading: "Nexim: Find Your Strongest Teaching Destination in Minutes",
+    aiBody:
+      "Australia's points test is just one country's system — and as a teacher, you may be more competitive somewhere else entirely. Nexim.world is one of the most advanced AI relocation tools in the world for answering exactly that. It analyzes your qualifications, teaching experience, age, English level and family situation against the real 2026 requirements for Australia's skilled migration and 50+ other countries, then gives you a personalized relocation success score in minutes. The Pro analysis ($7) shows your three best-matched destinations with step-by-step roadmaps, real salary data, skills-assessment authorities and document checklists — so you target the country where you are genuinely most likely to succeed, not just the one you happened to read about.",
+    ctaLabel: "Find My Best Country as a Teacher Free →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "en",
+    slug: "new-zealand-skilled-migrant-visa-2026",
+    title: "New Zealand Skilled Migrant Visa in 2026: The 6-Point System Explained (Plus August 2026 Changes)",
+    description:
+      "New Zealand's Skilled Migrant Category now runs on a simple 6-point system — and major changes land in August 2026. Here is exactly how to qualify for NZ residence as a skilled worker.",
+    intro:
+      "New Zealand completely overhauled its main residence pathway: gone is the old 180-point maze, replaced by a clean 6-point system that is far easier to understand. And in August 2026, the rules get even more generous — lower work-experience requirements and new pathways for tradespeople and experienced workers. If you want to live in New Zealand permanently as a skilled worker, this is the route, and here is how it actually works in 2026.",
+    countriesHeading: "New Zealand's Skilled Migrant Category: How It Works in 2026",
+    countries: [
+      {
+        name: "The 6-point system in plain English",
+        text: "To apply for the Skilled Migrant Category Resident Visa, you need exactly 6 skilled resident points. You build them from one primary skill category plus, if needed, points for skilled work experience in New Zealand. The primary categories are: a recognized qualification (a bachelor's degree gives 3 points, a master's 5, a doctorate 6), occupational registration in a regulated profession (nurses, teachers, engineers), or income (a job paying 1.5x the median wage gives 3 points, 2x gives 4, 3x gives 6). If your main category doesn't reach 6, you top up with NZ work experience at 1 point per year.",
+      },
+      {
+        name: "The catch: you need a skilled job offer",
+        text: "This is the single most important thing to understand. Unlike some older versions of the visa, the current Skilled Migrant Category is built for people who already have a skilled job or a genuine job offer from an accredited New Zealand employer. You generally cannot qualify on qualifications alone from overseas — you need that employment link. So the real first step for most applicants is landing a job with an accredited employer, which then unlocks the points pathway. The good news: there is no annual cap and no quota, so if you hit 6 points, you can apply.",
+      },
+      {
+        name: "What changes on 24 August 2026",
+        text: "Major updates take effect on 24 August 2026, and almost all of them help applicants. Required New Zealand work experience drops from up to three years to a maximum of two in most cases. Two new pathways open: a Skilled Work Experience pathway for highly experienced workers (5+ years, including 2 in NZ) even without a formal degree, and a Trades and Technician pathway for tradespeople with Level 4+ qualifications and solid experience. NZ qualifications will earn an extra point versus overseas ones, English test validity extends to 5 years for registered occupations, and wage rules become simpler. Important: if you want to apply under the current rules, submit your EOI before 24 August 2026 — draft EOIs will be deleted that day.",
+      },
+      {
+        name: "The costs and who can apply",
+        text: "You must be aged 55 or younger and meet standard health, character and English requirements. Budget carefully: the base residence application fee is around NZD $6,450 per family, plus an immigration levy, medical exams (NZD $300-450 per person), and other charges. You can include your partner and dependent children aged 24 or younger. The visa grants indefinite residence — you can live, work and study in New Zealand permanently, with a pathway to citizenship over time. For a clear, capped, no-quota system, it is one of the more transparent residence routes in the world.",
+      },
+      {
+        name: "Is New Zealand the right fit for your profile?",
+        text: "New Zealand's 6-point system is refreshingly clear, but it hinges on getting a job offer from an accredited employer — which is the hard part for many overseas applicants. Depending on your profession, age and qualifications, Australia's skilled migration, Canada's Express Entry or another country might offer a faster or more accessible path. Before committing to a New Zealand job hunt, it is worth comparing your actual profile against the real requirements of each country so you focus your energy where your odds are genuinely strongest.",
+      },
+    ],
+    aiHeading: "Nexim: See if New Zealand Is Your Best Route in Minutes",
+    aiBody:
+      "New Zealand's system rewards people with the right qualification, registration or income plus a job offer — but is it actually your best option, or would another country get you there faster? Nexim.world is one of the most advanced AI relocation tools in the world for exactly this question. It analyzes your passport, profession, qualifications, income and family situation against New Zealand's updated 2026 rules and 50+ other countries, then delivers a personalized relocation success score in minutes. The Pro analysis ($7) gives you your three best-matched destinations with step-by-step roadmaps, real salary and wage-threshold data, and document checklists — so you stop guessing and start moving toward the country where you are most likely to succeed.",
+    ctaLabel: "Check My New Zealand Eligibility Free →",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "en",
+    slug: "do-you-need-immigration-lawyer-2026",
+    title: "Do You Need an Immigration Lawyer in 2026? When to Hire One and When to Do It Yourself",
+    description:
+      "Immigration lawyers charge thousands — but you don't always need one. Here is an honest 2026 guide to when hiring an immigration lawyer is worth it and when you can handle your visa yourself.",
+    intro:
+      "Immigration lawyers and agents can charge anywhere from a few hundred to several thousand dollars — and a whole industry depends on you believing you cannot move abroad without them. The honest truth in 2026 is more nuanced: for many straightforward cases you can absolutely do it yourself, while for others a professional genuinely saves you from costly mistakes. Here is how to tell which situation you are in before you spend money.",
+    countriesHeading: "Immigration Lawyer vs DIY: An Honest 2026 Guide",
+    countries: [
+      {
+        name: "When you probably DON'T need a lawyer",
+        text: "Most points-based skilled migration systems are designed to be navigated by applicants directly. If you are applying through a clear, well-documented route — Canada's Express Entry, Australia's SkillSelect, Germany's Opportunity Card, New Zealand's 6-point system — and your case is straightforward (recognized qualifications, clean record, standard documents), the official government websites walk you through every step. You pay only official fees, with no agent commission. Governments build these systems to be self-service, and millions apply successfully on their own each year. Paying thousands for someone to fill in forms you can complete yourself is often wasted money.",
+      },
+      {
+        name: "When a lawyer is genuinely worth it",
+        text: "Some situations carry real risk, and professional help pays for itself. Hire a qualified immigration lawyer if: you have a previous visa refusal or a complex immigration history; you have any criminal record or character issues; your case involves an appeal, waiver, or refusal review; you are pursuing a complex business, investor or talent visa with large sums at stake; your situation has unusual elements (medical conditions, family complications, document gaps); or the stakes are simply too high to risk a self-inflicted error. In these cases, the difference between a grant and a refusal often comes down to how the case is presented — and that expertise is worth paying for.",
+      },
+      {
+        name: "Beware the 'guaranteed visa' trap",
+        text: "Whether you use a professional or not, one rule protects you everywhere: no one can guarantee a visa. Any agent or lawyer promising a 'guaranteed' or 'certain' approval is a major red flag — often an outright scam. Approval depends on your profile and the government's decision, not on insider connections. Unscrupulous agents also sometimes steer clients toward whichever country pays them the highest commission, not the one that fits the client best. If you do hire someone, verify they are properly licensed and registered in the relevant country, and never hand over original documents or large upfront sums without a clear written agreement.",
+      },
+      {
+        name: "How to decide for your specific case",
+        text: "The deciding question is not 'can I afford a lawyer' but 'how complex and high-stakes is my case'. Start by understanding your own situation clearly: which countries you realistically qualify for, which visa routes fit your profile, and whether your case has any of the risk factors above. Once you know that, the lawyer-versus-DIY decision becomes obvious. A clean, straightforward skilled-migration case to a points-based country rarely needs a lawyer. A refused, complex or high-value case usually does. The mistake is paying for expensive help before you even know which category you fall into.",
+      },
+      {
+        name: "Step one is knowing your real options",
+        text: "Before you decide whether to hire anyone, you need clarity on where you actually qualify and which routes are open to you. That is the single most valuable piece of information in the whole process — and the one most people skip, jumping straight to paying an agent. If you know your realistic destinations and pathways first, you can confidently handle the simple cases yourself and only pay for professional help where it truly adds value.",
+      },
+    ],
+    aiHeading: "Nexim: Know Your Real Options Before You Pay Anyone",
+    aiBody:
+      "The most expensive immigration mistake is paying an agent before you even know which countries you qualify for — or letting one steer you toward the destination that pays them the biggest commission. Nexim.world is one of the most advanced AI relocation tools in the world for getting that clarity independently. It analyzes your passport, profession, experience, finances and family situation against the real 2026 requirements of 50+ countries and gives you a personalized relocation success score in minutes — no agent, no bias, no commission. The Pro analysis ($7) shows your three best-matched countries with step-by-step roadmaps, real costs and document checklists, so you can handle the straightforward routes yourself and only pay a lawyer when your case genuinely needs one.",
+    ctaLabel: "See Where I Qualify Free →",
+    updated: "Blog · 2026",
+  },
 ];
 
 export function getBlogPostsForLocale(locale: string): BlogPost[] {
