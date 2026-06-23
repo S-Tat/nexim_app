@@ -2,6 +2,7 @@ import { LegalArticle, LegalBlock } from "@/components/LegalArticle";
 import { ArticleConversionLayout } from "@/components/ConversionBanner";
 import { Link } from "@/navigation";
 import type { BlogPost } from "@/lib/blog-posts";
+import { getBlogPostsForLocale } from "@/lib/blog-posts";
 import { isRtlLocale } from "@/routing";
 
 const GLASS_CARD =
@@ -13,6 +14,9 @@ type Props = {
 
 export function BlogArticleBody({ post }: Props) {
   const rtl = isRtlLocale(post.locale);
+  const relatedPosts = getBlogPostsForLocale(post.locale)
+    .filter((p) => p.slug !== post.slug)
+    .slice(0, 3);
 
   return (
     <ArticleConversionLayout>
@@ -49,12 +53,32 @@ export function BlogArticleBody({ post }: Props) {
 
       <div className="border-t border-white/[0.08] pt-10">
         <Link
-          href="/"
+          href="/questionnaire?tier=lite"
           className={`inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#fbbf24] via-amber-300 to-[#f59e0b] px-8 py-3.5 text-sm font-bold text-[#030712] shadow-[0_0_32px_-8px_rgba(251,191,36,0.5)] transition hover:brightness-110${rtl ? " rtl:font-arabic" : ""}`}
         >
           {post.ctaLabel}
         </Link>
       </div>
+
+      {relatedPosts.length > 0 && (
+        <section className="border-t border-white/[0.08] pt-10">
+          <h2 className={`text-base font-semibold text-white md:text-lg${rtl ? " rtl:font-arabic" : ""}`}>
+            {rtl ? "مقالات ذات صلة" : "Read more"}
+          </h2>
+          <ul className="mt-4 space-y-3">
+            {relatedPosts.map((related) => (
+              <li key={related.slug}>
+                <Link
+                  href={`/blog/${related.slug}`}
+                  className={`text-sm text-[#fbbf24] underline-offset-4 hover:underline${rtl ? " rtl:font-arabic" : ""}`}
+                >
+                  {related.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </LegalArticle>
     </ArticleConversionLayout>
   );
