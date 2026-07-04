@@ -8,9 +8,15 @@ const nextConfig = {
       destination: `/${locale}/questionnaire`,
       permanent: false,
     }));
+    const guideToGuides = locales.map((locale) => ({
+      source: `/${locale}/guide/:path*`,
+      destination: `/${locale}/guides/:path*`,
+      permanent: true,
+    }));
     return [
       { source: "/assessment", destination: "/en/questionnaire", permanent: false },
       ...perLocale,
+      ...guideToGuides,
     ];
   },
   experimental: {
