@@ -5,6 +5,8 @@ import { locales } from "@/routing";
 
 const BASE_URL = "https://nexim.world";
 
+export const dynamic = "force-dynamic";
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const languageList = [...locales];
