@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Link } from "@/navigation";
+import { FeedbackForm } from "@/components/FeedbackForm";
 import {
   GUIDE_COUNTRIES,
   GUIDE_PROFESSIONS,
@@ -13,6 +14,7 @@ import {
   getGuideRequirementList,
 } from "@/lib/programmatic-guides";
 import { buildSubpageMetadata } from "@/lib/page-metadata";
+import { getSiteUrl } from "@/lib/seo";
 import { isRtlLocale, locales, type Locale } from "@/routing";
 
 type Params = {
@@ -126,6 +128,7 @@ export default async function GuidePage({ params }: Props) {
   const requirements = getGuideRequirementList(locale, country.slug);
   const chance = getGuideChance(country.slug, profession.slug);
   const rtl = isRtlLocale(locale);
+  const pageUrl = `${getSiteUrl()}/${locale}/guide/${params.country}/${params.profession}`;
 
   return (
     <section className="relative flex flex-1 flex-col px-6 pb-20 pt-12 md:px-10 md:pb-28 md:pt-16">
@@ -162,6 +165,7 @@ export default async function GuidePage({ params }: Props) {
                 </li>
               ))}
             </ul>
+            <FeedbackForm pageUrl={pageUrl} className="mt-8 border-t border-white/[0.08] pt-8" />
           </div>
 
           <div className="flex flex-col gap-6">
