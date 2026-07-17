@@ -139,7 +139,8 @@
     "impressumLink": "Impressum",
     "legalNavLabel": "法律信息",
     "termsPrivacyCombined": "条款与隐私",
-    "disclaimer": "Nexim 采用机器学习算法实时分析各国移民法规与劳动力市场，向您提供成功概率的统计预估，帮助您节省数百小时的自助法律检索。结果为专家级评估，而非法律保证。"
+    "disclaimer": "Nexim 采用机器学习算法实时分析各国移民法规与劳动力市场，向您提供成功概率的统计预估，帮助您节省数百小时的自助法律检索。结果为专家级评估，而非法律保证。",
+    "footerLegalDisclaimer": "Nexim 基于 AI 分析提供自动化的一般信息，不构成法律、税务或移民建议。有关您个人情况的决定，请咨询合格的律师或持牌移民顾问。"
   },
   "legal": {
     "termsTitle": "服务条款",

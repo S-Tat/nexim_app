@@ -139,7 +139,8 @@
     "impressumLink": "Impressum",
     "legalNavLabel": "Rechtliches",
     "termsPrivacyCombined": "AGB & Datenschutz",
-    "disclaimer": "Nexim nutzt Machine-Learning-Algorithmen, um Migrationsregeln und Arbeitsmärkte in Echtzeit zu analysieren. Wir liefern eine statistische Erfolgswahrscheinlichkeit und sparen Ihnen Hunderte Stunden eigener Recherche. Das Ergebnis ist eine Experteneinschätzung und keine rechtliche Garantie."
+    "disclaimer": "Nexim nutzt Machine-Learning-Algorithmen, um Migrationsregeln und Arbeitsmärkte in Echtzeit zu analysieren. Wir liefern eine statistische Erfolgswahrscheinlichkeit und sparen Ihnen Hunderte Stunden eigener Recherche. Das Ergebnis ist eine Experteneinschätzung und keine rechtliche Garantie.",
+    "footerLegalDisclaimer": "Nexim stellt automatisierte, allgemeine Informationen auf Basis einer KI-Analyse bereit und stellt keine Rechts-, Steuer- oder Migrationsberatung dar. Für Entscheidungen zu Ihrem individuellen Fall wenden Sie sich bitte an einen zugelassenen Rechtsanwalt oder eine qualifizierte Beratungsstelle."
   },
   "legal": {
     "termsTitle": "Nutzungsbedingungen",

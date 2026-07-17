@@ -107,7 +107,11 @@ export async function SiteFooter({ locale }: Props) {
           </div>
         </div>
 
-        <p className="mt-6 flex justify-center md:justify-start">
+        <p className="mt-6 text-xs leading-relaxed text-nexim-muted">
+          {t("footerLegalDisclaimer")}
+        </p>
+
+        <p className="mt-4 flex justify-center md:justify-start">
           <Link
             href="/terms"
             className="text-[10px] text-white/35 transition hover:text-white/55 hover:underline underline-offset-2"

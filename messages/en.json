@@ -139,7 +139,8 @@
     "impressumLink": "Impressum",
     "legalNavLabel": "Legal",
     "termsPrivacyCombined": "Terms & Privacy",
-    "disclaimer": "Nexim uses machine-learning algorithms to analyze immigration rules and labor markets in real time. We provide a statistical probability of success, helping you save hundreds of hours of independent legal research. The result is an expert estimate, not a legal guarantee."
+    "disclaimer": "Nexim uses machine-learning algorithms to analyze immigration rules and labor markets in real time. We provide a statistical probability of success, helping you save hundreds of hours of independent legal research. The result is an expert estimate, not a legal guarantee.",
+    "footerLegalDisclaimer": "Nexim provides automated, general information based on AI analysis. It does not constitute legal, tax, or immigration advice. For decisions about your individual case, please consult a qualified lawyer or licensed immigration advisor."
   },
   "legal": {
     "termsTitle": "Terms of Service",
