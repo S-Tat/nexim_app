@@ -256,17 +256,46 @@ export function ResultView() {
       </div>
 
       {isLite ? (
-        <div className={`mt-8 ${glass} flex flex-col items-center gap-4 p-6 text-center md:flex-row md:text-left`}>
-          <div className="flex-1">
-            <p className="text-sm font-semibold text-white">{t("liteRoadmapLocked")}</p>
-            <p className="mt-1 text-xs text-nexim-muted">{t("liteRoadmapLockedHint")}</p>
+        <div
+          className={`mt-8 rounded-2xl border border-[#fbbf24]/35 bg-gradient-to-br from-[#fbbf24]/10 via-white/[0.04] to-white/[0.02] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_0_48px_-16px_rgba(251,191,36,0.35)] backdrop-blur-xl md:p-8`}
+        >
+          <h2 className="font-display text-xl font-semibold text-white md:text-2xl">
+            {t("liteRoadmapLocked")}
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-nexim-muted">
+            {t("liteRoadmapLockedHint")}
+          </p>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+            {(
+              [
+                "liteUpsellBullet1",
+                "liteUpsellBullet2",
+                "liteUpsellBullet3",
+                "liteUpsellBullet4",
+              ] as const
+            ).map((key) => (
+              <li
+                key={key}
+                className="flex items-start gap-3 rounded-xl border border-white/[0.06] bg-black/20 px-4 py-3 text-sm text-nexim-text"
+              >
+                <span
+                  className="mt-0.5 inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-[#fbbf24]/15 text-xs font-bold text-[#fbbf24]"
+                  aria-hidden
+                >
+                  ✓
+                </span>
+                <span>{t(key)}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-7">
+            <Link
+              href={{ pathname: "/checkout", query: { tier: "professional" } }}
+              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#fbbf24] via-amber-300 to-[#f59e0b] px-7 py-3 text-sm font-bold text-[#030712] shadow-[0_0_32px_-8px_rgba(251,191,36,0.5)] transition hover:brightness-110"
+            >
+              {t("upgradeToPro")}
+            </Link>
           </div>
-          <Link
-            href={{ pathname: "/checkout", query: { tier: "professional" } }}
-            className="shrink-0 rounded-full bg-gradient-to-r from-[#fbbf24] via-amber-300 to-[#f59e0b] px-5 py-2.5 text-sm font-bold text-[#030712] shadow-[0_0_32px_-8px_rgba(251,191,36,0.5)] transition hover:brightness-110"
-          >
-            {t("upgradeToPro")}
-          </Link>
         </div>
       ) : null}
 
