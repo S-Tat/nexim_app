@@ -288,12 +288,24 @@ export function ResultView() {
               </li>
             ))}
           </ul>
-          <div className="mt-7">
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Link
+              href={{ pathname: "/checkout", query: { tier: "basic" } }}
+              className="inline-flex flex-col items-center justify-center rounded-full bg-gradient-to-r from-[#fbbf24] via-amber-300 to-[#f59e0b] px-7 py-3 text-center shadow-[0_0_32px_-8px_rgba(251,191,36,0.5)] transition hover:brightness-110 sm:items-start"
+            >
+              <span className="text-sm font-bold text-[#030712]">{t("upsellBasicCta")}</span>
+              <span className="mt-0.5 text-[11px] font-medium text-[#030712]/70">
+                {t("upsellBasicMeta")}
+              </span>
+            </Link>
             <Link
               href={{ pathname: "/checkout", query: { tier: "professional" } }}
-              className="inline-flex items-center justify-center rounded-full bg-gradient-to-r from-[#fbbf24] via-amber-300 to-[#f59e0b] px-7 py-3 text-sm font-bold text-[#030712] shadow-[0_0_32px_-8px_rgba(251,191,36,0.5)] transition hover:brightness-110"
+              className="inline-flex flex-col items-center justify-center rounded-full border border-[#fbbf24]/50 bg-[#fbbf24]/10 px-7 py-3 text-center transition hover:bg-[#fbbf24]/20 sm:items-start"
             >
-              {t("upgradeToPro")}
+              <span className="text-sm font-bold text-[#fbbf24]">{t("upsellProCta")}</span>
+              <span className="mt-0.5 text-[11px] font-medium text-[#fbbf24]/75">
+                {t("upsellProMeta")}
+              </span>
             </Link>
           </div>
         </div>
