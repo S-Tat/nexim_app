@@ -624,6 +624,7 @@
       "aiAnalyzingHint": "Наша система обрабатывает результат, это займет от 10 до 30 секунд, подождите.",
       "selectPlaceholder": "Выберите…",
       "basicCitizenshipLabel": "Гражданство (страна паспорта)",
+      "destinationCountryLabel": "В какую страну вы хотите переехать?",
       "basicResidenceLabel": "Страна, где вы сейчас проживаете",
       "basicNativeLanguageLabel": "Родной язык",
       "basicNativeLanguagePlaceholder": "например Русский, English",

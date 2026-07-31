@@ -439,6 +439,7 @@
       "aiAnalyzingHint": "سیستم ما در حال پردازش نتیجه است. معمولاً ۱۰ تا ۳۰ ثانیه طول می‌کشد — لطفاً صبر کنید.",
       "selectPlaceholder": "انتخاب کنید…",
       "basicCitizenshipLabel": "تابعیت (کشور صدور پاسپورت)",
+      "destinationCountryLabel": "به کدام کشور می‌خواهید مهاجرت کنید؟",
       "basicResidenceLabel": "کشوری که اکنون در آن زندگی می‌کنید",
       "basicNativeLanguageLabel": "زبان مادری",
       "basicNativeLanguagePlaceholder": "مثلاً فارسی، English",

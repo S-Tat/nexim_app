@@ -439,6 +439,7 @@
       "aiAnalyzingHint": "Unser System verarbeitet Ihr Ergebnis. Das dauert in der Regel 10–30 Sekunden — bitte warten.",
       "selectPlaceholder": "Auswählen…",
       "basicCitizenshipLabel": "Staatsangehörigkeit (Passland)",
+      "destinationCountryLabel": "In welches Land möchten Sie auswandern?",
       "basicResidenceLabel": "Land, in dem Sie derzeit leben",
       "basicNativeLanguageLabel": "Muttersprache",
       "basicNativeLanguagePlaceholder": "z. B. Deutsch, Englisch",

@@ -439,6 +439,7 @@
       "aiAnalyzingHint": "हमारी प्रणाली परिणाम संसाधित कर रही है। आमतौर पर 10–30 सेकंड लगते हैं — कृपया प्रतीक्षा करें।",
       "selectPlaceholder": "चुनें…",
       "basicCitizenshipLabel": "नागरिकता (पासपोर्ट जारी करने वाला देश)",
+      "destinationCountryLabel": "आप किस देश में जाना चाहते हैं?",
       "basicResidenceLabel": "वह देश जहाँ आप अभी रहते हैं",
       "basicNativeLanguageLabel": "मातृभाषा",
       "basicNativeLanguagePlaceholder": "जैसे हिन्दी, English",

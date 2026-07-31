@@ -68,6 +68,8 @@ export type NeximAssessmentData = {
   paymentConfirmed?: boolean;
   reportLocale?: string;
   planTier?: PlanTier;
+  destinationCountryCode?: string;
+  destinationCountryName?: string;
 };
 
 function str(data: Record<string, unknown>, key: string): string | undefined {
@@ -155,6 +157,8 @@ export function parseAssessmentData(
       paymentConfirmed: bool(data, "paymentConfirmed"),
       reportLocale: str(data, "reportLocale"),
       planTier,
+      destinationCountryCode: str(data, "destinationCountryCode"),
+      destinationCountryName: str(data, "destinationCountryName"),
     };
   } catch {
     return null;

@@ -39,10 +39,14 @@ import {
   answersFromAssessmentData,
   countStoredAnsweredSteps,
   firstUnansweredQuestionIndex,
+  firstUnansweredSingleQuestionIndex,
   getQuestionsForTier,
+  getSingleCountryQuestions,
   isQuestionAnswered,
+  isSingleQuestionAnswered,
   stageForQuestionIndex,
   type QuestionAnswers,
+  type QuestionId,
 } from "@/lib/questionnaire-questions";
 
 /** Stored values; labels = assessment.basic_relocate_{value} */
@@ -113,7 +117,7 @@ function normalizeTierFromUrl(raw: string | null): PlanTier | null {
   return null;
 }
 
-function hasStoredResultForTier(expectedTier: PlanTier): boolean {
+function hasStoredResultForTier(expectedTier: string): boolean {
   if (typeof window === "undefined") return false;
   try {
     const raw = window.sessionStorage.getItem(NEXIM_STRATEGY_RESULT_KEY);
@@ -151,6 +155,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
     () => normalizeTierFromUrl(searchParams.get("tier")),
     [searchParams],
   );
+  const singleMode = searchParams.get("mode") === "single";
   const [tier, setTier] = useState<PlanTier | null>(null);
 
   useEffect(() => {
@@ -172,10 +177,21 @@ export function AssessmentWizard({ countryOptions }: Props) {
   }, [urlTier]);
 
   const questions = useMemo(
-    () => (tier ? getQuestionsForTier(tier) : []),
-    [tier],
+    () =>
+      singleMode
+        ? getSingleCountryQuestions()
+        : tier
+          ? getQuestionsForTier(tier)
+          : [],
+    [singleMode, tier],
   );
   const totalSteps = questions.length;
+
+  const answeredCheck = useCallback(
+    (id: QuestionId, a: QuestionAnswers) =>
+      singleMode ? isSingleQuestionAnswered(id, a) : isQuestionAnswered(id, a),
+    [singleMode],
+  );
 
   /** 0-based index into `questions` — never use raw indices for answer lookup. */
   const [currentStep, setCurrentStep] = useState(0);
@@ -184,6 +200,8 @@ export function AssessmentWizard({ countryOptions }: Props) {
   const [paymentGateReady, setPaymentGateReady] = useState<boolean | null>(null);
 
   const [citizenship, setCitizenship] = useState<CountryOption | null>(null);
+  const [destinationCountry, setDestinationCountry] =
+    useState<CountryOption | null>(null);
   const [residence, setResidence] = useState<CountryOption | null>(null);
   const [nativeLanguage, setNativeLanguage] = useState("");
   const [unresolvedLegalViolations, setUnresolvedLegalViolations] = useState("");
@@ -216,6 +234,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
     () => ({
       ageYears,
       citizenship,
+      destinationCountry,
       passportValidity,
       educationLevel,
       englishLevel,
@@ -240,6 +259,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
     [
       ageYears,
       citizenship,
+      destinationCountry,
       passportValidity,
       educationLevel,
       englishLevel,
@@ -340,6 +360,19 @@ export function AssessmentWizard({ countryOptions }: Props) {
         });
       }
     }
+    if (stored.destinationCountryCode) {
+      const dm = countryOptions.find(
+        (o) =>
+          o.code.toUpperCase() === stored.destinationCountryCode!.toUpperCase(),
+      );
+      if (dm) setDestinationCountry(dm);
+      else if (stored.destinationCountryName) {
+        setDestinationCountry({
+          code: stored.destinationCountryCode,
+          name: stored.destinationCountryName,
+        });
+      }
+    }
     if (stored.residenceCode) {
       const rm = countryOptions.find(
         (o) => o.code.toUpperCase() === stored.residenceCode!.toUpperCase(),
@@ -374,7 +407,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
   }, [countryOptions]);
 
   useEffect(() => {
-    if (!tier) return;
+    if (!singleMode && !tier) return;
     resumeHandledRef.current = false;
     setResumeGateReady(false);
     const stored =
@@ -383,7 +416,36 @@ export function AssessmentWizard({ countryOptions }: Props) {
         : null;
     const snapshot =
       typeof window !== "undefined" ? readAssessmentCompletion() : null;
-    const storedAnswerCount = countStoredAnsweredSteps(stored, tier);
+
+    if (singleMode) {
+      const baseMap = answersFromAssessmentData(stored);
+      const answerMap: QuestionAnswers = {
+        ...baseMap,
+        ...(stored?.destinationCountryCode
+          ? {
+              destinationCountry: {
+                code: stored.destinationCountryCode,
+                name:
+                  stored.destinationCountryName ?? stored.destinationCountryCode,
+              },
+            }
+          : {}),
+      };
+      const storedAnswerCount = getSingleCountryQuestions().filter((q) =>
+        isSingleQuestionAnswered(q.id, answerMap),
+      ).length;
+      const isCompleted = storedAnswerCount >= totalSteps;
+      if (isCompleted) {
+        setResumeGateReady(true);
+        return;
+      }
+      const idx = firstUnansweredSingleQuestionIndex(answerMap);
+      if (idx !== -1) setCurrentStep(idx);
+      setResumeGateReady(true);
+      return;
+    }
+
+    const storedAnswerCount = countStoredAnsweredSteps(stored, tier!);
     const snapshotMatchesTier = snapshot?.tier === tier;
     const isCompleted =
       storedAnswerCount >= totalSteps ||
@@ -402,16 +464,21 @@ export function AssessmentWizard({ countryOptions }: Props) {
       const answerMap: QuestionAnswers = tierChanged
         ? answersRef.current
         : answersFromAssessmentData(stored);
-      const idx = firstUnansweredQuestionIndex(tier, answerMap);
+      const idx = firstUnansweredQuestionIndex(tier!, answerMap);
       if (idx !== -1) {
         setCurrentStep(idx);
       }
     }
 
     setResumeGateReady(true);
-  }, [tier, totalSteps]);
+  }, [tier, totalSteps, singleMode]);
 
   useEffect(() => {
+    if (singleMode) {
+      setPaymentComplete(true);
+      setPaymentGateReady(true);
+      return;
+    }
     if (!tier) return;
     if (typeof window === "undefined") return;
     setPaymentGateReady(null);
@@ -433,16 +500,51 @@ export function AssessmentWizard({ countryOptions }: Props) {
     setActiveTier(tier);
     setPaymentComplete(true);
     setPaymentGateReady(true);
-  }, [tier, router]);
+  }, [tier, router, singleMode]);
 
   useEffect(() => {
-    if (!tier || paymentGateReady !== true) return;
+    if (paymentGateReady !== true) return;
+    if (!singleMode && !tier) return;
     if (resumeHandledRef.current) return;
     const stored = parseAssessmentData(
       window.sessionStorage.getItem(NEXIM_ASSESSMENT_STORAGE_KEY),
     );
     const snapshot = readAssessmentCompletion();
-    const storedAnswerCount = countStoredAnsweredSteps(stored, tier);
+
+    if (singleMode) {
+      const baseMap = answersFromAssessmentData(stored);
+      const answerMap: QuestionAnswers = {
+        ...baseMap,
+        ...(stored?.destinationCountryCode
+          ? {
+              destinationCountry: {
+                code: stored.destinationCountryCode,
+                name:
+                  stored.destinationCountryName ?? stored.destinationCountryCode,
+              },
+            }
+          : {}),
+      };
+      const storedAnswerCount = getSingleCountryQuestions().filter((q) =>
+        isSingleQuestionAnswered(q.id, answerMap),
+      ).length;
+      const isCompleted = storedAnswerCount >= totalSteps;
+      if (!isCompleted) {
+        setResumeGateReady(true);
+        return;
+      }
+      resumeHandledRef.current = true;
+      if (hasStoredResultForTier("single")) {
+        setResumeGateReady(true);
+        router.replace({ pathname: "/result" });
+        return;
+      }
+      setResumeGateReady(true);
+      void runAnalysisAndRoute();
+      return;
+    }
+
+    const storedAnswerCount = countStoredAnsweredSteps(stored, tier!);
     const snapshotMatchesTier = snapshot?.tier === tier;
     const isCompleted =
       storedAnswerCount >= totalSteps ||
@@ -455,10 +557,10 @@ export function AssessmentWizard({ countryOptions }: Props) {
 
     resumeHandledRef.current = true;
 
-    if (hasStoredResultForTier(tier)) {
+    if (hasStoredResultForTier(tier!)) {
       setResumeGateReady(true);
       saveAssessmentCompletion({
-        tier,
+        tier: tier!,
         answerCount: Math.max(totalSteps, snapshot?.answerCount ?? storedAnswerCount),
         completed: true,
         nextStage: "result",
@@ -471,7 +573,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
     setResumeGateReady(true);
     void runAnalysisAndRoute();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paymentGateReady, router, tier, totalSteps]);
+  }, [paymentGateReady, router, tier, totalSteps, singleMode]);
 
   const buildData = useCallback((): NeximAssessmentData | null => {
     const prev =
@@ -481,9 +583,18 @@ export function AssessmentWizard({ countryOptions }: Props) {
           )
         : null;
 
-    const countryCode = "AI_SUGGEST";
+    const countryCode =
+      singleMode && destinationCountry?.code
+        ? destinationCountry.code
+        : "AI_SUGGEST";
 
-    if (tier === "lite") {
+    if (singleMode) {
+      const hasAnySingle =
+        Boolean(destinationCountry) ||
+        Boolean(citizenship) ||
+        Boolean(prev);
+      if (!hasAnySingle) return null;
+    } else if (tier === "lite") {
       const hasAnyLite =
         Boolean(citizenship) ||
         isQuestionAnswered("ageYears", answers) ||
@@ -509,7 +620,17 @@ export function AssessmentWizard({ countryOptions }: Props) {
     const base: NeximAssessmentData = {
       ...prev,
       countryCode,
-      countryName: undefined,
+      countryName: singleMode
+        ? (destinationCountry?.name ??
+          prev?.destinationCountryName ??
+          prev?.countryName)
+        : undefined,
+      destinationCountryCode: singleMode
+        ? (destinationCountry?.code ?? prev?.destinationCountryCode)
+        : prev?.destinationCountryCode,
+      destinationCountryName: singleMode
+        ? (destinationCountry?.name ?? prev?.destinationCountryName)
+        : prev?.destinationCountryName,
       citizenshipCode: citizenship?.code ?? prev?.citizenshipCode,
       citizenshipName: citizenship?.name ?? prev?.citizenshipName,
       residenceCode: residence?.code ?? prev?.residenceCode,
@@ -563,6 +684,8 @@ export function AssessmentWizard({ countryOptions }: Props) {
   }, [
     answers,
     citizenship,
+    destinationCountry,
+    singleMode,
     residence,
     nativeLanguage,
     tier,
@@ -597,10 +720,14 @@ export function AssessmentWizard({ countryOptions }: Props) {
   }
 
   const canAnswerCurrent =
-    currentQuestion != null &&
-    isQuestionAnswered(currentQuestion.id, answers);
+    currentQuestion != null && answeredCheck(currentQuestion.id, answers);
 
   function surveyComplete(): boolean {
+    if (singleMode) {
+      return getSingleCountryQuestions().every((q) =>
+        isSingleQuestionAnswered(q.id, answers),
+      );
+    }
     if (!tier) return false;
     return getQuestionsForTier(tier).every((q) =>
       isQuestionAnswered(q.id, answers),
@@ -608,7 +735,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
   }
 
   function goNext() {
-    if (!currentQuestion || !isQuestionAnswered(currentQuestion.id, answers)) {
+    if (!currentQuestion || !answeredCheck(currentQuestion.id, answers)) {
       return;
     }
     persistPartial();
@@ -643,17 +770,18 @@ export function AssessmentWizard({ countryOptions }: Props) {
   }
 
   async function runAnalysisAndRoute() {
-    if (!tier) return;
+    if (!singleMode && !tier) return;
     const full = buildData();
     if (!full) {
       setSubmitError(t("questionnaireSaveFailed"));
       return;
     }
+    const analysisTier = singleMode ? "single" : tier!;
     setSubmitError(null);
     setSubmittingAi(true);
     console.log("[ANALYZE] POST /api/analyze payload", {
       locale,
-      tier,
+      tier: analysisTier,
       answerKeys: Object.keys(full as Record<string, unknown>).length,
     });
     try {
@@ -662,19 +790,21 @@ export function AssessmentWizard({ countryOptions }: Props) {
           ...(full as unknown as Record<string, unknown>),
         },
         locale,
-        tier,
+        tier: analysisTier,
       });
       if (typeof window !== "undefined") {
         window.sessionStorage.setItem(NEXIM_STRATEGY_RESULT_KEY, JSON.stringify(res));
-        window.sessionStorage.setItem(NEXIM_RESULT_TIER_KEY, tier);
+        window.sessionStorage.setItem(NEXIM_RESULT_TIER_KEY, analysisTier);
       }
-      saveAssessmentCompletion({
-        tier,
-        answerCount: totalSteps,
-        completed: true,
-        nextStage: "result",
-        updatedAt: new Date().toISOString(),
-      });
+      if (tier) {
+        saveAssessmentCompletion({
+          tier,
+          answerCount: totalSteps,
+          completed: true,
+          nextStage: "result",
+          updatedAt: new Date().toISOString(),
+        });
+      }
       router.push({ pathname: "/result" });
     } catch (e) {
       const msg = e instanceof Error ? e.message : "Analysis failed";
@@ -822,6 +952,9 @@ export function AssessmentWizard({ countryOptions }: Props) {
               setAgeYears={setAgeYears}
               citizenship={citizenship}
               setCitizenship={setCitizenship}
+              destinationCountry={destinationCountry}
+              setDestinationCountry={setDestinationCountry}
+              singleMode={singleMode}
               passportValidity={passportValidity}
               setPassportValidity={setPassportValidity}
               educationLevel={educationLevel}

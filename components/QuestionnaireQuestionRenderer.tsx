@@ -16,6 +16,10 @@ type Props = {
   setAgeYears: (v: string) => void;
   citizenship: CountryOption | null;
   setCitizenship: (v: CountryOption | null) => void;
+  destinationCountry: CountryOption | null;
+  setDestinationCountry: (v: CountryOption | null) => void;
+  /** When true, professionMain is profession-only (no education/LinkedIn on same step). */
+  singleMode?: boolean;
   passportValidity: string;
   setPassportValidity: (v: string) => void;
   educationLevel: string;
@@ -78,6 +82,9 @@ export function QuestionnaireQuestionRenderer({
   setAgeYears,
   citizenship,
   setCitizenship,
+  destinationCountry,
+  setDestinationCountry,
+  singleMode = false,
   passportValidity,
   setPassportValidity,
   educationLevel,
@@ -161,6 +168,23 @@ export function QuestionnaireQuestionRenderer({
             options={countryOptions}
             selected={citizenship}
             onSelectedChange={setCitizenship}
+          />
+        </div>
+      );
+    case "destinationCountry":
+      return (
+        <div>
+          <label
+            htmlFor="assessment-destination"
+            className="block max-w-full break-words text-base font-medium text-white"
+          >
+            {t("destinationCountryLabel")}
+          </label>
+          <CountryPicker
+            inputId="assessment-destination"
+            options={countryOptions}
+            selected={destinationCountry}
+            onSelectedChange={setDestinationCountry}
           />
         </div>
       );
@@ -327,6 +351,48 @@ export function QuestionnaireQuestionRenderer({
         </div>
       );
     case "professionMain":
+      if (singleMode) {
+        return (
+          <div>
+            <label htmlFor="assessment-profession-main" className={labelCls}>
+              {t("professionMainLabel")}
+            </label>
+            <select
+              id="assessment-profession-main"
+              value={professionMain}
+              onChange={(e) => {
+                const v = e.target.value;
+                setProfessionMain(v);
+                if (v !== "other") setProfessionOtherDetail("");
+              }}
+              className={selectCls}
+            >
+              <option value="">{t("selectPlaceholder")}</option>
+              {professionMainValues.map((k) => (
+                <option key={k} value={k}>
+                  {t(`profession_${k}`)}
+                </option>
+              ))}
+            </select>
+            {professionMain === "other" ? (
+              <div className="mt-4">
+                <label htmlFor="assessment-profession-other" className={labelCls}>
+                  {t("professionOtherLabel")}
+                </label>
+                <input
+                  id="assessment-profession-other"
+                  type="text"
+                  value={professionOtherDetail}
+                  onChange={(e) => setProfessionOtherDetail(e.target.value)}
+                  className={inputCls}
+                  autoComplete="off"
+                  placeholder={t("professionOtherPlaceholder")}
+                />
+              </div>
+            ) : null}
+          </div>
+        );
+      }
       return (
         <div>
           <label htmlFor="assessment-edu-pro" className={labelCls}>

@@ -624,6 +624,7 @@
       "aiAnalyzingHint": "Our system is processing your result. This usually takes 10–30 seconds — please wait.",
       "selectPlaceholder": "Select…",
       "basicCitizenshipLabel": "Your citizenship (passport country)",
+      "destinationCountryLabel": "Which country do you want to move to?",
       "basicResidenceLabel": "Country where you live now",
       "basicNativeLanguageLabel": "Native language",
       "basicNativeLanguagePlaceholder": "e.g. English, Español, हिन्दी",

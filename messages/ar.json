@@ -439,6 +439,7 @@
       "aiAnalyzingHint": "يقوم نظامنا بمعالجة النتيجة. يستغرق ذلك عادةً من 10 إلى 30 ثانية — يرجى الانتظار.",
       "selectPlaceholder": "اختر…",
       "basicCitizenshipLabel": "جنسيتك (دولة جواز السفر)",
+      "destinationCountryLabel": "إلى أي دولة تريد الانتقال؟",
       "basicResidenceLabel": "البلد الذي تعيش فيه حاليًا",
       "basicNativeLanguageLabel": "اللغة الأم",
       "basicNativeLanguagePlaceholder": "مثل العربية، English",

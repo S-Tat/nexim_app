@@ -439,6 +439,7 @@
       "aiAnalyzingHint": "系统正在处理您的结果，通常需要 10–30 秒，请稍候。",
       "selectPlaceholder": "请选择…",
       "basicCitizenshipLabel": "国籍（护照签发国）",
+      "destinationCountryLabel": "您想移居到哪个国家？",
       "basicResidenceLabel": "您目前居住的国家",
       "basicNativeLanguageLabel": "母语",
       "basicNativeLanguagePlaceholder": "例如 中文、English",

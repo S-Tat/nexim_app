@@ -88,7 +88,7 @@ async function enforcePaymentConsumptionLock(
   body: AnalyzeRequest,
   answers: Record<string, unknown>,
 ): Promise<{ stripe: Stripe; sessionId: string; session: Stripe.Checkout.Session } | null> {
-  if (effectiveTier === "lite") return null;
+  if (effectiveTier === "lite" || effectiveTier === "single") return null;
 
   const secret = resolveStripeSecret();
   if (!secret) {
@@ -253,6 +253,21 @@ function isPayloadMeaningful(answers: Record<string, unknown>, tier: string): bo
     return true;
   }
 
+  if (tier === "single") {
+    // destination country is required for single-country mode
+    const dest = answers["destinationCountryCode"];
+    const hasDest = typeof dest === "string" && dest.trim().length > 0;
+    // profession required (professionMain, or professionOtherDetail if "other")
+    const prof = answers["professionMain"];
+    const hasProf =
+      typeof prof === "string" &&
+      prof.trim().length > 0 &&
+      (prof !== "other" ||
+        (typeof answers["professionOtherDetail"] === "string" &&
+          (answers["professionOtherDetail"] as string).trim().length >= 2));
+    return hasDest && hasProf;
+  }
+
   return false;
 }
 
@@ -266,7 +281,10 @@ export async function POST(req: NextRequest) {
 
   const { answers, locale, tier: clientTier } = body;
   const effectiveTier =
-    clientTier === "lite" || clientTier === "basic" || clientTier === "professional"
+    clientTier === "lite" ||
+    clientTier === "basic" ||
+    clientTier === "professional" ||
+    clientTier === "single"
       ? clientTier
       : "basic";
 
@@ -325,8 +343,25 @@ export async function POST(req: NextRequest) {
 
   let result;
   try {
+    let answersForAi = answers as Record<string, unknown>;
+    if (effectiveTier === "single") {
+      const destCode =
+        (answers as Record<string, unknown>)["destinationCountryCode"] ??
+        (answers as Record<string, unknown>)["countryCode"];
+      const destName =
+        (answers as Record<string, unknown>)["destinationCountryName"] ??
+        (answers as Record<string, unknown>)["countryName"];
+      answersForAi = {
+        ...(answers as Record<string, unknown>),
+        countryCode:
+          typeof destCode === "string" && destCode.trim() ? destCode : "XX",
+        countryName:
+          typeof destName === "string" && destName.trim() ? destName : undefined,
+      };
+    }
+
     result = await runGeminiAnalysis({
-      answers,
+      answers: answersForAi,
       locale: resolvedLocale,
       tier: effectiveTier,
       model: PRODUCTION_GEMINI_MODEL,
@@ -376,7 +411,7 @@ export async function POST(req: NextRequest) {
     top_countries: result.top_countries,
     legalRelocationBlocked: result.legalRelocationBlocked === true,
     legalIssuesWarning,
-    ...(effectiveTier === "professional"
+    ...(effectiveTier === "professional" || effectiveTier === "single"
       ? {
           tax_legal_audit: result.tax_legal_audit,
           job_market_overview: result.job_market_overview,
