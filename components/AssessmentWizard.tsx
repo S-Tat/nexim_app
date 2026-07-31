@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { Link, useRouter } from "@/navigation";
+import { Link, usePathname, useRouter } from "@/navigation";
 import { CountryPicker, type CountryOption } from "@/components/CountryPicker";
 import { QuestionnaireQuestionRenderer } from "@/components/QuestionnaireQuestionRenderer";
 import {
@@ -143,6 +143,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
   const locale = useLocale();
   const tightScript = locale === "zh" || locale === "hi";
   const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   /**
    * `tier` resolution must happen post-hydration to avoid SSR/CSR mismatches
@@ -155,7 +156,8 @@ export function AssessmentWizard({ countryOptions }: Props) {
     () => normalizeTierFromUrl(searchParams.get("tier")),
     [searchParams],
   );
-  const singleMode = searchParams.get("mode") === "single";
+  const singleMode =
+    searchParams.get("mode") === "single" || pathname.endsWith("/my-plan");
   const [tier, setTier] = useState<PlanTier | null>(null);
 
   useEffect(() => {
