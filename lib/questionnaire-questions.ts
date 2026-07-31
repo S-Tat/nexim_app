@@ -31,7 +31,8 @@ export type QuestionId =
   | "energy_level_adaptation"
   | "remoteIncomeAbroad"
   | "fundsSourceProvable"
-  | "idealEnvironment";
+  | "idealEnvironment"
+  | "destinationCountry";
 
 export type QuestionDef = {
   id: QuestionId;
@@ -95,10 +96,36 @@ export const PRO_QUESTIONS: QuestionDef[] = [
   ...PRO_ONLY_QUESTIONS,
 ];
 
+/** Single-country deep-dive questionnaire (not a payment tier). */
+export const SINGLE_QUESTIONS: QuestionDef[] = [
+  { id: "destinationCountry", titleKey: "destinationCountryLabel" },
+  { id: "professionMain", titleKey: "professionMainLabel" },
+  { id: "educationLevel", titleKey: "basicEducationLabel" },
+  { id: "workExperience", titleKey: "experienceLabel" },
+  { id: "professionGlobalDemand", titleKey: "globalDemandLabel" },
+  { id: "ageYears", titleKey: "ageLabel" },
+  { id: "citizenship", titleKey: "basicCitizenshipLabel" },
+  { id: "passportValidity", titleKey: "q11Label" },
+  { id: "residence", titleKey: "basicResidenceLabel" },
+  { id: "unresolvedLegalViolations", titleKey: "legalViolationsLabel" },
+  { id: "familyMoving", titleKey: "familyMovingLabel" },
+  { id: "basicRelocationFunds", titleKey: "basicRelocationLabel" },
+  { id: "visaRefusalHistory", titleKey: "q12Label" },
+  { id: "englishLevel", titleKey: "q8Label" },
+  { id: "nativeLanguage", titleKey: "basicNativeLanguageLabel" },
+  { id: "otherLanguagesText", titleKey: "otherLanguagesLabel" },
+  { id: "apostillesReadiness", titleKey: "q13Label" },
+  { id: "energy_level_adaptation", titleKey: "energyLevelAdaptationLabel" },
+];
+
 export function getQuestionsForTier(tier: PlanTier): QuestionDef[] {
   if (tier === "lite") return LITE_QUESTIONS;
   if (tier === "basic") return BASIC_QUESTIONS;
   return PRO_QUESTIONS;
+}
+
+export function getSingleCountryQuestions(): QuestionDef[] {
+  return SINGLE_QUESTIONS;
 }
 
 function isAgeValid(raw: unknown): boolean {
@@ -133,6 +160,8 @@ export function isQuestionAnswered(
       return isAgeValid(answers.ageYears);
     case "citizenship":
       return isCountryAnswer(answers.citizenship);
+    case "destinationCountry":
+      return isCountryAnswer(answers.destinationCountry);
     case "passportValidity":
     case "educationLevel":
     case "englishLevel":
@@ -172,6 +201,32 @@ export function isQuestionAnswered(
   }
 }
 
+/**
+ * Validation for the single-country questionnaire. Unlike isQuestionAnswered,
+ * professionMain does NOT require educationLevel (separate steps in this mode).
+ */
+export function isSingleQuestionAnswered(
+  id: QuestionId,
+  answers: QuestionAnswers,
+): boolean {
+  switch (id) {
+    case "destinationCountry":
+      return isCountryAnswer(answers.destinationCountry);
+    case "professionMain": {
+      if (!isNonEmptyString(answers.professionMain)) return false;
+      if (answers.professionMain === "other") {
+        return (
+          typeof answers.professionOtherDetail === "string" &&
+          answers.professionOtherDetail.trim().length >= 2
+        );
+      }
+      return true;
+    }
+    default:
+      return isQuestionAnswered(id, answers);
+  }
+}
+
 /** 0-based index of the first unanswered question, or -1 if all answered. */
 export function firstUnansweredQuestionIndex(
   tier: PlanTier,
@@ -187,6 +242,22 @@ export function countAnsweredQuestions(
 ): number {
   return getQuestionsForTier(tier).filter((q) =>
     isQuestionAnswered(q.id, answers),
+  ).length;
+}
+
+export function firstUnansweredSingleQuestionIndex(
+  answers: QuestionAnswers,
+): number {
+  return SINGLE_QUESTIONS.findIndex(
+    (q) => !isSingleQuestionAnswered(q.id, answers),
+  );
+}
+
+export function countAnsweredSingleQuestions(
+  answers: QuestionAnswers,
+): number {
+  return SINGLE_QUESTIONS.filter((q) =>
+    isSingleQuestionAnswered(q.id, answers),
   ).length;
 }
 
