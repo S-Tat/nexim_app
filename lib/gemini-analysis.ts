@@ -527,6 +527,123 @@ ${finalRule}
 CRITICAL: Ensure JSON is fully closed and valid. Prioritize data density over length — every word must carry information.`;
 }
 
+function buildPromptSingleCountry(
+  sanitized: Record<string, unknown>,
+  locale: string,
+): string {
+  const languageName = localeLabelForPrompt(locale);
+  const criticalLang = criticalLanguageInstruction(languageName);
+  const langInstruction = strictOutputLanguageInstruction(languageName);
+  const finalRule = finalCriticalLanguageRule(languageName);
+
+  const countryCode = String(sanitized.countryCode ?? "").trim().toUpperCase() || "XX";
+  const countryName =
+    String(sanitized.countryName ?? "").trim() || countryCode;
+
+  const professionMain = sanitized.professionMain;
+  const profession =
+    professionMain === "other"
+      ? (sanitized.professionOtherDetail ?? "not specified")
+      : (professionMain ?? sanitized.professionOtherDetail ?? "not specified");
+
+  const education = sanitized.educationLevel ?? "not specified";
+  const experience = sanitized.workExperience ?? "not specified";
+  const english = sanitized.englishLevel ?? "not specified";
+  const funds = sanitized.basicRelocationFunds ?? sanitized.proRelocationFunds ?? "not specified";
+  const citizenship = sanitized.citizenshipCode ?? "not specified";
+  const family = sanitized.familyMoving ?? "not specified";
+  const remote = sanitized.remoteIncomeAbroad ?? "not specified";
+
+  const legal = sanitized.unresolvedLegalViolations;
+  const legalNote =
+    legal === "yes" || legal === true
+      ? `If "unresolvedLegalViolations" is yes: still analyze THIS ONE country with an honest visa assessment; flag higher refusal/compliance risk in analysis and cons. Never use an empty top_countries array. Set "legal_relocation_blocked": false.`
+      : `Set "legal_relocation_blocked": false.`;
+
+  const diplomaAuthorityRule = `For document_table: always name the SPECIFIC authority for ${countryName} (e.g. "NACES evaluation" for USA, "anabin / ZAB" for Germany, "UK ENIC/NARIC" for UK). Only use generic "Apostille" if truly no country-specific body exists.`;
+
+  return `${criticalLang}
+
+You are Nexim — a senior relocation consultant with 15+ years experience placing professionals internationally (single-country deep-dive mode).
+
+PROFILE SUMMARY:
+- Citizenship: ${citizenship}
+- Target country (MANDATORY — analyze ONLY this country): ${countryName} (${countryCode})
+- Profession (MANDATORY — analyze ONLY this profession): ${profession}
+- Education: ${education}
+- Experience: ${experience}
+- English: ${english}
+- Funds: ${funds}
+- Family moving: ${family}
+- Remote income abroad: ${remote}
+
+Full profile:
+${JSON.stringify(sanitized, null, 2)}
+
+TASK: Deliver a full expert relocation audit for ONE destination only: ${countryName} (${countryCode}), for the profession "${profession}". Cross-reference ALL profile fields. Every sentence must be FACTUAL — cite specific visa names, salary ranges, processing times, fee amounts where known.
+
+STRICT SCOPE:
+- Analyze ONLY ${countryName} (${countryCode}). Do NOT choose other countries. Do NOT suggest alternatives. Do NOT compare against other destinations.
+- Assess fitness of profession "${profession}" specifically for ${countryName}.
+- "top_countries" MUST contain exactly ONE object — ${countryName} (${countryCode}).
+- "match_score" MUST be an honest expert fit score (0–100) for THIS country + THIS profession given the profile. Do NOT default to low placeholder scores (e.g. 1%). Justify the score via real barriers and strengths.
+
+${legalNote}
+${diplomaAuthorityRule}
+
+OUTPUT STRUCTURE (exactly 1 country):
+
+"analysis": ONE executive paragraph about relocating to ${countryName} as a ${profession} — must include: critical bottleneck for this profile, realistic timeline to first entry, key financial requirement, and whether the match is strong/moderate/weak. Max 5 sentences, zero filler.
+
+"tax_legal_audit": Markdown with a single ### ${countryName} header.
+Exactly 4 bullets covering:
+- Tax residency trigger (days threshold + rate)
+- Work permit / visa type + processing time
+- Key compliance risk for this citizenship
+- Social security / pension portability note
+
+"job_market_overview": Markdown with a single ### ${countryName} header.
+Exactly 4 bullets covering:
+- Demand level for this specific profession (high/medium/low + why)
+- Typical gross salary range in local currency + USD equivalent
+- Top 2 hiring platforms or shortage list name
+- Realistic time-to-first-interview for this profile
+
+"document_checklist": Markdown with a single ### ${countryName} header.
+Exactly 4 bullets covering:
+- Primary visa/permit application document + issuing authority
+- Credential recognition requirement + specific body name
+- Financial proof requirement (amount + format)
+- One profile-specific document risk or gap
+
+The single object in "top_countries":
+- "country_code": "${countryCode}"
+- "country_name": "${countryName}"
+- "match_score": honest 0–100 fit for this profile in ${countryName}
+- "visa_name": the most realistic primary visa/route name
+- "pros": exactly 4 punchy advantages (cite specific visa name, salary, timeline)
+- "cons": exactly 4 punchy risks (cite specific barrier, cost, restriction)
+- "gap_analysis": exactly 4 profile gaps with concrete fix for each
+- "weak_points": exactly 4 actionable weak spots with one-line mitigation
+- "roadmap": exactly 5 steps (step, title, description with specifics, deadline in months)
+- "document_table": Markdown table with 5 rows: Document | Required/Recommended | Authority | Timeline
+
+STRICT RULES:
+- Use real visa program names for ${countryName} (e.g. "EU Blue Card", "Germany Skilled Immigration Act", "Canada Express Entry")
+- Use real salary figures (e.g. "€45,000–€65,000 gross/year")
+- Use real processing times (e.g. "4–6 months")
+- Name real credential bodies where relevant (anabin/ZAB, NACES, ENIC/NARIC, etc.)
+- No generic phrases like "good opportunities" or "favorable conditions"
+- If a fact is uncertain, say "typically" or "circa" — never omit it
+- Do NOT invent alternative countries
+
+${langInstruction}
+Return ONLY valid JSON, no markdown fences.
+${finalRule}
+
+CRITICAL: Ensure JSON is fully closed and valid. Prioritize data density over length — every word must carry information. Top-level keys must be exactly: "legal_relocation_blocked", "analysis", "top_countries", "tax_legal_audit", "job_market_overview", "document_checklist".`;
+}
+
 function buildPrompt(
   answers: Record<string, unknown>,
   locale: string,
@@ -535,6 +652,7 @@ function buildPrompt(
   const sanitized = sanitizeAnswers(answers);
   if (tier === "lite") return buildPromptLite(sanitized, locale);
   if (tier === "basic") return buildPromptBasic(sanitized, locale);
+  if (tier === "single") return buildPromptSingleCountry(sanitized, locale);
   return buildPromptProfessional(sanitized, locale);
 }
 
@@ -553,7 +671,7 @@ const roadmapStepSchema: Schema = {
 
 function countrySchemaForTier(tier: string): Schema {
   const lite = tier === "lite";
-  const pro = tier === "professional";
+  const proLevel = tier === "professional" || tier === "single";
   const properties: Record<string, Schema> = {
     country_code: { type: SchemaType.STRING },
     country_name: { type: SchemaType.STRING },
@@ -581,7 +699,7 @@ function countrySchemaForTier(tier: string): Schema {
     "gap_analysis",
     "roadmap",
   ];
-  if (pro) {
+  if (proLevel) {
     properties.document_table = { type: SchemaType.STRING };
     properties.weak_points = {
       type: SchemaType.ARRAY,
@@ -611,21 +729,24 @@ function countrySchemaForTier(tier: string): Schema {
 function maxCountriesForTier(tier: string): number {
   if (tier === "basic") return 5;
   if (tier === "professional") return 3;
+  if (tier === "single") return 1;
   return 3;
 }
 
 function responseSchemaForTier(tier: string): Schema {
   const maxCountries = maxCountriesForTier(tier);
-  const pro = tier === "professional";
+  const proLevel = tier === "professional" || tier === "single";
   const properties: Record<string, Schema> = {
     legal_relocation_blocked: { type: SchemaType.BOOLEAN },
     analysis: { type: SchemaType.STRING },
     top_countries: {
       type: SchemaType.ARRAY,
       items: countrySchemaForTier(tier),
-      ...(tier !== "professional"
-        ? { minItems: maxCountries, maxItems: maxCountries }
-        : { minItems: 3, maxItems: 3 }),
+      ...(tier === "single"
+        ? { minItems: 1, maxItems: 1 }
+        : tier !== "professional"
+          ? { minItems: maxCountries, maxItems: maxCountries }
+          : { minItems: 3, maxItems: 3 }),
     },
   };
   const required = [
@@ -633,7 +754,7 @@ function responseSchemaForTier(tier: string): Schema {
     "analysis",
     "top_countries",
   ] as string[];
-  if (pro) {
+  if (proLevel) {
     properties.tax_legal_audit = { type: SchemaType.STRING };
     properties.job_market_overview = { type: SchemaType.STRING };
     properties.document_checklist = { type: SchemaType.STRING };
@@ -923,7 +1044,8 @@ export async function runGeminiAnalysis(opts: {
       ...(legalRelocationBlocked ? { legalRelocationBlocked: true } : {}),
     };
 
-    if (tier === "professional") {
+    const proLevel = tier === "professional" || tier === "single";
+    if (proLevel) {
       const str = (k: string) =>
         typeof parsed[k] === "string" ? (parsed[k] as string).trim() : "";
       const tax = str("tax_legal_audit");
