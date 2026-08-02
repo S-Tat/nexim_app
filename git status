@@ -1,0 +1,15 @@
+[33mc6a91ed[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m Add /my-plan single-country page
+[33m142bb89[m Single-country mode working end-to-end (Gemini one-country, questionnaire, API, i18n)
+[33ma1b22cb[m Add single-country question list and validation helpers
+[33m9c8e8bc[m Add single-country deep-dive mode to Gemini analysis
+[33mc681b38[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Add dual-tier upsell on /result: Basic  primary + Pro  secondary, 7 locales
+[33m96b2b92[m Improve /result upsell block: benefit-led copy + visible card, 7 locales
+[33m42c25e0[m Add legal disclaimer (not legal advice) to footer in all languages
+[33mf97864d[m Merge pull request #3 from S-Tat/cursor/seo-sitemap-robots-redirects
+[33ma515aa2[m[33m ([m[1;31morigin/cursor/seo-sitemap-robots-redirects[m[33m, [m[1;32mcursor/seo-sitemap-robots-redirects[m[33m)[m feat: add telegram feedback form to guides
+[33m4ba9fb9[m Merge pull request #2 from S-Tat/cursor/seo-sitemap-robots-redirects
+[33m782a3c5[m feat: add autonomous RSS-based guide updater for Germany and NZ
+[33m69bbf61[m Merge pull request #1 from S-Tat/cursor/seo-sitemap-robots-redirects
+[33m840fc20[m Improve SEO routing for crawlers: dynamic sitemap, guide redirects, and robots disallow.
+[33m0c21d12[m tt
+[33m9e01d03[m аа

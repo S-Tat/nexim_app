@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 /**
  * My Plan: single-country questionnaire (no payment gate).
- * Optional `?country=` / `?profession=` reserved for guide prefill.
+ * Optional `?country=` / `?profession=` prefill from guide entry.
  */
 export default async function MyPlanPage({ params, searchParams }: Props) {
   setRequestLocale(params.locale);
@@ -31,10 +31,6 @@ export default async function MyPlanPage({ params, searchParams }: Props) {
   });
   const options = getCountryOptions(params.locale);
 
-  // Reserved for guide prefill on the next step
-  void searchParams?.country;
-  void searchParams?.profession;
-
   const fallback = (
     <div className="flex min-h-[40vh] items-center justify-center bg-[#030712] px-6 text-nexim-muted">
       <p className="text-sm">{tDashboard("loadingData")}</p>
@@ -43,7 +39,11 @@ export default async function MyPlanPage({ params, searchParams }: Props) {
 
   return (
     <Suspense fallback={fallback}>
-      <AssessmentWizard countryOptions={options} />
+      <AssessmentWizard
+        countryOptions={options}
+        prefillCountryCode={searchParams?.country}
+        prefillProfession={searchParams?.profession}
+      />
     </Suspense>
   );
 }

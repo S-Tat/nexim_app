@@ -127,6 +127,7 @@ export default async function GuidePage({ params }: Props) {
   const requirements = getGuideRequirementList(locale, country.slug);
   const chance = getGuideChance(country.slug, profession.slug);
   const rtl = isRtlLocale(locale);
+  const professionAnswerCode = profession.translationKey.replace(/^profession_/, "");
 
   const guide = await fetchGuideByParams(
     locale,
@@ -198,10 +199,10 @@ export default async function GuidePage({ params }: Props) {
               </p>
               <Link
                 href={{
-                  pathname: "/questionnaire",
+                  pathname: "/my-plan",
                   query: {
-                    country: country.slug,
-                    profession: profession.slug,
+                    country: country.code,
+                    profession: professionAnswerCode,
                   },
                 }}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-[#fbbf24] px-6 py-4 text-center text-base font-semibold text-black transition hover:bg-[#fcd34d]"

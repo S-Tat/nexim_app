@@ -129,6 +129,7 @@ export default async function GuidePage({ params }: Props) {
   const chance = getGuideChance(country.slug, profession.slug);
   const rtl = isRtlLocale(locale);
   const pageUrl = `${getSiteUrl()}/${locale}/guide/${params.country}/${params.profession}`;
+  const professionAnswerCode = profession.translationKey.replace(/^profession_/, "");
 
   return (
     <section className="relative flex flex-1 flex-col px-6 pb-20 pt-12 md:px-10 md:pb-28 md:pt-16">
@@ -185,10 +186,10 @@ export default async function GuidePage({ params }: Props) {
               </p>
               <Link
                 href={{
-                  pathname: "/questionnaire",
+                  pathname: "/my-plan",
                   query: {
-                    country: country.slug,
-                    profession: profession.slug,
+                    country: country.code,
+                    profession: professionAnswerCode,
                   },
                 }}
                 className="mt-6 inline-flex w-full items-center justify-center rounded-2xl bg-[#fbbf24] px-6 py-4 text-center text-base font-semibold text-black transition hover:bg-[#fcd34d]"

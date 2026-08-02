@@ -110,6 +110,10 @@ const GLASS_CARD =
 
 type Props = {
   countryOptions: CountryOption[];
+  /** Guide entry: ISO country code (e.g. "DE") — single-mode only */
+  prefillCountryCode?: string;
+  /** Guide entry: questionnaire profession id (e.g. "it_software") — single-mode only */
+  prefillProfession?: string;
 };
 
 function normalizeTierFromUrl(raw: string | null): PlanTier | null {
@@ -138,7 +142,11 @@ function hasStoredResultForTier(expectedTier: string): boolean {
   }
 }
 
-export function AssessmentWizard({ countryOptions }: Props) {
+export function AssessmentWizard({
+  countryOptions,
+  prefillCountryCode,
+  prefillProfession,
+}: Props) {
   const t = useTranslations("questionnaire.extended");
   const locale = useLocale();
   const tightScript = locale === "zh" || locale === "hi";
@@ -293,6 +301,7 @@ export function AssessmentWizard({ countryOptions }: Props) {
    */
   const submitLockRef = useRef(false);
   const resumeHandledRef = useRef(false);
+  const prefillAppliedRef = useRef(false);
   /** Tracks tier across mounts so we only reset consent / realign step on actual tier changes or first hydration. */
   const tierHydrateAnchorRef = useRef<PlanTier | null>(null);
   const [resumeGateReady, setResumeGateReady] = useState(false);
@@ -407,6 +416,52 @@ export function AssessmentWizard({ countryOptions }: Props) {
     if (stored.fundsSourceProvable) setFundsSourceProvable(stored.fundsSourceProvable);
     if (stored.basicRelocationFunds) setBasicRelocationFunds(stored.basicRelocationFunds);
   }, [countryOptions]);
+
+  /** One-shot URL prefill for /my-plan — never overwrites storage or user input. */
+  useEffect(() => {
+    if (!singleMode || prefillAppliedRef.current) return;
+    prefillAppliedRef.current = true;
+
+    const stored =
+      typeof window !== "undefined"
+        ? parseAssessmentData(
+            window.sessionStorage.getItem(NEXIM_ASSESSMENT_STORAGE_KEY),
+          )
+        : null;
+
+    const code = prefillCountryCode?.trim();
+    if (
+      code &&
+      !destinationCountry &&
+      !stored?.destinationCountryCode
+    ) {
+      const match = countryOptions.find(
+        (o) => o.code.toUpperCase() === code.toUpperCase(),
+      );
+      if (match) setDestinationCountry(match);
+    }
+
+    const prof = prefillProfession?.trim();
+    const hasStoredProfession = Boolean(
+      stored?.professionMain || stored?.specialty,
+    );
+    if (
+      prof &&
+      prof !== "other" &&
+      !professionMain &&
+      !hasStoredProfession &&
+      (PROFESSION_MAIN_VALUES as readonly string[]).includes(prof)
+    ) {
+      setProfessionMain(prof);
+    }
+  }, [
+    singleMode,
+    countryOptions,
+    prefillCountryCode,
+    prefillProfession,
+    destinationCountry,
+    professionMain,
+  ]);
 
   useEffect(() => {
     if (!singleMode && !tier) return;
