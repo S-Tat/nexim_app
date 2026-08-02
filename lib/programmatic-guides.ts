@@ -20,7 +20,8 @@ type GuideCopy = {
   intro: (country: string, profession: string) => string;
   h1: (country: string, profession: string) => string;
   description: (country: string, profession: string) => string;
-  chanceLabel: (profession: string) => string;
+  realChanceTitle: (country: string) => string;
+  realChanceSubtitle: string;
   requirementsTitle: (country: string) => string;
   ctaTitle: string;
   ctaBody: string;
@@ -273,7 +274,9 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       `Relocation to ${country} for ${profession}: Step-by-Step Guide 2026`,
     description: (country, profession) =>
       `Explore the 2026 relocation path to ${country} for ${profession}: market demand, entry requirements, and the next step toward your personalized AI relocation analysis.`,
-    chanceLabel: (profession) => `Chance of success for ${profession}`,
+    realChanceTitle: (country) => `Your real chance for ${country}`,
+    realChanceSubtitle:
+      "Calculated individually from your profile in the analysis below.",
     requirementsTitle: (country) => `Key requirements for ${country}`,
     ctaTitle: "Get your Personalized AI Analysis",
     ctaBody: "Answer the questionnaire to unlock a tailored relocation strategy, country matching, and next-step guidance.",
@@ -287,7 +290,9 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       `Релокация в ${country} для ${profession}: пошаговый гид 2026`,
     description: (country, profession) =>
       `Изучите путь релокации в ${country} для специалистов ${profession} в 2026 году: спрос на рынке, базовые требования и следующий шаг к персональному AI-анализу.`,
-    chanceLabel: (profession) => `Шанс на успех для ${profession}`,
+    realChanceTitle: (country) => `Ваш реальный шанс для ${country}`,
+    realChanceSubtitle:
+      "Рассчитывается индивидуально по вашему профилю в анализе ниже.",
     requirementsTitle: (country) => `Ключевые требования для ${country}`,
     ctaTitle: "Получить персональный AI-анализ",
     ctaBody: "Заполните анкету, чтобы получить персональную стратегию переезда, подбор стран и пошаговые рекомендации.",
@@ -301,7 +306,9 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       `Relocation nach ${country} für ${profession}: Schritt-für-Schritt-Guide 2026`,
     description: (country, profession) =>
       `Erkunden Sie den Relocation-Weg 2026 nach ${country} für ${profession}: Nachfrage, Grundvoraussetzungen und der nächste Schritt zu Ihrer personalisierten KI-Analyse.`,
-    chanceLabel: (profession) => `Erfolgschance für ${profession}`,
+    realChanceTitle: (country) => `Ihre echte Chance für ${country}`,
+    realChanceSubtitle:
+      "Wird individuell aus Ihrem Profil in der Analyse unten berechnet.",
     requirementsTitle: (country) => `Wichtige Voraussetzungen für ${country}`,
     ctaTitle: "Ihre personalisierte KI-Analyse erhalten",
     ctaBody: "Beantworten Sie den Fragebogen und erhalten Sie eine individuelle Relocation-Strategie, Länder-Matching und konkrete nächste Schritte.",
@@ -315,7 +322,8 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       `الانتقال إلى ${country} لمجال ${profession}: دليل خطوة بخطوة 2026`,
     description: (country, profession) =>
       `استكشف مسار الانتقال إلى ${country} لمجال ${profession} في 2026: الطلب في السوق، المتطلبات الأساسية، والخطوة التالية نحو تحليل ذكاء اصطناعي شخصي.`,
-    chanceLabel: (profession) => `فرصة النجاح لمجال ${profession}`,
+    realChanceTitle: (country) => `فرصتك الحقيقية في ${country}`,
+    realChanceSubtitle: "يُحسب بشكل فردي من ملفك في التحليل أدناه.",
     requirementsTitle: (country) => `المتطلبات الأساسية لـ ${country}`,
     ctaTitle: "احصل على تحليلك الشخصي بالذكاء الاصطناعي",
     ctaBody: "أجب عن الاستبيان للحصول على استراتيجية انتقال مخصصة، ومطابقة الدول، وخطوات عملية تالية.",
@@ -329,7 +337,8 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       `مهاجرت به ${country} برای ${profession}: راهنمای گام‌به‌گام ۲۰۲۶`,
     description: (country, profession) =>
       `مسیر مهاجرت به ${country} برای ${profession} در سال ۲۰۲۶ را بررسی کنید: تقاضای بازار، الزامات اصلی و گام بعدی برای تحلیل شخصی‌سازی‌شده با هوش مصنوعی.`,
-    chanceLabel: (profession) => `شانس موفقیت برای ${profession}`,
+    realChanceTitle: (country) => `شانس واقعی شما برای ${country}`,
+    realChanceSubtitle: "بر اساس پروفایل شما در تحلیل زیر محاسبه می‌شود.",
     requirementsTitle: (country) => `الزامات اصلی برای ${country}`,
     ctaTitle: "تحلیل شخصی‌سازی‌شده هوش مصنوعی را دریافت کنید",
     ctaBody: "پرسشنامه را تکمیل کنید تا استراتژی مهاجرت، تطبیق کشورها و گام‌های بعدی متناسب با شما ارائه شود.",
@@ -343,7 +352,8 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       `${profession} 前往 ${country} 的移居指南：2026 分步攻略`,
     description: (country, profession) =>
       `了解 2026 年 ${profession} 前往 ${country} 的移居路径：市场需求、核心要求，以及进入个性化 AI 移居分析的下一步。`,
-    chanceLabel: (profession) => `${profession} 的成功概率`,
+    realChanceTitle: (country) => `您在 ${country} 的真实机会`,
+    realChanceSubtitle: "根据您的资料在下方分析中单独计算。",
     requirementsTitle: (country) => `${country} 的关键要求`,
     ctaTitle: "获取你的个性化 AI 分析",
     ctaBody: "填写问卷，获得定制化移居策略、国家匹配结果和下一步行动建议。",
@@ -357,7 +367,9 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       `${profession} के लिए ${country} में रिलोकेशन: स्टेप-बाय-स्टेप गाइड 2026`,
     description: (country, profession) =>
       `${profession} के लिए ${country} में 2026 रिलोकेशन पाथ देखें: मार्केट डिमांड, मुख्य आवश्यकताएँ, और आपके personalized AI relocation analysis की अगली सीढ़ी।`,
-    chanceLabel: (profession) => `${profession} के लिए सफलता की संभावना`,
+    realChanceTitle: (country) => `${country} के लिए आपकी वास्तविक संभावना`,
+    realChanceSubtitle:
+      "नीचे दिए विश्लेषण में आपकी प्रोफ़ाइल से व्यक्तिगत रूप से गणना की जाती है।",
     requirementsTitle: (country) => `${country} के लिए मुख्य आवश्यकताएँ`,
     ctaTitle: "अपना Personalized AI Analysis प्राप्त करें",
     ctaBody: "प्रश्नावली भरें और tailored relocation strategy, country matching और next-step guidance प्राप्त करें।",
@@ -386,15 +398,4 @@ export function getGuideRequirementList(locale: Locale, countrySlug: string): st
   const country = getGuideCountryBySlug(countrySlug);
   if (!country) return [];
   return country.requirementKeys.map((key) => REQUIREMENT_LABELS[locale][key]);
-}
-
-export function getGuideChance(countrySlug: string, professionSlug: string): number {
-  const seed = `${countrySlug}:${professionSlug}`;
-  let hash = 0;
-
-  for (let i = 0; i < seed.length; i += 1) {
-    hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
-  }
-
-  return 75 + (hash % 16);
 }

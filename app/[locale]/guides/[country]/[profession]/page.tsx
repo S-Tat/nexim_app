@@ -5,7 +5,6 @@ import { Link } from "@/navigation";
 import { 
   GUIDE_COUNTRIES,
   GUIDE_PROFESSIONS,
-  getGuideChance,
   getGuideCopy,
   getGuideCountryBySlug,
   getGuideCountryName,
@@ -25,44 +24,6 @@ type Params = {
 type Props = {
   params: Params;
 };
-
-function ProgressRing({ value }: { value: number }) {
-  const radius = 76;
-  const circumference = 2 * Math.PI * radius;
-  const dashOffset = circumference * (1 - value / 100);
-
-  return (
-    <div className="relative flex h-52 w-52 items-center justify-center">
-      <svg viewBox="0 0 200 200" className="-rotate-90 h-full w-full">
-        <circle
-          cx="100"
-          cy="100"
-          r={radius}
-          fill="none"
-          stroke="rgba(255,255,255,0.08)"
-          strokeWidth="18"
-        />
-        <circle
-          cx="100"
-          cy="100"
-          r={radius}
-          fill="none"
-          stroke="#fbbf24"
-          strokeLinecap="round"
-          strokeWidth="18"
-          strokeDasharray={circumference}
-          strokeDashoffset={dashOffset}
-        />
-      </svg>
-      <div className="absolute text-center">
-        <div className="text-4xl font-bold text-white">{value}%</div>
-        <div className="mt-1 text-xs uppercase tracking-[0.28em] text-nexim-muted">
-          Nexim
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export const dynamicParams = false;
 
@@ -125,7 +86,6 @@ export default async function GuidePage({ params }: Props) {
   const professionName = t(profession.translationKey as never);
   const copy = getGuideCopy(locale);
   const requirements = getGuideRequirementList(locale, country.slug);
-  const chance = getGuideChance(country.slug, profession.slug);
   const rtl = isRtlLocale(locale);
   const professionAnswerCode = profession.translationKey.replace(/^profession_/, "");
 
@@ -184,12 +144,12 @@ export default async function GuidePage({ params }: Props) {
 
           <div className="flex flex-col gap-6">
             <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl md:p-8">
-              <p className="text-sm font-medium uppercase tracking-[0.22em] text-nexim-muted">
-                {copy.chanceLabel(professionName)}
+              <h2 className="text-xl font-semibold text-white md:text-2xl">
+                {copy.realChanceTitle(countryName)}
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-nexim-muted md:text-base">
+                {copy.realChanceSubtitle}
               </p>
-              <div className="mt-6 flex justify-center">
-                <ProgressRing value={chance} />
-              </div>
             </div>
 
             <div className="rounded-3xl border border-[#fbbf24]/20 bg-[#fbbf24]/[0.08] p-6 shadow-[0_16px_60px_-24px_rgba(251,191,36,0.55)] md:p-8">
