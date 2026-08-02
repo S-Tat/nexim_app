@@ -125,7 +125,8 @@
     "singleIntro": "通过 Stripe 安全付款，解锁您的个性化分析。",
     "singlePlanLabel": "{country} 深度分析",
     "singleFooter": "付款成功后，您的分析将立即生成。",
-    "singleIncludedTitle": "包含内容"
+    "singleIncludedTitle": "包含内容",
+    "legalDisclaimer": "本分析由先进且持续更新的人工智能生成，仅为信息性估算，不构成法律建议。Nexim 对基于此做出的决定不承担任何责任。"
   },
   "why": {
     "title": "Why Nexim?",

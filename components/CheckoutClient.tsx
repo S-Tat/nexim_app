@@ -180,11 +180,16 @@ export function CheckoutClient() {
         <p className="mt-2 text-xs text-nexim-muted">
           {isSingle ? t("singleFooter") : t("afterPayHint")}
         </p>
+        <div className="mb-6 mt-10 rounded-2xl border border-[#fbbf24]/25 bg-[#fbbf24]/[0.06] px-5 py-4">
+          <p className="text-center text-sm font-medium leading-relaxed text-amber-50/90 md:text-base">
+            {t("legalDisclaimer")}
+          </p>
+        </div>
         <button
           type="button"
           disabled={busy}
           onClick={() => void startCheckout()}
-          className="mt-10 w-full rounded-full bg-gradient-to-r from-[#fbbf24] via-amber-300 to-[#f59e0b] px-6 py-4 text-base font-bold text-[#030712] shadow-[0_0_48px_-8px_rgba(251,191,36,0.6)] transition enabled:hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
+          className="w-full rounded-full bg-gradient-to-r from-[#fbbf24] via-amber-300 to-[#f59e0b] px-6 py-4 text-base font-bold text-[#030712] shadow-[0_0_48px_-8px_rgba(251,191,36,0.6)] transition enabled:hover:brightness-110 disabled:cursor-wait disabled:opacity-70"
         >
           {busy ? t("payStarting") : t("payCta")}
         </button>

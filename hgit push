@@ -1,0 +1,12 @@
+[33m1856beb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m ResultView: show full Pro-depth blocks for single flow + result title/new-analysis link
+[33mc21b557[m Single flow: country-aware checkout copy in 7 languages
+[33md12fe0d[m Single flow: restore one-payment-one-run Stripe lock (professional session + flow=single)
+[33ma5fda78[m Single flow: verify Stripe payment on return before running analysis
+[33m69498da[m Single flow: route to checkout after questionnaire, forward flow/return/country to Stripe
+[33m4a14790[m Stripe session: support custom returnPath and flow metadata (foundation for single payment)
+[33m8afbffa[m Replace fake guide chance ring with honest analysis hook
+[33m80cb528[m Wire guide CTA to single-country /my-plan with country+profession prefill
+[33mc6a91ed[m Add /my-plan single-country page
+[33m142bb89[m Single-country mode working end-to-end (Gemini one-country, questionnaire, API, i18n)
+[33ma1b22cb[m Add single-country question list and validation helpers
+[33m9c8e8bc[m Add single-country deep-dive mode to Gemini analysis

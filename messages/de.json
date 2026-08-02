@@ -125,7 +125,8 @@
     "singleIntro": "Zahlen Sie sicher mit Stripe, um Ihre persönliche Analyse freizuschalten.",
     "singlePlanLabel": "Tiefenanalyse für {country}",
     "singleFooter": "Nach erfolgreicher Zahlung wird Ihre Analyse sofort erstellt.",
-    "singleIncludedTitle": "WAS ENTHALTEN IST"
+    "singleIncludedTitle": "WAS ENTHALTEN IST",
+    "legalDisclaimer": "Diese Analyse wird von fortschrittlicher, laufend aktualisierter KI erstellt und ist eine informative Einschätzung — keine Rechtsberatung. Nexim übernimmt keine Haftung für darauf basierende Entscheidungen."
   },
   "why": {
     "title": "Warum Nexim?",
