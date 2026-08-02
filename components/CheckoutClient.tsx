@@ -20,6 +20,8 @@ export function CheckoutClient() {
   const returnPath = searchParams.get("returnPath") ?? undefined;
   const destinationCountryCode = searchParams.get("country") ?? undefined;
   const destinationCountryName = searchParams.get("countryName") ?? undefined;
+  const isSingle = flow === "single";
+  const countryLabel = destinationCountryName ?? "";
   const [invalidTier, setInvalidTier] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -92,16 +94,42 @@ export function CheckoutClient() {
     );
   }
 
-  const proFeatures = [
-    { icon: "🌍", title: t("proFeature1Title"), desc: t("proFeature1Desc") },
-    { icon: "📊", title: t("proFeature2Title"), desc: t("proFeature2Desc") },
-    { icon: "💼", title: t("proFeature3Title"), desc: t("proFeature3Desc") },
-    { icon: "📋", title: t("proFeature4Title"), desc: t("proFeature4Desc") },
-    { icon: "🗺️", title: t("proFeature5Title"), desc: t("proFeature5Desc") },
-    { icon: "📄", title: t("proFeature6Title"), desc: t("proFeature6Desc") },
+  const allProFeatures = [
+    {
+      id: "countries",
+      icon: "🌍",
+      title: t("proFeature1Title"),
+      desc: t("proFeature1Desc"),
+    },
+    { id: "tax", icon: "📊", title: t("proFeature2Title"), desc: t("proFeature2Desc") },
+    { id: "jobs", icon: "💼", title: t("proFeature3Title"), desc: t("proFeature3Desc") },
+    {
+      id: "docs",
+      icon: "📋",
+      title: t("proFeature4Title"),
+      desc: t("proFeature4Desc"),
+    },
+    {
+      id: "roadmap",
+      icon: "🗺️",
+      title: t("proFeature5Title"),
+      desc: t("proFeature5Desc"),
+    },
+    {
+      id: "table",
+      icon: "📄",
+      title: t("proFeature6Title"),
+      desc: t("proFeature6Desc"),
+    },
   ];
-  const summaryLine =
-    tier === "basic" ? t("summaryBasic") : t("summaryProfessional");
+  const proFeatures = isSingle
+    ? allProFeatures.filter((f) => f.id !== "countries")
+    : allProFeatures;
+  const summaryLine = isSingle
+    ? t("singlePlanLabel", { country: countryLabel })
+    : tier === "basic"
+      ? t("summaryBasic")
+      : t("summaryProfessional");
   const priceLine = tier === "basic" ? t("price_basic") : t("price_professional");
 
   return (
@@ -117,7 +145,9 @@ export function CheckoutClient() {
         >
           {t("title")}
         </h1>
-        <p className="mt-4 text-sm leading-relaxed text-nexim-muted md:text-base">{t("intro")}</p>
+        <p className="mt-4 text-sm leading-relaxed text-nexim-muted md:text-base">
+          {isSingle ? t("singleIntro") : t("intro")}
+        </p>
         <p className="mt-6 rounded-xl border border-white/10 bg-[#030712]/60 px-4 py-3 text-sm font-medium text-white">
           {summaryLine}
         </p>
@@ -126,12 +156,12 @@ export function CheckoutClient() {
         {tier === "professional" ? (
           <div className="mt-6 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-5 text-left">
             <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-[#fbbf24]">
-            {t("proCheckoutTitle")}
+              {isSingle ? t("singleIncludedTitle") : t("proCheckoutTitle")}
             </p>
             <div className="grid grid-cols-2 gap-2">
               {proFeatures.map((f) => (
                 <div
-                  key={f.title}
+                  key={f.id}
                   className="flex items-start gap-2 rounded-xl border border-white/[0.06] bg-white/[0.03] p-3"
                 >
                   <span className="text-lg">{f.icon}</span>
@@ -147,7 +177,9 @@ export function CheckoutClient() {
             </p>
           </div>
         ) : null}
-        <p className="mt-2 text-xs text-nexim-muted">{t("afterPayHint")}</p>
+        <p className="mt-2 text-xs text-nexim-muted">
+          {isSingle ? t("singleFooter") : t("afterPayHint")}
+        </p>
         <button
           type="button"
           disabled={busy}

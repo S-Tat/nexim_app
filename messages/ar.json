@@ -121,7 +121,11 @@
     "proFeature5Desc": "مع مواعيد شهرية",
     "proFeature6Title": "جدول الوثائق",
     "proFeature6Desc": "الجهة والمدة والحالة",
-    "proCheckoutBadge": "الدفع عبر Stripe · نتيجة فورية · دفعة واحدة"
+    "proCheckoutBadge": "الدفع عبر Stripe · نتيجة فورية · دفعة واحدة",
+    "singleIntro": "ادفع بأمان عبر Stripe للحصول على تحليلك الشخصي.",
+    "singlePlanLabel": "تحليل متعمق لـ {country}",
+    "singleFooter": "بعد الدفع الناجح يتم إنشاء تحليلك على الفور.",
+    "singleIncludedTitle": "ما الذي يشمله"
   },
   "why": {
     "title": "لماذا Nexim؟",

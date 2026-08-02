@@ -121,7 +121,11 @@
     "proFeature5Desc": "मासिक समयसीमा के साथ",
     "proFeature6Title": "दस्तावेज़ तालिका",
     "proFeature6Desc": "प्राधिकरण, समयरेखा, स्थिति",
-    "proCheckoutBadge": "Stripe के ज़रिए भुगतान · तुरंत परिणाम · एकमुश्त भुगतान"
+    "proCheckoutBadge": "Stripe के ज़रिए भुगतान · तुरंत परिणाम · एकमुश्त भुगतान",
+    "singleIntro": "अपना व्यक्तिगत विश्लेषण पाने के लिए Stripe से सुरक्षित भुगतान करें।",
+    "singlePlanLabel": "{country} के लिए गहन विश्लेषण",
+    "singleFooter": "सफल भुगतान के बाद आपका विश्लेषण तुरंत तैयार हो जाता है।",
+    "singleIncludedTitle": "इसमें क्या शामिल है"
   },
   "why": {
     "title": "Why Nexim?",

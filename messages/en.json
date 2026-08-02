@@ -121,7 +121,11 @@
     "proFeature5Desc": "With monthly deadlines",
     "proFeature6Title": "Document table",
     "proFeature6Desc": "Authority, timeline, status",
-    "proCheckoutBadge": "Payment via Stripe · Instant result · One-time payment"
+    "proCheckoutBadge": "Payment via Stripe · Instant result · One-time payment",
+    "singleIntro": "Pay securely with Stripe to unlock your personalized analysis.",
+    "singlePlanLabel": "Deep-dive analysis for {country}",
+    "singleFooter": "After successful payment your analysis is generated instantly.",
+    "singleIncludedTitle": "WHAT'S INCLUDED"
   },
   "why": {
     "title": "Why Nexim?",

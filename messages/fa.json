@@ -121,7 +121,11 @@
     "proFeature5Desc": "با مهلت‌های ماهانه",
     "proFeature6Title": "جدول مدارک",
     "proFeature6Desc": "مرجع، زمان‌بندی، وضعیت",
-    "proCheckoutBadge": "پرداخت از طریق Stripe · نتیجه فوری · پرداخت یک‌بار"
+    "proCheckoutBadge": "پرداخت از طریق Stripe · نتیجه فوری · پرداخت یک‌بار",
+    "singleIntro": "برای دریافت تحلیل شخصی خود، با Stripe پرداخت کنید.",
+    "singlePlanLabel": "تحلیل عمیق برای {country}",
+    "singleFooter": "پس از پرداخت موفق، تحلیل شما فوراً ایجاد می‌شود.",
+    "singleIncludedTitle": "آنچه شامل می‌شود"
   },
   "why": {
     "title": "چرا Nexim؟",

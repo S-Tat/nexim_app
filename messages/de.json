@@ -121,7 +121,11 @@
     "proFeature5Desc": "Mit monatlichen Fristen",
     "proFeature6Title": "Dokumententabelle",
     "proFeature6Desc": "Behörde, Zeitrahmen, Status",
-    "proCheckoutBadge": "Zahlung via Stripe · Sofortiges Ergebnis · Einmalzahlung"
+    "proCheckoutBadge": "Zahlung via Stripe · Sofortiges Ergebnis · Einmalzahlung",
+    "singleIntro": "Zahlen Sie sicher mit Stripe, um Ihre persönliche Analyse freizuschalten.",
+    "singlePlanLabel": "Tiefenanalyse für {country}",
+    "singleFooter": "Nach erfolgreicher Zahlung wird Ihre Analyse sofort erstellt.",
+    "singleIncludedTitle": "WAS ENTHALTEN IST"
   },
   "why": {
     "title": "Warum Nexim?",

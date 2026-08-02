@@ -121,7 +121,11 @@
     "proFeature5Desc": "С дедлайнами в месяцах",
     "proFeature6Title": "Таблица документов",
     "proFeature6Desc": "Орган, срок, статус",
-    "proCheckoutBadge": "Оплата через Stripe · Результат сразу · Одноразовый платёж"
+    "proCheckoutBadge": "Оплата через Stripe · Результат сразу · Одноразовый платёж",
+    "singleIntro": "Оплатите через Stripe, чтобы получить персональный разбор.",
+    "singlePlanLabel": "Глубокий разбор по стране: {country}",
+    "singleFooter": "После успешной оплаты разбор формируется мгновенно.",
+    "singleIncludedTitle": "ЧТО ВХОДИТ"
   },
   "why": {
     "title": "Почему Nexim?",

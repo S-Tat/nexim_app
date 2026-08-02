@@ -121,7 +121,11 @@
     "proFeature5Desc": "含月度截止日期",
     "proFeature6Title": "文件表格",
     "proFeature6Desc": "机构、时间表、状态",
-    "proCheckoutBadge": "通过Stripe付款 · 即时结果 · 一次性付款"
+    "proCheckoutBadge": "通过Stripe付款 · 即时结果 · 一次性付款",
+    "singleIntro": "通过 Stripe 安全付款，解锁您的个性化分析。",
+    "singlePlanLabel": "{country} 深度分析",
+    "singleFooter": "付款成功后，您的分析将立即生成。",
+    "singleIncludedTitle": "包含内容"
   },
   "why": {
     "title": "Why Nexim?",
