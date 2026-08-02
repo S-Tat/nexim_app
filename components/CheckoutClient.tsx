@@ -16,6 +16,10 @@ export function CheckoutClient() {
   const locale = useLocale();
   const searchParams = useSearchParams();
   const tier = useMemo(() => normalizeTier(searchParams.get("tier")), [searchParams]);
+  const flow = searchParams.get("flow") ?? undefined;
+  const returnPath = searchParams.get("returnPath") ?? undefined;
+  const destinationCountryCode = searchParams.get("country") ?? undefined;
+  const destinationCountryName = searchParams.get("countryName") ?? undefined;
   const [invalidTier, setInvalidTier] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
@@ -33,7 +37,14 @@ export function CheckoutClient() {
       const res = await fetch("/api/stripe/create-checkout-session", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ tier, locale }),
+        body: JSON.stringify({
+          tier,
+          locale,
+          ...(flow ? { flow } : {}),
+          ...(returnPath ? { returnPath } : {}),
+          ...(destinationCountryCode ? { destinationCountryCode } : {}),
+          ...(destinationCountryName ? { destinationCountryName } : {}),
+        }),
       });
       const data = (await res.json().catch(() => null)) as
         | { url?: string; error?: string; details?: string }

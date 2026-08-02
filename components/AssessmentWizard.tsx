@@ -886,6 +886,21 @@ export function AssessmentWizard({
         setSubmitError(t("questionnaireSaveFailed"));
         return;
       }
+      if (singleMode) {
+        const destCode = destinationCountry?.code ?? "";
+        const destName = destinationCountry?.name ?? "";
+        router.push({
+          pathname: "/checkout",
+          query: {
+            tier: "professional",
+            flow: "single",
+            returnPath: "/my-plan",
+            country: destCode,
+            countryName: destName,
+          },
+        });
+        return;
+      }
       await runAnalysisAndRoute();
     } finally {
       submitLockRef.current = false;
