@@ -25,14 +25,40 @@ import { createTierCheckoutSession } from "@/lib/stripe-checkout";
 
 export async function POST(req: NextRequest) {
   try {
-    let body: { tier?: unknown; locale?: unknown };
+    let body: {
+      tier?: unknown;
+      locale?: unknown;
+      returnPath?: unknown;
+      flow?: unknown;
+      destinationCountryCode?: unknown;
+      destinationCountryName?: unknown;
+    };
     try {
-      body = (await req.json()) as { tier?: unknown; locale?: unknown };
+      body = (await req.json()) as {
+        tier?: unknown;
+        locale?: unknown;
+        returnPath?: unknown;
+        flow?: unknown;
+        destinationCountryCode?: unknown;
+        destinationCountryName?: unknown;
+      };
     } catch {
       return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
     }
 
-    const result = await createTierCheckoutSession(req, body.tier, body.locale);
+    const result = await createTierCheckoutSession(req, body.tier, body.locale, {
+      returnPath:
+        typeof body.returnPath === "string" ? body.returnPath : undefined,
+      flow: typeof body.flow === "string" ? body.flow : undefined,
+      destinationCountryCode:
+        typeof body.destinationCountryCode === "string"
+          ? body.destinationCountryCode
+          : undefined,
+      destinationCountryName:
+        typeof body.destinationCountryName === "string"
+          ? body.destinationCountryName
+          : undefined,
+    });
 
     if (!result.ok) {
       return NextResponse.json(

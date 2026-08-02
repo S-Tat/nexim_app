@@ -97,6 +97,12 @@ export async function createTierCheckoutSession(
   req: NextRequest,
   rawTier: unknown,
   rawLocale: unknown,
+  options?: {
+    returnPath?: string; // e.g. "/my-plan" — return path after payment
+    flow?: string; // e.g. "single" — flow label
+    destinationCountryCode?: string; // e.g. "DE"
+    destinationCountryName?: string; // e.g. "Germany"
+  },
 ): Promise<CheckoutSessionResult> {
   const secret = stripWrappingQuotes(process.env.STRIPE_SECRET_KEY ?? "");
   if (!secret) {
@@ -117,10 +123,18 @@ export async function createTierCheckoutSession(
   const locale: Locale = isValidLocale(localeRaw) ? (localeRaw as Locale) : "en";
 
   const origin = resolveAppOrigin(req);
+  const rawReturnPath = options?.returnPath;
+  // Only allow internal paths starting with a single "/", no protocol/scheme
+  const safeReturnPath =
+    typeof rawReturnPath === "string" &&
+    /^\/[A-Za-z0-9\-_/]*$/.test(rawReturnPath)
+      ? rawReturnPath
+      : "/questionnaire";
   const successUrl =
-    `${origin}/${locale}/questionnaire` +
+    `${origin}/${locale}${safeReturnPath}` +
     `?checkout=success&session_id={CHECKOUT_SESSION_ID}` +
-    `&tier=${encodeURIComponent(tier)}`;
+    `&tier=${encodeURIComponent(tier)}` +
+    (options?.flow ? `&flow=${encodeURIComponent(options.flow)}` : "");
   const cancelUrl =
     `${origin}/${locale}/pricing?checkout=cancelled&tier=${encodeURIComponent(tier)}`;
 
@@ -152,7 +166,16 @@ export async function createTierCheckoutSession(
       ],
       success_url: successUrl,
       cancel_url: cancelUrl,
-      metadata: { tier },
+      metadata: {
+        tier,
+        ...(options?.flow ? { flow: options.flow } : {}),
+        ...(options?.destinationCountryCode
+          ? { destinationCountryCode: options.destinationCountryCode }
+          : {}),
+        ...(options?.destinationCountryName
+          ? { destinationCountryName: options.destinationCountryName }
+          : {}),
+      },
     });
 
     if (!session.url) {
