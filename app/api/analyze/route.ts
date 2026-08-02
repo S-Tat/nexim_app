@@ -88,7 +88,7 @@ async function enforcePaymentConsumptionLock(
   body: AnalyzeRequest,
   answers: Record<string, unknown>,
 ): Promise<{ stripe: Stripe; sessionId: string; session: Stripe.Checkout.Session } | null> {
-  if (effectiveTier === "lite" || effectiveTier === "single") return null;
+  if (effectiveTier === "lite") return null;
 
   const secret = resolveStripeSecret();
   if (!secret) {
@@ -108,7 +108,15 @@ async function enforcePaymentConsumptionLock(
   }
 
   const sessionTier = session.metadata?.tier;
-  if (sessionTier !== effectiveTier) {
+  const sessionFlow = session.metadata?.flow;
+  const tierMatches =
+    sessionTier === effectiveTier ||
+    // single is paid via a professional-priced checkout; accept it when the
+    // session is professional AND was created for the single flow
+    (effectiveTier === "single" &&
+      sessionTier === "professional" &&
+      sessionFlow === "single");
+  if (!tierMatches) {
     throw new PaymentConsumptionError("Checkout session tier mismatch", 403);
   }
 
