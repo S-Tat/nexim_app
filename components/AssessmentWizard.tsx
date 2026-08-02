@@ -166,6 +166,8 @@ export function AssessmentWizard({
   );
   const singleMode =
     searchParams.get("mode") === "single" || pathname.endsWith("/my-plan");
+  const checkoutSuccess = searchParams.get("checkout") === "success";
+  const returnedSessionId = searchParams.get("session_id");
   const [tier, setTier] = useState<PlanTier | null>(null);
 
   useEffect(() => {
@@ -208,6 +210,7 @@ export function AssessmentWizard({
   const [paymentComplete, setPaymentComplete] = useState(false);
   /** null = checking payment gate; true = allowed; false = redirecting to checkout */
   const [paymentGateReady, setPaymentGateReady] = useState<boolean | null>(null);
+  const [singlePaymentVerified, setSinglePaymentVerified] = useState(false);
 
   const [citizenship, setCitizenship] = useState<CountryOption | null>(null);
   const [destinationCountry, setDestinationCountry] =
@@ -302,6 +305,7 @@ export function AssessmentWizard({
   const submitLockRef = useRef(false);
   const resumeHandledRef = useRef(false);
   const prefillAppliedRef = useRef(false);
+  const singleVerifyRan = useRef(false);
   /** Tracks tier across mounts so we only reset consent / realign step on actual tier changes or first hydration. */
   const tierHydrateAnchorRef = useRef<PlanTier | null>(null);
   const [resumeGateReady, setResumeGateReady] = useState(false);
@@ -559,6 +563,30 @@ export function AssessmentWizard({
     setPaymentGateReady(true);
   }, [tier, router, singleMode]);
 
+  /** Verify Stripe return for single-country flow — one-shot. */
+  useEffect(() => {
+    if (!singleMode || !checkoutSuccess || !returnedSessionId) return;
+    if (singleVerifyRan.current) return;
+    singleVerifyRan.current = true;
+    void (async () => {
+      try {
+        const res = await fetch(
+          `/api/stripe/verify-session?session_id=${encodeURIComponent(returnedSessionId)}`,
+        );
+        const data = (await res.json().catch(() => null)) as
+          | { ok?: boolean; tier?: string }
+          | null;
+        if (res.ok && data && (data.ok === true || typeof data.tier === "string")) {
+          setSinglePaymentVerified(true);
+        } else {
+          setSubmitError(t("questionnaireSaveFailed"));
+        }
+      } catch {
+        setSubmitError(t("questionnaireSaveFailed"));
+      }
+    })();
+  }, [singleMode, checkoutSuccess, returnedSessionId, t]);
+
   useEffect(() => {
     if (paymentGateReady !== true) return;
     if (!singleMode && !tier) return;
@@ -590,12 +618,18 @@ export function AssessmentWizard({
         setResumeGateReady(true);
         return;
       }
-      resumeHandledRef.current = true;
       if (hasStoredResultForTier("single")) {
+        resumeHandledRef.current = true;
         setResumeGateReady(true);
         router.replace({ pathname: "/result" });
         return;
       }
+      if (!singlePaymentVerified) {
+        // Completed survey but payment not confirmed — show form, wait for verify.
+        setResumeGateReady(true);
+        return;
+      }
+      resumeHandledRef.current = true;
       setResumeGateReady(true);
       void runAnalysisAndRoute();
       return;
@@ -630,7 +664,7 @@ export function AssessmentWizard({
     setResumeGateReady(true);
     void runAnalysisAndRoute();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paymentGateReady, router, tier, totalSteps, singleMode]);
+  }, [paymentGateReady, router, tier, totalSteps, singleMode, singlePaymentVerified]);
 
   const buildData = useCallback((): NeximAssessmentData | null => {
     const prev =
