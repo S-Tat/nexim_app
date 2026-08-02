@@ -249,6 +249,7 @@
   },
   "result": {
     "title": "Ihre Treffer",
+    "titleSingle": "Ihr Ergebnis",
     "sessionPersistenceWarning": "⚠️ Bitte speichern, screenshotten oder drucken Sie diese Informationen. Ihre Ergebnisse werden nicht auf dem Server gespeichert und gehen beim Aktualisieren oder Schließen dieser Seite unwiderruflich verloren.",
     "emailLabel": "E-Mail-Adresse",
     "emailPlaceholder": "you@example.com",

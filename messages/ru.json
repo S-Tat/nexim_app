@@ -260,6 +260,7 @@
     "aiRecsTitle": "Рекомендации",
     "goldenBadge": "nexim.world",
     "title": "Ваши совпадения",
+    "titleSingle": "Ваш результат",
     "sessionPersistenceWarning": "⚠️ Сохраните, сделайте скриншот или распечатайте эту информацию. Результаты не хранятся на сервере и будут безвозвратно потеряны при обновлении или закрытии страницы.",
     "emailLabel": "Email адрес",
     "emailPlaceholder": "you@example.com",

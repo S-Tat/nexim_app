@@ -89,11 +89,15 @@ export function ResultView() {
   const { data, tier } = payload;
   const countries: CountryMatch[] = data?.top_countries ?? [];
   const legallyBlocked = data?.legalRelocationBlocked === true;
+  const isSingle = tier === "single";
   const isPro = tier === "professional";
   const isLite = tier === "lite";
   const isBasic = tier === "basic";
-  const isExtended = isPro;
+  const isExtended = isPro || isSingle;
+  const showProBlocks = isPro || isSingle;
   const showLegalIssuesWarning = data?.legalIssuesWarning === true;
+  const newAnalysisHref = isSingle ? "/my-plan" : "/questionnaire";
+  const resultTitle = isSingle ? t("titleSingle") : t("title");
 
   const glass =
     "rounded-2xl border border-white/[0.08] bg-white/[0.035] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-xl";
@@ -121,7 +125,7 @@ export function ResultView() {
         <div className={`${glass} p-8 md:p-10`}>
           <p className="text-nexim-muted">{t("emptyNoCountries")}</p>
           <Link
-            href="/questionnaire"
+            href={newAnalysisHref}
             onClick={startNewAnalysis}
             className="mt-6 inline-block rounded-full border border-[#fbbf24]/50 bg-[#fbbf24]/10 px-8 py-3 text-sm font-semibold text-[#fbbf24] transition hover:bg-[#fbbf24]/20"
           >
@@ -136,7 +140,7 @@ export function ResultView() {
     return (
       <div className="mx-auto max-w-screen-xl px-6 py-12 md:px-10">
         <ResultsEmailBanner data={data} tier={tier} />
-        <h1 className="font-display text-2xl font-semibold text-white md:text-3xl">{t("title")}</h1>
+        <h1 className="font-display text-2xl font-semibold text-white md:text-3xl">{resultTitle}</h1>
 
         <div
           className={`mt-8 rounded-2xl border border-red-500/50 bg-red-950/40 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl md:p-8`}
@@ -157,7 +161,7 @@ export function ResultView() {
 
         <div className="mt-10 flex flex-wrap gap-4">
           <Link
-            href="/questionnaire"
+            href={newAnalysisHref}
             onClick={startNewAnalysis}
             className="inline-flex items-center rounded-full border border-[#fbbf24]/50 bg-[#fbbf24]/10 px-6 py-3 text-sm font-semibold text-[#fbbf24] transition hover:bg-[#fbbf24]/20"
           >
@@ -178,7 +182,7 @@ export function ResultView() {
   return (
     <div className="mx-auto max-w-screen-xl px-6 py-12 md:px-10">
       <ResultsEmailBanner data={data} tier={tier} />
-      <h1 className="font-display text-2xl font-semibold text-white md:text-3xl">{t("title")}</h1>
+      <h1 className="font-display text-2xl font-semibold text-white md:text-3xl">{resultTitle}</h1>
 
       {showLegalIssuesWarning ? (
         <div
@@ -198,7 +202,7 @@ export function ResultView() {
         </div>
       ) : null}
 
-      {isPro ? (
+      {showProBlocks ? (
         <div className="mt-8 space-y-6">
           <div className={`${glass} p-6 md:p-8`}>
             <h2 className="text-base font-semibold text-[#fbbf24]">
@@ -249,7 +253,7 @@ export function ResultView() {
               onToggle={() => setExpandedIdx(expandedIdx === i ? null : i)}
               locale={locale}
               showRoadmap={!isLite}
-              showProDetails={isPro}
+              showProDetails={showProBlocks}
             />
           </div>
         ))}
@@ -339,7 +343,7 @@ export function ResultView() {
 
       <div className="mt-10 flex flex-wrap gap-4">
         <Link
-          href="/questionnaire"
+          href={newAnalysisHref}
           onClick={startNewAnalysis}
           className="inline-flex items-center rounded-full border border-[#fbbf24]/50 bg-[#fbbf24]/10 px-6 py-3 text-sm font-semibold text-[#fbbf24] transition hover:bg-[#fbbf24]/20"
         >

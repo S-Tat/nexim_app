@@ -260,6 +260,7 @@
     "aiRecsTitle": "Recommendations",
     "goldenBadge": "nexim.world",
     "title": "Your matches",
+    "titleSingle": "Your result",
     "sessionPersistenceWarning": "⚠️ Please save, screenshot, or print this information. Your results are not saved on the server and will be permanently lost if you refresh or close this page.",
     "emailLabel": "Email address",
     "emailPlaceholder": "you@example.com",

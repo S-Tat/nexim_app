@@ -249,6 +249,7 @@
   },
   "result": {
     "title": "您的匹配结果",
+    "titleSingle": "您的结果",
     "sessionPersistenceWarning": "⚠️ 请保存、截图或打印此信息。结果不会保存在服务器上，刷新或关闭此页面后将永久丢失。",
     "emailLabel": "邮箱地址",
     "emailPlaceholder": "you@example.com",
