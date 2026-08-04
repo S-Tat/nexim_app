@@ -279,7 +279,7 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       "Calculated individually from your profile in the analysis below.",
     requirementsTitle: (country) => `Key requirements for ${country}`,
     ctaTitle: "Get your Personalized AI Analysis",
-    ctaBody: "Answer the questionnaire to unlock a tailored relocation strategy, country matching, and next-step guidance.",
+    ctaBody: "Fill out the questionnaire to get a personalized strategy for relocating to your chosen country, with step-by-step guidance.",
     ctaButton: "Get your Personalized AI Analysis",
   },
   ru: {
@@ -295,7 +295,7 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       "Рассчитывается индивидуально по вашему профилю в анализе ниже.",
     requirementsTitle: (country) => `Ключевые требования для ${country}`,
     ctaTitle: "Получить персональный AI-анализ",
-    ctaBody: "Заполните анкету, чтобы получить персональную стратегию переезда, подбор стран и пошаговые рекомендации.",
+    ctaBody: "Заполните анкету, чтобы получить персональную стратегию переезда в выбранную страну и пошаговые рекомендации.",
     ctaButton: "Получить персональный AI-анализ",
   },
   de: {
@@ -311,7 +311,7 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       "Wird individuell aus Ihrem Profil in der Analyse unten berechnet.",
     requirementsTitle: (country) => `Wichtige Voraussetzungen für ${country}`,
     ctaTitle: "Ihre personalisierte KI-Analyse erhalten",
-    ctaBody: "Beantworten Sie den Fragebogen und erhalten Sie eine individuelle Relocation-Strategie, Länder-Matching und konkrete nächste Schritte.",
+    ctaBody: "Füllen Sie den Fragebogen aus, um eine persönliche Umzugsstrategie für Ihr gewähltes Land und Schritt-für-Schritt-Empfehlungen zu erhalten.",
     ctaButton: "Ihre personalisierte KI-Analyse erhalten",
   },
   ar: {
@@ -326,7 +326,7 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
     realChanceSubtitle: "يُحسب بشكل فردي من ملفك في التحليل أدناه.",
     requirementsTitle: (country) => `المتطلبات الأساسية لـ ${country}`,
     ctaTitle: "احصل على تحليلك الشخصي بالذكاء الاصطناعي",
-    ctaBody: "أجب عن الاستبيان للحصول على استراتيجية انتقال مخصصة، ومطابقة الدول، وخطوات عملية تالية.",
+    ctaBody: "املأ الاستبيان للحصول على استراتيجية انتقال مخصصة إلى البلد الذي اخترته مع إرشادات خطوة بخطوة.",
     ctaButton: "احصل على تحليلك الشخصي بالذكاء الاصطناعي",
   },
   fa: {
@@ -341,7 +341,7 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
     realChanceSubtitle: "بر اساس پروفایل شما در تحلیل زیر محاسبه می‌شود.",
     requirementsTitle: (country) => `الزامات اصلی برای ${country}`,
     ctaTitle: "تحلیل شخصی‌سازی‌شده هوش مصنوعی را دریافت کنید",
-    ctaBody: "پرسشنامه را تکمیل کنید تا استراتژی مهاجرت، تطبیق کشورها و گام‌های بعدی متناسب با شما ارائه شود.",
+    ctaBody: "پرسشنامه را تکمیل کنید تا استراتژی شخصی‌سازی‌شده برای مهاجرت به کشور انتخابی خود همراه با راهنمایی گام‌به‌گام دریافت کنید.",
     ctaButton: "تحلیل شخصی‌سازی‌شده هوش مصنوعی را دریافت کنید",
   },
   zh: {
@@ -356,7 +356,7 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
     realChanceSubtitle: "根据您的资料在下方分析中单独计算。",
     requirementsTitle: (country) => `${country} 的关键要求`,
     ctaTitle: "获取你的个性化 AI 分析",
-    ctaBody: "填写问卷，获得定制化移居策略、国家匹配结果和下一步行动建议。",
+    ctaBody: "填写问卷，获取移居到您所选国家的个性化策略和分步指导。",
     ctaButton: "获取你的个性化 AI 分析",
   },
   hi: {
@@ -372,7 +372,7 @@ const GUIDE_COPY_BY_LOCALE: Record<Locale, GuideCopy> = {
       "नीचे दिए विश्लेषण में आपकी प्रोफ़ाइल से व्यक्तिगत रूप से गणना की जाती है।",
     requirementsTitle: (country) => `${country} के लिए मुख्य आवश्यकताएँ`,
     ctaTitle: "अपना Personalized AI Analysis प्राप्त करें",
-    ctaBody: "प्रश्नावली भरें और tailored relocation strategy, country matching और next-step guidance प्राप्त करें।",
+    ctaBody: "अपने चुने हुए देश में स्थानांतरण के लिए व्यक्तिगत रणनीति और चरण-दर-चरण मार्गदर्शन पाने के लिए प्रश्नावली भरें।",
     ctaButton: "अपना Personalized AI Analysis प्राप्त करें",
   },
 };
