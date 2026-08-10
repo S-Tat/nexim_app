@@ -16,10 +16,46 @@ export type BlogPost = {
   aiHeading: string;
   aiBody: string;
   ctaLabel: string;
+  /** Optional CTA destination; defaults to /questionnaire?tier=lite in BlogArticleBody */
+  ctaHref?: string;
   updated: string;
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    locale: "en",
+    slug: "moving-to-japan-as-a-doctor",
+    title: "Moving to Japan as a Doctor in 2026: Licensing, Language & the Real Path",
+    description:
+      "A realistic guide for foreign doctors relocating to Japan in 2026 — medical licensing (JMLE), the Japanese language requirement, salaries, and the true timeline to practice.",
+    intro:
+      "Japan faces a real shortage of doctors, especially in rural regions and specialized fields, and the healthcare system is among the most advanced in the world. Yet relocating to Japan as a foreign physician is one of the harder medical migration paths on earth. The rewards are significant, but so are the barriers. This guide walks through what it actually takes — honestly, without the marketing gloss.",
+    countriesHeading: "What It Really Takes to Practice Medicine in Japan",
+    countries: [
+      {
+        name: "Medical Licensing (the JMLE)",
+        text: "To practice medicine in Japan you must pass the Japanese Medical Licensing Examination (JMLE). Foreign-trained doctors first need their medical degree screened and approved by the Ministry of Health, Labour and Welfare (MHLW) before they are even eligible to sit the exam. Depending on where you studied, you may be required to complete additional clinical training in Japan first. This screening step alone can take months and is where many applicants underestimate the process.",
+      },
+      {
+        name: "The Language Barrier (N1 Japanese)",
+        text: "This is the single biggest obstacle. The JMLE is administered in Japanese, and clinical practice requires fluent medical Japanese — realistically JLPT N1, or very strong N2 at minimum. You cannot practice medicine in Japan on English alone, even in international hospitals. Most successful applicants spend 12 to 24 months in intensive language study before they are ready. Budgeting for this non-earning period is essential.",
+      },
+      {
+        name: "Salaries & Working Conditions",
+        text: "Once licensed, the payoff is strong. Doctors in Japan typically earn between JPY 8,000,000 and 15,000,000 gross per year (roughly USD 50,000-100,000), with higher figures for specialists and rural placements. The healthcare system is world-class, and there is a clear path to a Highly Skilled Professional visa after licensing, which speeds up residency and brings additional benefits.",
+      },
+      {
+        name: "A Realistic Timeline",
+        text: "Be honest with yourself about the clock. From starting Japanese study to actually practicing medicine, a realistic timeline is 3 to 5 years: language acquisition, degree screening, possible preparatory clinical training, passing the JMLE, then securing a position and the Medical Services Visa. It is entirely achievable for a committed professional — but it is a multi-year project, not a quick move.",
+      },
+    ],
+    aiHeading: "Is This Path Right for You? Find Out in Minutes",
+    aiBody:
+      "Every doctor's situation is different — your country of training, your years of experience, your funds, and your language starting point all change the picture dramatically. Instead of guessing, Nexim's AI analyzer looks at your exact profile and gives you a realistic assessment of your chances in Japan, the specific gaps you need to close, and a step-by-step roadmap with real timelines. It is built specifically for the destination and profession you choose.",
+    ctaLabel: "Get My Personalized Japan Analysis →",
+    ctaHref: "/my-plan?country=JP&profession=medicine",
+    updated: "Blog · 2026",
+  },
   {
     locale: "en",
     slug: "best-countries-family-relocation",
