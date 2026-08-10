@@ -24,6 +24,40 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
   {
     locale: "en",
+    slug: "japan-relocation-visa-bureaucracy-guide",
+    title: "Japan Visas & Bureaucracy in 2026: What Relocating Actually Involves",
+    description:
+      "A practical guide to the paperwork behind moving to Japan in 2026 — work visas, the Certificate of Eligibility, residence cards, the My Number system, and the bureaucratic steps most people underestimate.",
+    intro:
+      "Japan's immigration system is orderly and rule-based — which is good news if you follow the steps, and painful if you don't. Most of the difficulty in relocating to Japan isn't the visa itself; it's the sequence of documents, offices, and deadlines that surround it. This guide breaks down the bureaucracy so you know what's coming before you start.",
+    countriesHeading: "The Bureaucratic Steps of Moving to Japan",
+    countries: [
+      {
+        name: "The Work Visa & Status of Residence",
+        text: "Japan doesn't have a single 'work visa' — it has categories tied to your job type, such as Engineer/Specialist in Humanities, Highly Skilled Professional, or Medical Services. Your employer's job offer determines which status you qualify for. Choosing or being placed in the wrong category is a common early mistake, so the status of residence has to match the actual work you'll do.",
+      },
+      {
+        name: "Certificate of Eligibility (CoE)",
+        text: "This is the document most newcomers underestimate. Before you can get the visa itself, your employer in Japan usually applies for a Certificate of Eligibility on your behalf at the local immigration bureau. The CoE proves you meet the requirements for your status of residence. It can take one to three months to be issued, and only then do you apply for the actual visa at a Japanese embassy or consulate.",
+      },
+      {
+        name: "Residence Card & Address Registration",
+        text: "On arrival, you receive a Residence Card (Zairyu Card) — your primary ID in Japan, which you must carry at all times. Within 14 days of settling in, you must register your address at the local municipal (city or ward) office. This registration unlocks almost everything else: bank accounts, phone contracts, and enrollment in the national systems below.",
+      },
+      {
+        name: "My Number, Health Insurance & Pension",
+        text: "After address registration you'll be issued a My Number (a personal tax and social security ID) and enrolled in Japan's health insurance and pension systems. These aren't optional — enrollment is a legal requirement, and contributions start quickly. Health insurance covers a large share of medical costs, which is a genuine benefit, but budgeting for the deductions from day one avoids surprises.",
+      },
+    ],
+    aiHeading: "Where Do You Actually Stand? Get a Personalized Read",
+    aiBody:
+      "The paperwork is the same for everyone, but your odds are not. Your profession, employer, qualifications, and nationality all shape which status of residence you'll qualify for and how smooth the process will be. Rather than piecing it together from forums, Nexim's AI analyzer takes your specific profile and gives you a realistic assessment for Japan, the exact documents and gaps to prepare for, and a step-by-step timeline built around your situation.",
+    ctaLabel: "Get My Personalized Japan Analysis →",
+    ctaHref: "/my-plan?country=JP",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "en",
     slug: "best-countries-for-it-professionals",
     title: "Best Countries for IT Professionals to Relocate in 2026: An Honest Comparison",
     description:
