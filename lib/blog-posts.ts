@@ -24,6 +24,44 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
   {
     locale: "en",
+    slug: "best-countries-for-it-professionals",
+    title: "Best Countries for IT Professionals to Relocate in 2026: An Honest Comparison",
+    description:
+      "Where should software developers and IT specialists move in 2026? A realistic comparison of Germany, Canada, the UAE, the USA, and Portugal — visas, salaries, taxes, and the catch behind each.",
+    intro:
+      "Tech talent is in demand almost everywhere, which is both good news and a problem: too many options, each with a hidden catch. A high salary can be eaten by tax and rent; an easy visa can lead to a weak job market. This is an honest, no-hype comparison of the strongest destinations for IT professionals in 2026 — and how to figure out which one actually fits your profile.",
+    countriesHeading: "Top Destinations for IT Professionals in 2026",
+    countries: [
+      {
+        name: "Germany",
+        text: "The EU Blue Card makes Germany one of the most accessible destinations for skilled developers, with a fast track to permanent residency. Salaries are solid (roughly EUR 55,000–85,000 for mid-to-senior roles) and demand is deep across Berlin, Munich, and Hamburg. The catch: high taxes and social contributions, and everyday life is much easier with some German, even though many tech teams work in English.",
+      },
+      {
+        name: "Canada",
+        text: "Express Entry and the tech-friendly Global Talent Stream make Canada one of the clearest immigration paths in the world, with permanent residency built into the process rather than bolted on later. Toronto and Vancouver have strong tech scenes. The catch: cost of living in major cities is high, and salaries are generally lower than in the US for equivalent roles.",
+      },
+      {
+        name: "United Arab Emirates",
+        text: "Dubai and Abu Dhabi offer zero income tax, fast employer-sponsored visas, and a growing tech sector. Take-home pay can be excellent. The catch: no direct path to citizenship, life is tied to employment status, and the cost of housing and schooling can climb fast for families.",
+      },
+      {
+        name: "United States",
+        text: "The US still offers the highest salaries and the deepest tech market on earth (USD 120,000–180,000+ is common for experienced engineers). The catch is the visa: the H-1B lottery is competitive and uncertain, and other routes like the O-1 or L-1 have high bars. Getting in is the hard part — thriving once you're there is comparatively easy.",
+      },
+      {
+        name: "Portugal",
+        text: "A favorite for lifestyle and a softer landing into the EU, with a growing Lisbon tech scene and relatively welcoming visa options. The catch: salaries are noticeably lower than in Germany or the US, so it suits those who value quality of life and EU access over maximum income.",
+      },
+    ],
+    aiHeading: "Which One Actually Fits You? Don't Guess — Check",
+    aiBody:
+      "Lists like this describe the countries, but not you. The right destination depends on your passport, years of experience, salary expectations, family situation, and how much visa risk you can tolerate. Instead of comparing endless articles, Nexim's AI analyzer takes your exact profile and gives you a realistic success estimate for the specific country you're considering, the gaps you'd need to close, and a step-by-step relocation roadmap. Pick a country, and see where you really stand.",
+    ctaLabel: "Analyze My IT Relocation Chances →",
+    ctaHref: "/my-plan?profession=it_software",
+    updated: "Blog · 2026",
+  },
+  {
+    locale: "en",
     slug: "moving-to-japan-as-a-doctor",
     title: "Moving to Japan as a Doctor in 2026: Licensing, Language & the Real Path",
     description:
